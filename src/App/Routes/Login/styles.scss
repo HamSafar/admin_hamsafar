@@ -6,7 +6,7 @@
     height: 100%;
     margin: 0;
 
-    &-Form {
+    .form {
 
         min-width: 24rem;
         padding: 3rem 1rem;
@@ -52,9 +52,9 @@
                 background: transparent;
                 color: rgba(77, 22, 44, 0.85);
                 border: none;
-                border-radius: 0.25rem;
+                border-radius: 0.55rem;
                 font-family: 'vazir';
-                transition: 1s ease;
+                transition: 0.25s ease;
             }
         }
 
@@ -63,7 +63,7 @@
             text-align: center;
             position: relative;
             display: block;
-            padding: 0.35rem 0;
+            padding: 0.5rem 0;
             left: 50%;
             transform: translate(-50%, 0);
             background-color: rgba(255, 255, 255, 0.15);
@@ -79,5 +79,18 @@
 
     }
 
+    .footer {
+        position: fixed;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%, 0);
 
+        span {
+            cursor: pointer;
+            opacity: 0.75;
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
 }

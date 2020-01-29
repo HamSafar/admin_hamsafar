@@ -1,0 +1,25 @@
+{
+    "login": {
+        "title": [
+            "Ham Safar Admin Login",
+            "ورود مدیریت همسفر"
+        ],
+        "username": [
+            "Username", "نام کاربری"
+        ],
+        "password": [
+            "Password", "گذرواژه"
+        ],
+        "login": [
+            "Login", "ورود"
+        ]
+    },
+    "dashboard": {
+        "home": {
+
+        },
+        "settings": {
+            
+        }
+    }
+}
