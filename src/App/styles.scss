@@ -1,0 +1,17 @@
+.App {
+
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+
+    background-image: linear-gradient(
+            -45deg,
+            rgba(77, 22, 44, 0.55),
+            rgba(18, 60, 124, 0.77)
+        );
+
+    color: white;
+}

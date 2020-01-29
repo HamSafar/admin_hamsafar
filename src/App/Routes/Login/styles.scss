@@ -1,0 +1,83 @@
+.Login {
+
+    position: relative;
+    overflow: auto;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+
+    &-Form {
+
+        min-width: 24rem;
+        padding: 3rem 1rem;
+
+        position: absolute;
+        left: 50%; top: 50%;
+        transform: translate(-50%, -50%);
+
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 0.5rem;
+        
+        
+        .logo {
+            text-align: center;
+            img {
+                width: 5rem;
+            }
+        }
+
+        .title {
+            text-align: center;
+            margin: 1rem 0;
+            font-size: large;
+        }
+
+        .inputs {
+            margin: {
+                top: 3.5rem;
+                bottom: 2.5rem;
+            }
+
+            input {
+                width: 16rem;
+                padding: 0.5rem;
+                position: relative;
+                display: block;
+                left: 50%;
+                transform: translate(-50%, 0);
+                margin: 1rem 0;
+                box-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
+                appearance: none;
+                outline: none;
+                background: transparent;
+                color: rgba(77, 22, 44, 0.85);
+                border: none;
+                border-radius: 0.25rem;
+                font-family: 'vazir';
+                transition: 1s ease;
+            }
+        }
+
+        .button {
+            width: 17rem;
+            text-align: center;
+            position: relative;
+            display: block;
+            padding: 0.35rem 0;
+            left: 50%;
+            transform: translate(-50%, 0);
+            background-color: rgba(255, 255, 255, 0.15);
+            border-radius: 0.5rem;
+            box-shadow: 0 0 1rem rgba(0,0,0,0.5);
+            font-family: 'Vazir';
+            font-size: medium;
+            border: none;
+            color: white;
+            cursor: pointer;
+            outline: none;
+        }
+
+    }
+
+
+}
