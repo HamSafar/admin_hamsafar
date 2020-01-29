@@ -13,10 +13,10 @@ class Routes extends Component {
 
         return (
             <Switch>
-                <Route path="/about" component={About} />
+                <Route path="/about" exact component={About} />
                 <Route path="/dashboard/:name" exact component={Dashboard} />
-                <Route path="/dashboard" component={Dashboard} />
-                <Route path="/login" component={Login} />
+                <Route path="/dashboard" exact component={Dashboard} />
+                <Route path="/login" exact component={Login} />
                 
                 {
                     (!this.props.user) ?

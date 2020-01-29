@@ -1,21 +1,23 @@
 @font-face {
-    font-family: Vazir;
+    font-family: 'Vazir';
     src: url('../assets/fonts/vazir/vazir.eot');
-    src: url('../assets/fonts/vazir/vazir?#iefix') format('embedded-opentype'),
-        url('../assets/fonts/vazir/vazir.woff2') format('woff2'),
-        url('../assets/fonts/vazir/vazir.woff') format('woff'),
-        url('../assets/fonts/vazir/vazir.ttf') format('truetype');
+    src: local('Vazir'),
+        url('../assets/fonts/vazir/Vazir?#iefix') format('embedded-opentype'),
+        url('../assets/fonts/vazir/Vazir.woff2') format('woff2'),
+        url('../assets/fonts/vazir/Vazir.woff') format('woff'),
+        url('../assets/fonts/vazir/Vazir.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
-    font-family: Tanha;
+    font-family: 'Tanha';
     src: url('../assets/fonts/tanha/tanha.eot');
-    src: url('../assets/fonts/tanha/tanha?#iefix') format('embedded-opentype'),
-        url('../assets/fonts/tanha/tanha.woff2') format('woff2'),
-        url('../assets/fonts/tanha/tanha.woff') format('woff'),
-        url('../assets/fonts/tanha/tanha.ttf') format('truetype');
+    src: local('tanha'),
+        url('../assets/fonts/tanha/Tanha?#iefix') format('embedded-opentype'),
+        url('../assets/fonts/tanha/Tanha.woff2') format('woff2'),
+        url('../assets/fonts/tanha/Tanha.woff') format('woff'),
+        url('../assets/fonts/tanha/Tanha.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
