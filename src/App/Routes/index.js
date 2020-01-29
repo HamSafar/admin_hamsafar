@@ -8,15 +8,21 @@ import NotFound from './NotFound'
 
 class Routes extends Component { 
 
+    withProps = (Comp) => (props) => 
+        <Comp {...props} 
+            lang={this.props.prefs.lang} 
+            changePrefs={this.props.changePrefs} 
+        />
 
     render() {
+        const { withProps } = this
 
         return (
             <Switch>
-                <Route path="/about" exact component={About} />
-                <Route path="/dashboard/:name" exact component={Dashboard} />
-                <Route path="/dashboard" exact component={Dashboard} />
-                <Route path="/login" exact component={Login} />
+                <Route path="/about" exact component={withProps(About)} />
+                <Route path="/dashboard/:name" exact component={withProps(Dashboard)} />
+                <Route path="/dashboard" exact component={withProps(Dashboard)} />
+                <Route path="/login" exact component={withProps(Login)} />
                 
                 {
                     (!this.props.user) ?

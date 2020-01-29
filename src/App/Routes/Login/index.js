@@ -8,10 +8,10 @@ import './styles.scss'
 class Login extends Component {
 
     state = {
-        lang: 1
+        lang: this.props.lang
     }
 
-    toggleLang = (e,lang) => this.setState({ lang })
+    toggleLang = (e,lang) => this.props.changePrefs({ lang })
 
     handleSelect = (e) => e.target.style.backgroundColor = 'rgba(255,255,255,0.75)'
     handleBlur = (e) => e.target.style.backgroundColor = 'transparent'
@@ -33,18 +33,27 @@ class Login extends Component {
                         {strings.title[lang]}
                     </div>
                     <div className="inputs">
-                        <input type="text" name="username" 
-                            placeholder={strings.username[lang]} 
+                        <div className="input"
                             dir={lang? "rtl":"ltr"}
-                            onSelect={e => this.handleSelect(e)}
-                            onBlur={e => this.handleBlur(e)}
-                        ></input>
-                        <input type="password" name="password" 
-                            placeholder={strings.password[lang]} 
+                        >
+                            <img src={window.location.origin + '/assets/login/user-solid.svg'} />
+                            <input type="text" name="username" 
+                                placeholder={strings.username[lang]} 
+                                onSelect={e => this.handleSelect(e)}
+                                onBlur={e => this.handleBlur(e)}
+                            ></input>
+                        </div>
+                        <div className="input"
                             dir={lang? "rtl":"ltr"}
-                            onSelect={e => this.handleSelect(e)}
-                            onBlur={e => this.handleBlur(e)}
-                        ></input>
+                        >
+                            <img src={window.location.origin + '/assets/login/lock-solid.svg'} />
+                            <input type="password" name="password" 
+                                placeholder={strings.password[lang]} 
+                                
+                                onSelect={e => this.handleSelect(e)}
+                                onBlur={e => this.handleBlur(e)}
+                            ></input>
+                        </div>
                     </div>
                     <button className="button" onClick={e => this.login}>
                         {strings.login[lang]}
