@@ -31,10 +31,10 @@ class Login extends Component {
         const { username, password } = this.state
         Axios.post('/user/login', {
             username, password
-        }).then(
-            res => console.log(res) //this.props.changeUser(res.data)
-        ).catch(
-            e => console.log(e)
+        }).then(res => 
+            console.log(res) //this.props.changeUser(res.data)
+        ).catch(e => 
+            console.log(e)
         )
     }
 

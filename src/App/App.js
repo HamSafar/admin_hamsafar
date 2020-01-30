@@ -22,7 +22,7 @@ class App extends Component {
 
   state = {
     prefs: {
-      lang: 1
+      lang: ''
     },
     user: ''
   }
@@ -39,14 +39,19 @@ class App extends Component {
     })
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     var prefsCookie = cookies.get('prefs')
     if(prefsCookie)
-      this.setState({
+      return this.setState({
         prefs: {
           lang: prefsCookie.lang
         }
       })
+    this.setState({
+      prefs: {
+        lang: 1
+      }
+    })
   }
 
   UNSAFE_componentWillUpdate(props, state) {
