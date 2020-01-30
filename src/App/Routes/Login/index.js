@@ -12,30 +12,77 @@ class Login extends Component {
     state = {
         lang: this.props.prefs.lang,
         username: '',
-        password: ''
+        password: '',
+        isInvalid: {
+            username: true,
+            password: true
+        }
     }
 
     toggleLang = (e,lang) => this.props.changePrefs({ lang })
 
     handleSelect = (e) => e.target.style.backgroundColor = 'rgba(255,255,255,0.75)'
-    handleBlur = (e) => e.target.style.backgroundColor = 'transparent'
+    handleBlur = (e) => {if(!e.target.value)  e.target.style.backgroundColor = 'transparent'}
 
     handleChange = (e) => {
         if(e.target.name === 'username')
             return this.setState({ username: e.target.value })
+        
         if(e.target.name === 'password')
             return this.setState({ password: e.target.value })
     }
 
-    login = () => {
-        const { username, password } = this.state
-        Axios.post('/user/login', {
-            username, password
-        }).then(res => 
-            console.log(res) //this.props.changeUser(res.data)
-        ).catch(e => 
-            console.log(e)
-        )
+    validate = (e,s) => {
+        if(s === 'username') {
+            if(e.length < 6)
+                return 'Username must be more than 6 characters'
+            return undefined
+        }
+        if(s === 'password') {
+            if(e.length < 6)
+                return 'Password must be more than 6 characters'
+            return undefined
+        }
+    } 
+
+    handleSubmit = (e) => {
+        e.preventDefault()
+
+        var { username, password } = this.state
+        const valid = {
+            username: this.validate(username,'username'),
+            password: this.validate(password,'password')
+        }
+
+        this.setState({
+            isInvalid: {
+                username: valid.username,
+                password: valid.password
+            }
+        })
+
+        if(!valid.username && !valid.password) {
+        
+            Axios.post('/user/login', {
+                username, password
+            }).then(res => {
+                console.log(res) 
+                const user = {
+                    username: username,
+                    password: password,
+                    token: res.data.token,
+                    time: res.data.time
+                }
+                this.props.changeUser(user)
+            }).catch(e => {
+                console.log(e)
+                this.setState({
+                    isInvalid: {
+                        password: e.toString()
+                    }
+                })
+            })
+        }
     }
 
     componentDidMount() {
@@ -45,12 +92,14 @@ class Login extends Component {
     }
 
     render() {
-        const { lang } = this.state
+        const { lang, username, password, isInvalid } = this.state
         const { strings: { login } } = this.props
 
         return (
             <div className="Login">
-                <div className="form">
+                <form className="form" 
+                    onSubmit={e => this.handleSubmit(e)}
+                >
                     <div className="logo">
                         <img src={window.location.origin + manifset.icons[2].src} alt="logo"/>
                     </div>
@@ -65,12 +114,19 @@ class Login extends Component {
                                 src={window.location.origin + '/assets/login/user-solid.svg'} 
                             />
                             <input type="text" name="username" 
+                                value={username}
                                 placeholder={login.username[lang]} 
                                 onSelect={e => this.handleSelect(e)}
                                 onBlur={e => this.handleBlur(e)}
                                 onChange={e => this.handleChange(e)}
                             ></input>
                         </div>
+                        {
+                            isInvalid.username ? 
+                            <span className="error">
+                                {this.state.isInvalid.username}
+                            </span> : null
+                        }
                         <div className="input"
                             dir={lang? "rtl":"ltr"}
                         >
@@ -78,24 +134,33 @@ class Login extends Component {
                                 src={window.location.origin + '/assets/login/lock-solid.svg'} 
                             />
                             <input type="password" name="password" 
+                                value={password}
                                 placeholder={login.password[lang]} 
                                 onSelect={e => this.handleSelect(e)}
                                 onBlur={e => this.handleBlur(e)}
                                 onChange={e => this.handleChange(e)}
                             ></input>
                         </div>
+                        {
+                            isInvalid.password ? 
+                            <span className="error">
+                                {this.state.isInvalid.password}
+                            </span> : null
+                        }
                     </div>
                     <Ripple>
-                        <button className="k-button k-primary mt-1 mb-1 button" onClick={e => this.login}>
+                        <button type="submit"
+                            className="k-button k-primary mt-1 mb-1 button" 
+                        >
                             {login.login[lang]}
                         </button>
                     </Ripple>
-                </div>
+                </form>
 
                 <div className="footer">
                     <span onClick={(e)=>this.toggleLang(e,0)}>En</span>
                     &nbsp;|&nbsp;
-                    <span onClick={(e)=>this.toggleLang(e,1)}>Fa</span>
+                    <span onClick={(e)=>this.toggleLang(e,1)}>فا</span>
                 </div>
             </div>
         );

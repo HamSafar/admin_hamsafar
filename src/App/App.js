@@ -24,7 +24,12 @@ class App extends Component {
     prefs: {
       lang: ''
     },
-    user: ''
+    user: {
+      username: '',
+      password: '',
+      token: '',
+      time: ''
+    }
   }
 
   changePrefs = (prefs) => {
@@ -60,9 +65,6 @@ class App extends Component {
   }
 
   render() {
-    var prefsCookie = cookies.get('prefs')
-    console.log(prefsCookie.lang)
-
     return (
       <div className="App">
         <BrowserRouter>
