@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 
 import Nav from './nav'
+import Pane from './pane'
+import Page from './page'
 import './styles.scss'
 
 class Dashboard extends Component {
@@ -15,7 +17,8 @@ class Dashboard extends Component {
         return (
             <div className="Dashboard">
                 <Nav  />
-                
+                <Page />
+                <Pane />
             </div>
         );
     }
