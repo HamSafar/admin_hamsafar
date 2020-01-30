@@ -116,7 +116,7 @@ class Login extends Component {
                         <div className="input"
                             dir={lang? "rtl":"ltr"}
                         >
-                            <img alt={login.username[lang]} 
+                            <img alt="" 
                                 src={window.location.origin + '/assets/login/user-solid.svg'} 
                             />
                             <input type="text" name="username" 
@@ -136,7 +136,7 @@ class Login extends Component {
                         <div className="input"
                             dir={lang? "rtl":"ltr"}
                         >
-                            <img alt={login.password[lang]} 
+                            <img alt=""
                                 src={window.location.origin + '/assets/login/lock-solid.svg'} 
                             />
                             <input type="password" name="password" 

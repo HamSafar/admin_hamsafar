@@ -53,7 +53,7 @@ class App extends Component {
 				lang: 1
 			},
 			user: {
-				isAuth: false
+				isAuth: true
 			}
 		})
 	}
