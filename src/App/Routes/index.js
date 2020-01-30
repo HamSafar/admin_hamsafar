@@ -28,7 +28,7 @@ class Routes extends Component {
                 <Route path="/login" exact component={withProps(Login)} />
                 
                 {
-                    (!this.props.user) ?
+                    (!this.props.user.isAuth) ?
                     <Redirect path="/" exact to="/login" /> :
                     <Redirect path="/" exact to="/dashboard" />
                 }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom'
 import Axios from 'axios'
 
 import manifset from '../../../static/manifset.json'
@@ -85,6 +86,11 @@ class Login extends Component {
         }
     }
 
+    UNSAFE_componentWillMount() {
+        if(this.props.user.isAuth)
+            this.props.history.push('/dashboard')
+    }
+
     componentDidMount() {
         const { lang } = this.state
         const { strings: { login } } = this.props
@@ -167,4 +173,4 @@ class Login extends Component {
     }
 }
 
-export default Login;
+export default withRouter(Login);
