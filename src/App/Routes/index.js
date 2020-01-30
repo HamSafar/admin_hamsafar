@@ -10,8 +10,11 @@ class Routes extends Component {
 
     withProps = (Comp) => (props) => 
         <Comp {...props} 
-            lang={this.props.prefs.lang} 
+            prefs={this.props.prefs} 
+            user={this.props.user}
             changePrefs={this.props.changePrefs} 
+            changeUser={this.props.changeUser}
+            strings={this.props.strings}
         />
 
     render() {

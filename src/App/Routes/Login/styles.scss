@@ -22,14 +22,23 @@
         .logo {
             text-align: center;
             img {
-                width: 5rem;
+                width: 8rem;
+                opacity: 0.85;
+                transition: ease 0.5s;
+                &:hover {
+                    opacity: 1;
+                }
             }
         }
 
         .title {
             text-align: center;
             margin: 1rem 0;
+            transition: all ease 1s;
             font-size: large;
+            &:hover {
+                font-size: larger;
+            }
         }
 
         .inputs {
@@ -58,7 +67,7 @@
                 }
 
                 input {
-                    width: 13rem;
+                    width: 15rem;
                     padding: 0.5rem 2rem;
                     margin: 0 0rem;
                     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
@@ -70,29 +79,36 @@
                     border-radius: 0.55rem;
                     font-family: 'vazir';
                     transition: 0.25s ease;
+                    text-transform: capitalize;
                 }
             }
         }
 
         .button {
-            width: 17rem;
+            overflow: hidden;
+            left: 50%;
+            transform: translate(-50%, 0);
+            border-radius: 0.5rem;
+            box-shadow: 0 0 2rem rgba(0,0,0,0.15);
+            width: 15rem;
             text-align: center;
             position: relative;
             display: block;
             padding: 0.5rem 0;
-            left: 50%;
-            transform: translate(-50%, 0);
             background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 0.5rem;
-            box-shadow: 0 0 1rem rgba(0,0,0,0.15);
             font-family: 'Vazir';
             font-size: medium;
             border: none;
             color: white;
             cursor: pointer;
             outline: none;
+            text-transform: capitalize;
+            
+            transition: all ease 1s;
+            &:hover {
+                background-color: rgba(255, 255, 255, 0.25);
+            }
         }
-
     }
 
     .footer {
@@ -104,9 +120,11 @@
         span {
             cursor: pointer;
             opacity: 0.75;
+            transition: 0.25s ease;
             &:hover {
                 opacity: 1;
             }
         }
     }
 }
+

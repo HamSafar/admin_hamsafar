@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@progress/kendo-react-ripple": "^3.10.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
     "@testing-library/user-event": "^7.2.1",
@@ -15,6 +16,7 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.3.0",
     "react-spring": "^8.0.27",
+    "react-transition-group": "^4.3.0",
     "redux": "^4.0.5",
     "redux-form": "^8.2.6",
     "redux-promise": "^0.6.0",

@@ -1,8 +1,7 @@
 {
     "login": {
         "title": [
-            "Ham Safar Admin Login",
-            "ورود مدیریت همسفر"
+            "Ham Safar Admin Login", "ورود مدیریت همسفر"
         ],
         "username": [
             "Username", "نام کاربری"
@@ -16,10 +15,14 @@
     },
     "dashboard": {
         "home": {
-
+            "title": [
+                "Home", "خانه"
+            ]
         },
         "settings": {
-            
+            "title": [
+                "Preferences", "مطبوعات"
+            ]
         }
     }
 }

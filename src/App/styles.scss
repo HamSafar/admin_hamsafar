@@ -1,3 +1,7 @@
+@function grad($ang: 1turn) {
+	@return linear-gradient($ang, rgba(18, 60, 124, 0.77), rgba(77, 22, 44, 0.55))
+}
+
 .App {
 
     position: relative;
@@ -7,11 +11,17 @@
     padding: 0;
     overflow: hidden;
 
-    background-image: linear-gradient(
-            -45deg,
-            rgba(77, 22, 44, 0.55),
-            rgba(18, 60, 124, 0.77)
-        );
+    background: grad(var(--ang, 0deg));
+	animation: rot 20s cubic-bezier(.6, .7, .8, 1.0) infinite;
+	
+	@supports (-ms-user-select: none) {
+		background-image: grad(0turn);
+		animation-name: rot-alt;
+	}
 
     color: white;
 }
+
+@keyframes rot { to { --ang: 1turn } }
+
+@keyframes rot-alt { to { background-image: grad() } }
