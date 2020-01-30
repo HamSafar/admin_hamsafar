@@ -22,7 +22,7 @@ class App extends Component {
 			password: '',
 			token: '',
 			time: '',
-			isAuth: ''
+			isAuth: true //''
 		}
 	}
 
