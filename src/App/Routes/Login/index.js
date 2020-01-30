@@ -38,10 +38,15 @@ class Login extends Component {
         )
     }
 
+    componentDidMount() {
+        const { lang } = this.state
+        const { strings: { login } } = this.props
+        document.title = login.title[lang]
+    }
+
     render() {
         const { lang } = this.state
         const { strings: { login } } = this.props
-        console.log(this.state.username)
 
         return (
             <div className="Login">

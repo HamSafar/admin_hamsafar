@@ -1,4 +1,12 @@
 {
+    "notFound": {
+        "title": [
+            "404 Not Found", "404 یافت نشد"
+        ],
+        "content": [
+            "Page not found!", "صفحه مورد نظر یافت نشد!"
+        ]
+    },
     "login": {
         "title": [
             "Ham Safar Admin Login", "ورود مدیریت همسفر"

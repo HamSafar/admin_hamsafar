@@ -1,0 +1,20 @@
+.NotFound {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    .container {
+        display: block;
+        position: absolute;
+        left: 50%; top: 50%;
+        transform: translate(-50%, -50%);
+
+        span { display: block; }
+        .title {
+            font: {
+                weight: 800;
+                size: 4rem;
+            }
+        }
+    }
+}

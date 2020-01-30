@@ -1,5 +1,5 @@
 {
-  "name": "dev_hamsafar",
+  "name": "admin_hamsafar",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -20,7 +20,8 @@
     "redux": "^4.0.5",
     "redux-form": "^8.2.6",
     "redux-promise": "^0.6.0",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "universal-cookie": "^4.0.3"
   },
   "scripts": {
     "start": "set HTTPS=true && react-scripts start",

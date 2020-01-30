@@ -33,7 +33,7 @@ class Routes extends Component {
                     <Redirect path="/" exact to="/dashboard" />
                 }
                 
-                <Route component={NotFound} />
+                <Route component={withProps(NotFound)} />
             </Switch>
         )
     }

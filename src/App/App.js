@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 
+import Cookies from 'universal-cookie';
+
 import strings from '../static/strings.json'
 
 import './styles.scss' 
@@ -13,6 +15,8 @@ CSS.registerProperty({
   initialValue: '0deg', 
   inherits: true
 })
+
+const cookies = new Cookies();
 
 class App extends Component {
 
@@ -35,7 +39,25 @@ class App extends Component {
     })
   }
 
+  componentWillMount() {
+    var prefsCookie = cookies.get('prefs')
+    if(prefsCookie)
+      this.setState({
+        prefs: {
+          lang: prefsCookie.lang
+        }
+      })
+  }
+
+  UNSAFE_componentWillUpdate(props, state) {
+    cookies.set('prefs', state.prefs, { withCredentials: true , path: '/' });
+    return null;
+  }
+
   render() {
+    var prefsCookie = cookies.get('prefs')
+    console.log(prefsCookie.lang)
+
     return (
       <div className="App">
         <BrowserRouter>
