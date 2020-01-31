@@ -1,0 +1,28 @@
+.Dashboard {
+    .Pane {
+        position: absolute;
+        display: flex;
+        margin: 2rem;
+        color: black;
+
+        .avatar {
+            margin: 0 0.5rem 0 1.5rem;
+
+            img {
+                border-radius: 0.5rem;
+                width: 2.2rem; height: 2.2rem;
+                box-shadow: 0 0 0.5rem rgba(128, 128, 128, 0.5);
+                //border: 1px solid rgba(119, 119, 119, 0.25);
+            }
+        }
+
+        .icon {
+            cursor: pointer;
+            height: min-content;
+            position: relative;
+            display: block;
+            margin: 0.5rem;
+            text-shadow: 0 0 0.5rem rgba(128, 128, 128, 0.5);
+        }
+    }
+}

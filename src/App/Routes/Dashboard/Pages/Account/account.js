@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class Mailbox extends Component {
+class Account extends Component {
     render() {
         return (
             <div>
-                
+                account
             </div>
         );
     }
 }
 
-export default Mailbox;
+export default Account;

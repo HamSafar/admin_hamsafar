@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class Pane extends Component {
+class Mailbox extends Component {
     render() {
         return (
             <div>
-                
+                mailbox
             </div>
         );
     }
 }
 
-export default Pane;
+export default Mailbox;

@@ -20,11 +20,12 @@ class Routes extends Component {
     render() {
         const { withProps } = this
 
+        // limit dashboard routes in future
         return (
             <Switch>
                 <Route path="/about" exact component={withProps(About)} />
-                <Route path="/dashboard/:name" exact component={withProps(Dashboard)} />
-                <Route path="/dashboard" exact component={withProps(Dashboard)} />
+                <Route path="/dashboard/:name" exact component={withProps(Dashboard)} /> 
+                <Redirect from="/dashboard" exact to="/dashboard/home" />
                 <Route path="/login" exact component={withProps(Login)} />
                 
                 {

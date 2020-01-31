@@ -27,6 +27,26 @@
                 "Home", "خانه"
             ]
         },
+        "charts": {
+            "title": [
+                "Charts", "نمودار ها"
+            ]
+        },
+        "analytics": {
+            "title": [
+                "Analytics", "تجزیه و تحلیل"
+            ]
+        },
+        "mailbox": {
+            "title": [
+                "Mailbox", "پیام ها"
+            ]
+        },
+        "account": {
+            "title": [
+                "Account", "حساب کاربری"
+            ]
+        },
         "settings": {
             "title": [
                 "Preferences", "مطبوعات"

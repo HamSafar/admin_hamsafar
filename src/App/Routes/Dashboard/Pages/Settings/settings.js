@@ -1,15 +1,13 @@
-// hoc component
-
 import React, { Component } from 'react';
 
-class Page extends Component {
+class Settings extends Component {
     render() {
         return (
             <div>
-                
+                settings
             </div>
         );
     }
 }
 
-export default Page;
+export default Settings;

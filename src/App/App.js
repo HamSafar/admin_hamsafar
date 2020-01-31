@@ -7,7 +7,7 @@ import strings from '../static/strings.json'
 
 import './styles.scss' 
 
-import Routes from './Routes'
+import Routes from './Routes/Routes'
 
 const cookies = new Cookies();
 
@@ -15,7 +15,8 @@ class App extends Component {
 
 	state = {
 		prefs: {
-			lang: ''
+			lang: '',
+			theme: ''
 		},
 		user: {
 			username: '',
@@ -36,7 +37,8 @@ class App extends Component {
 		if(prefsCookie)
 		return this.setState({
 			prefs: {
-				lang: prefsCookie.lang
+				lang: 0, //prefsCookie.lang
+				theme: 0 //prefsCookie.theme
 			}
 		})
 
@@ -50,7 +52,8 @@ class App extends Component {
 
 		this.setState({
 			prefs: {
-				lang: 1
+				lang: 1,
+				theme: 1
 			},
 			user: {
 				isAuth: true //false on default
