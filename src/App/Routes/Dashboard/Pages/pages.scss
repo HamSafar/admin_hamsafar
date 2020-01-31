@@ -2,11 +2,15 @@
     .Pages {
 
         position: relative;
-        display: inline;
+        display: block;
+        width: calc( 100% - 7.8rem );
         font-size: x-large;
         padding: 2rem 2rem;
 
         .header {
+            position: relative;
+            display: block;
+            width: max-content;
             .backNav {
                 svg {
                     cursor: pointer;
@@ -20,10 +24,10 @@
 
         .page {
             position: absolute;
-            display: flex;
+            display: block;
             margin-top: 1.5rem;
-            width: calc( 100vw - 9.2rem );
-            height: calc( 100vh - 7rem );
+            width: 100%;
+            height: calc( 100% - 5.8rem );
             overflow: hidden;
             overflow-y: scroll;
         }

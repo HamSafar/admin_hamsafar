@@ -5,7 +5,7 @@ import Cookies from 'universal-cookie';
 
 import strings from '../static/strings.json'
 
-import './styles.scss' 
+import './app.scss' 
 
 import Routes from './Routes/Routes'
 import Axios from 'axios';
@@ -71,9 +71,11 @@ class App extends Component {
 	UNSAFE_componentWillUpdate(newProps, newState) {
 		console.log('App updating')
 
+		// update cookies either
 		cookies.set('prefs', newState.prefs, { withCredentials: true , path: '/' });
 		cookies.set('user', newState.user, { withCredentials: true , path: '/' });
 		
+		// check if user is still authed
 		this.checkAuth(newState)
 
 		return null;

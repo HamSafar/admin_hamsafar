@@ -2,17 +2,25 @@
 
 .Pages {
     .Home {
+        position: relative;
         display: flex;
+        height: 100%;
+
         font-size: 1rem;
         
+        //background: rgba(255, 0, 0, 0.418);
 
         .overview {
             padding: 1rem;
+            //background: rgb(126, 99, 99);
+            width: calc( 100% - 16rem );
         }
         .sidePanel {
-            padding: 1rem;
+            width: 16rem;
+            height: 100%;
+            display: block;
+            position: absolute;
             
-            height: max-content;
             background-color: rgba($accent-grey, 0.25);
         }
     }
