@@ -57,7 +57,7 @@ class App extends Component {
 				theme: 0
 			},
 			user: {
-				isAuth: fasle //false on default
+				isAuth: false //false on default
 			}
 		})
 	}
