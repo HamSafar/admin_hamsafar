@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-import Axios from 'axios'
+import axios from 'axios'
 
 import manifset from '../../../static/manifset.json'
 
@@ -35,7 +35,7 @@ class Login extends Component {
 
     validate = (e,s) => {
         if(s === 'username') {
-            if(e.length < 6)
+            if(e.length < 4)
                 return 'Username must be more than 6 characters'
             return undefined
         }
@@ -64,8 +64,18 @@ class Login extends Component {
 
         if(!valid.username && !valid.password) {
         
-            Axios.post('/auth/login', {
+            axios.post('auth/login', {
                 username, password
+            }, { 
+                method: 'POST',
+                mode: 'no-cors',
+                withCredentials: true,
+                useCredentails: true,
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'Content-Type': 'application/json'
+                },
+                credentials: 'same-origin'
             }).then(res => {
                 console.log(res) 
                 const user = {

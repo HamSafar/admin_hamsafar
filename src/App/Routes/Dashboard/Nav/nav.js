@@ -12,7 +12,7 @@ import './nav.scss'
 
 class Nav extends Component {
     render() {
-        const { prefs: { lang, theme }, dashboard } = this.props
+        const { prefs: { lang }, dashboard } = this.props
 
         return (
             <div className="Nav">
