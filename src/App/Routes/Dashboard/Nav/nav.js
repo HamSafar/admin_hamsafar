@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom' 
+import { NavLink, withRouter } from 'react-router-dom' 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { 
     faSignOutAlt, faHome, faChartBar, faChartPie, faEnvelope, faUser, faCog
@@ -11,6 +11,13 @@ import './nav.scss'
 // Home, Charts(by date), Analytics, Mailbox, Account(personal data, wallet, plan), Settings(theme, lang, )
 
 class Nav extends Component {
+
+    handleLogOut = () => {
+        const { changeUser } = this.props
+        changeUser({ isAuth: false })
+        this.props.history.push('/login')
+    }
+
     render() {
         const { prefs: { lang }, dashboard } = this.props
 
@@ -46,12 +53,12 @@ class Nav extends Component {
                         <div className="line" style={lang? { left: 0 }:{ right: 0 }} />
                     </NavLink>
                 </div>
-                <NavLink to="/signout" className="signout">
+                <div className="signout" onClick={()=>this.handleLogOut()}>
                     <FontAwesomeIcon icon={faSignOutAlt} size="lg" />
-                </NavLink>
+                </div>
             </div>
         );
     }
 }
 
-export default Nav;
+export default withRouter(Nav);

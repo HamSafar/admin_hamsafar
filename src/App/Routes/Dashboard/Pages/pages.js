@@ -36,6 +36,7 @@ class Pages extends Component {
         const { prefs: { lang } } = this.props
         const pathname = this.props.history.location.pathname.replace('/dashboard/','')
         const header = this.props.dashboard[pathname] && this.props.dashboard[pathname].title[lang]
+        document.title = pathname.toUpperCase()
 
         return (
             <div className="Pages" >

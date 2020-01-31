@@ -6,7 +6,7 @@ import manifset from '../../../static/manifset.json'
 
 import { Ripple } from '@progress/kendo-react-ripple';
 
-import './styles.scss'
+import './login.scss'
 
 class Login extends Component {
 
@@ -66,25 +66,15 @@ class Login extends Component {
         
             axios.post('auth/login', {
                 username, password
-            }, { 
-                method: 'POST',
-                mode: 'no-cors',
-                withCredentials: true,
-                useCredentails: true,
-                headers: {
-                    'Access-Control-Allow-Origin': '*',
-                    'Content-Type': 'application/json'
-                },
-                credentials: 'same-origin'
             }).then(res => {
-                console.log(res) 
                 const user = {
                     username: username,
                     password: password,
-                    token: res.data.token,
-                    time: res.data.time
+                    isAuth: true,
+                    token: res.data.access_token,
+                    //time: res.data.time
                 }
-                this.props.changeUser(user)
+                this.props.changeUser(user) //updates App
             }).catch(e => {
                 console.log(e)
                 this.setState({

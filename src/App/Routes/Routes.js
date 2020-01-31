@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Switch, Redirect, Route } from 'react-router-dom'
 
-import Login from './Login'
+import Login from './Login/login'
 import Dashboard from './Dashboard/dashboard'
 import About from './About'
 import NotFound from './NotFound'
@@ -15,6 +15,7 @@ class Routes extends Component {
             changePrefs={this.props.changePrefs} 
             changeUser={this.props.changeUser}
             strings={this.props.strings}
+            //cookies={this.props.cookies}
         />
 
     render() {

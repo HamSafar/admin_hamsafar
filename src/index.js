@@ -10,7 +10,7 @@ import App from './App/App'
 import './index.scss'
 
 import axios from 'axios'
-const defaultURL = "http://localhost:9090/"
+const defaultURL = "http://localhost:9090/" //change to 2.184.239.248
 axios.defaults.baseURL = defaultURL
 axios.defaults.headers.post['Content-Type'] ='application/json;charset=utf-8';
 axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';

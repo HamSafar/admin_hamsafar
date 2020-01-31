@@ -8,6 +8,7 @@ import strings from '../static/strings.json'
 import './styles.scss' 
 
 import Routes from './Routes/Routes'
+import Axios from 'axios';
 
 const cookies = new Cookies();
 
@@ -15,56 +16,66 @@ class App extends Component {
 
 	state = {
 		prefs: {
-			lang: '',
-			theme: ''
+			lang: 0,
+			theme: 0
 		},
 		user: {
 			username: '',
 			password: '',
 			token: '',
 			time: '',
-			isAuth: ''
+			isAuth: false
 		}
 	}
 
 	changePrefs = (prefs) => this.setState({ prefs })
-
 	changeUser = (user) => this.setState({ user })
 
-  	UNSAFE_componentWillMount() {
+	checkAuth = (newState) => {
 
-		var prefsCookie = cookies.get('prefs')
-
-		if(prefsCookie)
-			return this.setState({
-				prefs: {
-					lang: 0, //prefsCookie.lang
-					theme: 0 //prefsCookie.theme
-				}
-			})
-
-		var userCookie = cookies.get('user')
-		if(userCookie) 
-			return this.setState({
-				user: {
-					isAuth: userCookie.isAuth
-				}
-			})
-
-		this.setState({
-			prefs: {
-				lang: 1,
-				theme: 0
-			},
-			user: {
-				isAuth: false //false on default
+		//check token by post req to server
+		Axios.get('profile',{
+			headers: {
+				'Authorization': "Bearer " + newState.user.token
 			}
+		}).then(res => {
+			if(res.status === 200)
+				return null
+			if(this.state.isAuth)
+				this.changeUser({ isAuth: false })
+		}).catch(e => {
+			console.log(e)
+			if(this.state.isAuth)
+				this.changeUser({ isAuth: false })
 		})
 	}
 
-	UNSAFE_componentWillUpdate(props, state) {
-		cookies.set('prefs', state.prefs, { withCredentials: true , path: '/' });
-		cookies.set('user', state.user, { withCredentials: true , path: '/' });
+  	UNSAFE_componentWillMount() {
+
+		//start a function calls checkAuth() in intervals
+		//setInterval(this.checkAuth,5000)
+
+		// restore saved settings from cookies
+		var prefsCookie = cookies.get('prefs')
+		var userCookie = cookies.get('user')
+
+		if(prefsCookie || userCookie)
+			return this.setState({
+				prefs: prefsCookie,
+				user: userCookie
+			})
+
+		console.log('no cookies')
+	}
+
+	UNSAFE_componentWillUpdate(newProps, newState) {
+		console.log('App updating')
+
+		cookies.set('prefs', newState.prefs, { withCredentials: true , path: '/' });
+		cookies.set('user', newState.user, { withCredentials: true , path: '/' });
+		
+		this.checkAuth(newState)
+
 		return null;
 	}
 
@@ -76,7 +87,8 @@ class App extends Component {
 					<Routes {...this.state}
 						changeUser={this.changeUser}
 						changePrefs={this.changePrefs}
-						strings={strings} />
+						strings={strings}
+						cookies={cookies} />
 				</BrowserRouter>
 			</div>
 		)

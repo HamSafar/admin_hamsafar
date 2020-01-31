@@ -13,9 +13,14 @@ class Dashboard extends Component {
             this.props.history.push('/login')
     }
 
+    UNSAFE_componentWillUpdate() {
+        if(!this.props.user.isAuth)
+            this.props.history.push('/login')
+    }
+
     render() {
         const dashboard = this.props.strings.dashboard
-        const { prefs } = this.props
+        const { prefs, changeUser, user } = this.props
 
         return (
             <div className="Dashboard" 
@@ -26,9 +31,9 @@ class Dashboard extends Component {
                     'rgba(0, 0, 0, 0.75)' 
                 }}
             >
-                <Nav dashboard={dashboard} prefs={prefs}/>
+                <Nav dashboard={dashboard} prefs={prefs} changeUser={changeUser}/>
                 <Pages dashboard={dashboard} prefs={prefs}/>
-                <Pane dashboard={dashboard} prefs={prefs}/>
+                <Pane dashboard={dashboard} prefs={prefs} user={user}/>
             </div>
         );
     }
