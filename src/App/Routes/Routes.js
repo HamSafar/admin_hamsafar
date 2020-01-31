@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Switch, Redirect, Route } from 'react-router-dom'
 
 import Login from './Login'
-import Dashboard from './Dashboard'
+import Dashboard from './Dashboard/dashboard'
 import About from './About'
 import NotFound from './NotFound'
 

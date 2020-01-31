@@ -1,5 +1,11 @@
+@import '../static/colors.scss';
+
 @function grad($ang: 1turn) {
-	@return linear-gradient($ang, rgba(18, 60, 124, 0.77), rgba(77, 22, 44, 0.55))
+	@return linear-gradient(
+        $ang, 
+        rgba($accent-navy, 0.77), 
+        rgba($accent-wine, 0.55)
+    )
 }
 
 .App {
@@ -18,8 +24,14 @@
 		background-image: grad(0turn);
 		animation-name: rot-alt;
 	}
+}
 
-    color: white;
+.darkTheme {
+    color: $dark-color;
+}
+
+.lightTheme {
+    color: $light-color;
 }
 
 @keyframes rot { to { --ang: 1turn } }

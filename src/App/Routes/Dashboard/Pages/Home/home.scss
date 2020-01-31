@@ -1,3 +1,5 @@
+@import '../../../../../static/colors.scss';
+
 .Pages {
     .Home {
         display: flex;
@@ -9,10 +11,9 @@
         }
         .sidePanel {
             padding: 1rem;
-            margin-left: 1rem;
+            
             height: max-content;
-            border-top-left-radius: 1rem;
-            background-color: rgba(129, 129, 129, 0.25);
+            background-color: rgba($accent-grey, 0.25);
         }
     }
 }

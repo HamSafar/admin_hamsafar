@@ -64,7 +64,7 @@ class Login extends Component {
 
         if(!valid.username && !valid.password) {
         
-            Axios.post('/user/login', {
+            Axios.post('/auth/login', {
                 username, password
             }).then(res => {
                 console.log(res) 

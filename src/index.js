@@ -9,6 +9,10 @@ import App from './App/App'
 
 import './index.scss'
 
+import Axios from 'axios'
+const defaultURL = "http://2.184.239.248:9090/"
+Axios.defaults.baseURL = defaultURL
+
 const createStoreWithMiddleware = 
      applyMiddleware(promiseMiddleware)(createStore)
 

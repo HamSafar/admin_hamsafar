@@ -34,29 +34,30 @@ class App extends Component {
   	UNSAFE_componentWillMount() {
 
 		var prefsCookie = cookies.get('prefs')
+
 		if(prefsCookie)
-		return this.setState({
-			prefs: {
-				lang: 0, //prefsCookie.lang
-				theme: 0 //prefsCookie.theme
-			}
-		})
+			return this.setState({
+				prefs: {
+					lang: 0, //prefsCookie.lang
+					theme: 0 //prefsCookie.theme
+				}
+			})
 
 		var userCookie = cookies.get('user')
 		if(userCookie) 
-		return this.setState({
-			user: {
-				isAuth: userCookie.isAuth
-			}
-		})
+			return this.setState({
+				user: {
+					isAuth: userCookie.isAuth
+				}
+			})
 
 		this.setState({
 			prefs: {
 				lang: 1,
-				theme: 1
+				theme: 0
 			},
 			user: {
-				isAuth: true //false on default
+				isAuth: fasle //false on default
 			}
 		})
 	}
@@ -68,8 +69,9 @@ class App extends Component {
 	}
 
 	render() {
+		const { prefs: { theme } } = this.state
 		return (
-			<div className="App">
+			<div className={"App " + (theme? "lightTheme":"darkTheme")}>
 				<BrowserRouter>
 					<Routes {...this.state}
 						changeUser={this.changeUser}

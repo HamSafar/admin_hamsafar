@@ -10,15 +10,11 @@ import './pane.scss'
 class Pane extends Component {
     render() {
         const { prefs } = this.props
-        const { lang, theme } = prefs
+        const { lang } = prefs
         return (
             <div className="Pane" 
                 dir={lang ? "ltr":"rtl"}
-                style={
-                    prefs.lang? 
-                    { left: 0, color: theme? 'black':'white' }:
-                    { right: 0, color: theme? 'black':'white' }
-                }
+                style={ prefs.lang? { left: 0 }:{ right: 0 } }
             >
                 <div className="avatar">
                     <img alt="Avatar" src="https://lh3.googleusercontent.com/-xuFLlo7klRU/AAAAAAAAAAI/AAAAAAAAAAA/ACHi3rd2G6mw6iRAamWTHjSF4HNcSi1Ohg/photo.jpg?sz=46"/>

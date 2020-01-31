@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom'
 import Nav from './Nav/nav'
 import Pane from './Pane/pane'
 import Pages from './Pages/pages'
-import './styles.scss'
+import './dashboard.scss'
 
 class Dashboard extends Component {
 

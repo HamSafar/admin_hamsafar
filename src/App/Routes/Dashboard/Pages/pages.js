@@ -33,12 +33,12 @@ class Pages extends Component {
     }
 
     render() {
-        const { prefs: { lang, theme } } = this.props
+        const { prefs: { lang } } = this.props
         const pathname = this.props.history.location.pathname.replace('/dashboard/','')
         const header = this.props.dashboard[pathname] && this.props.dashboard[pathname].title[lang]
 
         return (
-            <div className="Pages" style={{ color: theme? 'black':'white'}}>
+            <div className="Pages" >
                 <div className="header">
                     <div className="backNav" onClick={()=>this.goBack()}>
                         <FontAwesomeIcon icon={lang? faChevronRight:faChevronLeft} size="lg" />
