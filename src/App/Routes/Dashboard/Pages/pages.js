@@ -28,7 +28,7 @@ class Pages extends Component {
             case 'mailbox': return <Mailbox prefs={prefs} />
             case 'account': return <Account prefs={prefs} />
             case 'settings': return <Settings prefs={prefs} />
-            default: this.props.history.push('/dashboard')
+            default: this.props.history.push('/login')
         }
     }
 
