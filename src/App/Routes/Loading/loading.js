@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom'
 
 import './loading.scss'
 
-function Loading(props) {
+const Loading = (props) => {
 
     if(props.user.isAuth)
         props.history.push('/dashboard')

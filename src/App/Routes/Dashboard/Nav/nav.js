@@ -22,10 +22,18 @@ class Nav extends Component {
     }
 
     render() {
-        const { prefs: { lang }, dashboard } = this.props
+        const { prefs: { lang, theme }, dashboard } = this.props
 
         return (
-            <div className="Nav">
+            <div className="Nav" 
+                style={ theme? 
+                    {
+                        background: 'rgb(51, 42, 124)'
+                    }:{
+                        background: 'linear-gradient(rgb(0, 140, 255), rgb(140, 0, 255) 25%, rgb(242, 87, 103) 75%, rgb(255, 162, 0))'
+                    }
+                }
+            >
                 <div className="logo">
                     <img src={window.location.origin + manifset.icons[2].src } alt="logo"/>
                     <span>Ham Safar</span>

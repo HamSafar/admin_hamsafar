@@ -13,19 +13,27 @@
         .content {
             padding: 1rem;
             //background: rgb(126, 99, 99);
-            width: calc( 100% - 16rem );
+            width: calc( 100% - 20rem );
             overflow: hidden;
             overflow-x: auto;
         }
 
         .sidePanel {
-            width: 16rem;
+            overflow: visible;
+            width: 20rem;
             height: 100%;
             display: block;
             position: absolute;
-            overflow: hidden;
-            
-            background-color: rgba($accent-grey, 0.25);
+            background-color: rgba($accent-lead, 0.25);
+
+            .radarContainer {
+                direction: ltr;
+                height: 22rem;
+                width: 100%;
+                position: relative;
+                display: block;
+                overflow: visible;
+            }
         }
     }
 }

@@ -1,18 +1,20 @@
 //anchor tag
-$a-color: rgb(255, 255, 255);
+$a-color:       rgb(255, 255, 255);
 
 //scrollbar
-$scrollbar-track-color: rgb(210, 210, 224);
+$scrollbar-track-color: rgb(64, 63, 77);
 $scrollbar-thumb-color: rgb(0, 0, 0);
 
 //App accent colors
-$accent-wine:   rgba(77, 22, 44, 0.55);
-$accent-navy:   rgba(18, 60, 124, 0.77);
 $accent-violet: rgb(51, 42, 124);
 $accent-orange: rgb(255, 162, 0);
 $accent-pink:   rgb(242, 87, 103);
 $accent-teal:   rgb(135, 222, 240);
 $accent-grey:   rgb(210, 210, 224);
+$accent-lead:   rgb(64, 63, 77);
+
+$accent-wine:   rgba(77, 22, 44, 0.55);
+$accent-navy:   rgba(18, 60, 124, 0.77);
 
 $accent-purple: rgb(140, 0, 255);
 $accent-blue:   rgb(0, 140, 255);
@@ -21,7 +23,7 @@ $accent-blue:   rgb(0, 140, 255);
 $dark-color:    rgb(230, 230, 230);
 
 //App light
-$light-color:   rgb(27, 27, 27);
+$light-color:   rgb(50, 50, 50);
 
 //effects
 $shadow-color:  rgb(77, 77, 77);

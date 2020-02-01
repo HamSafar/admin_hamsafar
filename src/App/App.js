@@ -15,9 +15,8 @@ const cookies = new Cookies();
 class App extends Component {
 
 	state = {
-		strings: strings,
 		prefs: {
-			lang: 0,
+			lang: 1,
 			theme: 1,
 			accentColor: 'rgb(51, 42, 124)',
 			autoLogin: true
@@ -53,22 +52,27 @@ class App extends Component {
 					})
 				else return null
 			}
-			if(this.state.user.isAuth)
-				this.changeUser({ ...newState, isAuth: false })
+			if(!this.state.prefs.autoLogin && this.state.user.isAuth)
+				this.changeUser({ ...newState.user, isAuth: false, token: '' })
+			else if(this.state.prefs.autoLogin) this.commitLogin()
+
 		}).catch(e => {
-			console.log(e) //remove this
-			if(this.state.user.isAuth)
-				this.changeUser({ ...newState, isAuth: false })
+			if(!this.state.prefs.autoLogin && this.state.user.isAuth) {
+				console.log(e)
+				this.changeUser({ ...newState.user, isAuth: false, token: '' })
+			} else if(this.state.prefs.autoLogin) this.commitLogin() 
+
 		})
 	}
 
-	UNSAFE_componentWillMount() {
+	commitLogin = () => {
 
 		// auto-login if in prefsCookie
 		// using saved user and pass
 		var userCookie = cookies.get('user')
-		const { username, password } = userCookie
-		if( username && password ) {
+		
+		if( userCookie && userCookie.username && userCookie.password ) {
+			const { username, password } = userCookie
             Axios.post('auth/login', {
                 username, password
             }).then(res => {
@@ -78,12 +82,17 @@ class App extends Component {
                     isAuth: true,
                     token: res.data.access_token,
                     //time: res.data.time
-                }
+				}
+				console.log('logged in')
                 this.changeUser(user) //updates App
             }).catch(e => {
                 console.log(e)
             })
         }
+	}
+
+	UNSAFE_componentWillMount() {
+		//this.commitLogin()
 	}
 
   	componentDidMount() {
@@ -127,7 +136,7 @@ class App extends Component {
 						changeUser={this.changeUser}
 						changePrefs={this.changePrefs}
 						changeProfile={this.changeProfile} 
-						//strings={strings}
+						strings={strings}
 						cookies={cookies}
 					/>
 				</BrowserRouter>

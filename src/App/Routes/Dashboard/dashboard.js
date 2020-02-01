@@ -28,7 +28,7 @@ class Dashboard extends Component {
                 style={{ 
                     background: prefs.theme? 
                     'rgba(255, 255, 255, 0.95)':
-                    'rgba(0, 0, 0, 0.75)' 
+                    'rgba(14, 19, 23, 0.95)' 
                 }}
             >
                 <Nav dashboard={dashboard} prefs={prefs} changeUser={changeUser} />

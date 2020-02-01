@@ -5,13 +5,15 @@
         position: absolute;
         display: flex;
         margin: 2rem;
+        justify-content: center;
 
         .avatar {
-            margin: 0 0.5rem 0 1.5rem;
+            height: min-content;
+            border-radius: 0.5rem;
 
             img {
                 border-radius: 0.5rem;
-                width: 2.2rem; height: 2.2rem;
+                width: 2.2rem;
                 box-shadow: 0 0 1rem rgba($shadow-color, 0.5);
                 //border: 1px solid rgba(119, 119, 119, 0.25);
             }

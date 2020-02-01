@@ -25,7 +25,22 @@
         "home": {
             "title": [
                 "Home", "خانه"
-            ]
+            ],
+            "graphs": {
+                "radar": {
+                    "keys": {
+                        "rec_sys": [
+                            "Recommendation System", "سیستم پیشنهاد"
+                        ],
+                        "ads": [
+                            "Advertisement", "تبلیغات مرکز"
+                        ],
+                        "soc_net": [
+                            "Social Network", "شبکه مجازی"
+                        ]
+                    }
+                }
+            }
         },
         "charts": {
             "title": [
