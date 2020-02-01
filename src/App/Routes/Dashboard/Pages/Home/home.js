@@ -7,21 +7,16 @@ class Home extends Component {
         const { prefs: { lang } } = this.props
         return (
             <div className="Home">
-                <div className="overview">
+                <div className="content">
 
                 </div>
                 <div className="sidePanel" 
                     style={ lang? 
-                        {
-                            borderTopRightRadius: '1rem',
-                            left: 0
-                        }:
-                        {
-                            borderTopLeftRadius: '1rem',
-                            right: 0
-                        }
+                        { borderTopRightRadius: '1rem', left: 0 }:
+                        { borderTopLeftRadius: '1rem', right: 0 }
                     }
                 >
+
                 </div>
             </div>
         );

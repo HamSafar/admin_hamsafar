@@ -10,16 +10,20 @@
         
         //background: rgba(255, 0, 0, 0.418);
 
-        .overview {
+        .content {
             padding: 1rem;
             //background: rgb(126, 99, 99);
             width: calc( 100% - 16rem );
+            overflow: hidden;
+            overflow-x: auto;
         }
+
         .sidePanel {
             width: 16rem;
             height: 100%;
             display: block;
             position: absolute;
+            overflow: hidden;
             
             background-color: rgba($accent-grey, 0.25);
         }
