@@ -8,9 +8,12 @@ import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
 import './pane.scss'
 
 class Pane extends Component {
+
     render() {
-        const { prefs, user } = this.props
+        const { prefs, profile } = this.props
         const { lang } = prefs
+        console.log(profile)
+
         return (
             <div className="Pane" 
                 dir={lang ? "ltr":"rtl"}
@@ -18,7 +21,7 @@ class Pane extends Component {
             >
                 <div className="avatar">
                     <img alt="Avatar" src="https://lh3.googleusercontent.com/-xuFLlo7klRU/AAAAAAAAAAI/AAAAAAAAAAA/ACHi3rd2G6mw6iRAamWTHjSF4HNcSi1Ohg/photo.jpg?sz=46"/>
-                    <span> &nbsp; {user.username} &nbsp; </span>
+                    <span> &nbsp; {profile && profile.username} &nbsp; </span>
                 </div>
                 <div className="icon">
                     <FontAwesomeIcon icon={faBell} size="lg" />

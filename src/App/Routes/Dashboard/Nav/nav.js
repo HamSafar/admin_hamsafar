@@ -15,6 +15,9 @@ class Nav extends Component {
     handleLogOut = () => {
         const { changeUser } = this.props
         changeUser({ isAuth: false })
+
+        // disable auto-login from settingsCookie
+
         this.props.history.push('/login')
     }
 

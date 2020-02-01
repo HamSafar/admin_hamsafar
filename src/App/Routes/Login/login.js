@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-import axios from 'axios'
+import Axios from 'axios'
 
 import manifset from '../../../static/manifset.json'
 
@@ -64,7 +64,7 @@ class Login extends Component {
 
         if(!valid.username && !valid.password) {
         
-            axios.post('auth/login', {
+            Axios.post('auth/login', {
                 username, password
             }).then(res => {
                 const user = {
@@ -78,7 +78,7 @@ class Login extends Component {
             }).catch(e => {
                 console.log(e)
                 this.setState({
-                    isInvalid: {
+                    isInvalid: { //show err in passErr-area
                         password: e.toString()
                     }
                 })
@@ -88,7 +88,7 @@ class Login extends Component {
 
     UNSAFE_componentWillMount() {
         if(this.props.user.isAuth)
-            this.props.history.push('/dashboard')
+            this.props.history.push('/loading')
     }
 
     componentDidMount() {

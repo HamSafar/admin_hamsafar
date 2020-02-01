@@ -10,17 +10,17 @@ class Dashboard extends Component {
 
     UNSAFE_componentWillMount() {
         if(!this.props.user.isAuth)
-            this.props.history.push('/login')
+            this.props.history.push('/loading')
     }
 
-    UNSAFE_componentWillUpdate() {
-        if(!this.props.user.isAuth)
-            this.props.history.push('/login')
+    UNSAFE_componentWillUpdate(newProps) {
+        if(!newProps.user.isAuth)
+            this.props.history.push('/loading')
     }
 
     render() {
         const dashboard = this.props.strings.dashboard
-        const { prefs, changeUser, user } = this.props
+        const { prefs, user, changeUser, profile, changeProfile } = this.props
 
         return (
             <div className="Dashboard" 
@@ -31,9 +31,9 @@ class Dashboard extends Component {
                     'rgba(0, 0, 0, 0.75)' 
                 }}
             >
-                <Nav dashboard={dashboard} prefs={prefs} changeUser={changeUser}/>
-                <Pages dashboard={dashboard} prefs={prefs}/>
-                <Pane dashboard={dashboard} prefs={prefs} user={user}/>
+                <Nav dashboard={dashboard} prefs={prefs} changeUser={changeUser} />
+                <Pages dashboard={dashboard} prefs={prefs} profile={profile} changeProfile={changeProfile} />
+                <Pane dashboard={dashboard} prefs={prefs} user={user} profile={profile} />
             </div>
         );
     }
