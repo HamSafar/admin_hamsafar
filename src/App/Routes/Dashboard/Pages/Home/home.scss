@@ -5,26 +5,122 @@
         position: relative;
         display: flex;
         height: 100%;
-
+        overflow: visible;
         font-size: 1rem;
-        
-        //background: rgba(255, 0, 0, 0.418);
 
         .content {
+            position: relative;
             padding: 1rem;
-            //background: rgb(126, 99, 99);
             width: calc( 100% - 20rem );
-            overflow: hidden;
-            overflow-x: auto;
+
+            .HeadPanel {
+                //z-index: 999;
+                position: relative;
+                display: flex;
+                margin: -7rem 0rem -3rem 0rem;
+                width: 100%;
+                height: 12rem;
+                justify-content: center;
+
+
+                .panelBox {
+                    z-index: 99;
+                    position: relative;
+                    margin: 0 1rem;
+                    width: 100%;
+                    height: 8rem;
+                    border-bottom-left-radius: 1rem;
+                    border-bottom-right-radius: 1rem;
+                    //background-color: rgba(88, 88, 88, 0.185);
+                    transition: all ease-in-out 0.25s;
+                    box-shadow: 0 0 2rem rgba(0, 0, 0, 0.5),
+                        inset 0.25rem 0rem 1.5rem rgba(255, 255, 255, 0.25),
+                        inset -0.25rem -0.25rem 1.5rem rgba(0, 0, 0, 0.25);
+                    color: white;
+                    max-width: 16rem;
+
+                    &:hover {
+                        height: 12rem;
+                        width: 150%;
+                        //background-image: linear-gradient(160deg, rgb(88, 88, 88), rgb(55, 55, 55) 50%);
+
+                        .lineContainer {
+                            svg { display: block; width: 100%; }
+                        }
+
+                        .panelStats {
+                            color: white;
+                            top: 1.5rem;
+
+                            .panelDetails {
+                                display: block;
+                            }
+                        }
+                    }
+
+                    .panelStats {
+                        
+                        position: absolute;
+                        left: 20%; top: 1.25rem;
+                        font-size: 2rem;
+                        font-weight: lighter;
+
+                        span {
+                            text-transform: uppercase;
+                            font-size: 0.65rem;
+                            font-weight: lighter;
+                            opacity: 0.85;
+                            display: block;
+                        }
+
+                        .panelDetails {
+                            display: none;
+                            font-size: 0.65rem;
+                            font-weight: lighter;
+                            opacity: 0.85;
+                            margin: 0;
+                        }
+                    }
+
+                    .lineContainer {
+                        position: absolute;
+                        bottom: 0;
+                        width: 100%;
+                        height: calc(25% + 1rem);
+                        //color: black;
+
+                        svg {
+                            border-bottom-left-radius: 1rem;
+                            border-bottom-right-radius: 1rem;
+                            overflow: hidden;
+                            display: none;
+                        }
+                    }
+                }
+            }
+
+            .BodyPanel { //changeme
+                position: relative;
+                margin: 1rem 0;
+                background-color: rgba(99, 99, 99, 0.13);
+                height: calc( 100% - 12rem );
+                color: black;
+
+                .barContainer {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
         }
 
-        .sidePanel {
+        .SidePanel {
             overflow: visible;
             width: 20rem;
             height: 100%;
             display: block;
             position: absolute;
             background-color: rgba($accent-lead, 0.25);
+            box-shadow: 0 0 2rem rgba(0, 0, 0, 0.5);
 
             .radarContainer {
                 direction: ltr;
@@ -33,6 +129,12 @@
                 position: relative;
                 display: block;
                 overflow: visible;
+            }
+
+            .sidePanelStats {
+                .statBox {
+
+                }
             }
         }
     }

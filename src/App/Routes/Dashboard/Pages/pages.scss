@@ -3,14 +3,16 @@
 
         position: relative;
         display: block;
-        width: calc( 100% - 7.8rem );
+        width: calc( 100% - 6rem ); // 100% - outerWidth of nav 6rem
         font-size: x-large;
-        padding: 2rem 2rem;
+        padding: 2rem 0rem 0rem 0rem;
 
         .header {
+            z-index: 0; // avoid jitter
             position: relative;
             display: block;
             width: max-content;
+            margin: 0 1.5rem;
             .backNav {
                 svg {
                     cursor: pointer;
@@ -28,9 +30,7 @@
             margin-top: 1.5rem;
             width: 100%;
             height: calc( 100% - 5.8rem );
-            //overflow: hidden;
             overflow: visible;
-            overflow-y: scroll;
         }
     }
 }

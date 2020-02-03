@@ -11,6 +11,7 @@ import Routes from './Routes/Routes'
 import Axios from 'axios';
 
 const cookies = new Cookies();
+//var myStorage = window.localStorage;
 
 class App extends Component {
 
@@ -31,8 +32,8 @@ class App extends Component {
 		profile: ''
 	}
 
-	changePrefs = (prefs) => this.setState({ prefs })
-	changeUser = (user) => this.setState({ user })
+	changePrefs = (prefs) => this.setState({ prefs: {...this.state.prefs, ...prefs} })
+	changeUser = (user) => this.setState({ user: {...this.state.user, ...user} })
 	changeProfile = (profile) => {
 		// post profile to server
 		// then on status 200 return setState new profile
@@ -52,6 +53,7 @@ class App extends Component {
 					})
 				else return null
 			}
+
 			if(!this.state.prefs.autoLogin && this.state.user.isAuth)
 				this.changeUser({ ...newState.user, isAuth: false, token: '' })
 			else if(this.state.prefs.autoLogin) this.commitLogin()
@@ -66,7 +68,7 @@ class App extends Component {
 	}
 
 	commitLogin = () => {
-
+		
 		// auto-login if in prefsCookie
 		// using saved user and pass
 		var userCookie = cookies.get('user')

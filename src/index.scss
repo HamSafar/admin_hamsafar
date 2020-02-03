@@ -1,8 +1,8 @@
 @import './static/colors.scss';
 
-body {
+body { 
 
-	font-family: 'Vazir', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+	font-family: 'Comfortaa', 'Vazir', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
 		'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
 		sans-serif;
 	-webkit-font-smoothing: antialiased;
@@ -16,12 +16,12 @@ body {
 input { font-family: 'Vazir'; }
 
 a { 
-  	color: rgba($a-color, 0.85); 
+  	color: rgba($anchor, 0.85); 
 	&:hover {
-		color: $a-color;
+		color: $anchor;
 	}
 	&:active {
-		color: $a-color;
+		color: $anchor;
 	}
 }
 
@@ -35,14 +35,14 @@ code {
 	height: 5px;
 
 	&-track {
-		background-color: $scrollbar-track-color;
+		background-color: $scrollbar-track;
 	}
 	&-thumb {
 		border-radius: 15px;
-		background: rgba($scrollbar-thumb-color, 0.25);
+		background: rgba($scrollbar-thumb, 0.25);
 		transition: all ease 1s;
 		&:hover {
-			background: rgba($scrollbar-thumb-color, 0.75);
+			background: rgba($scrollbar-thumb, 0.75);
 		}
 	}
 }

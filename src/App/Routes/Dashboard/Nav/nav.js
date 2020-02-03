@@ -30,7 +30,7 @@ class Nav extends Component {
                     {
                         background: 'rgb(51, 42, 124)'
                     }:{
-                        background: 'linear-gradient(rgb(0, 140, 255), rgb(140, 0, 255) 25%, rgb(242, 87, 103) 75%, rgb(255, 162, 0))'
+                        background: 'linear-gradient(rgb(38, 202, 217), rgb(157, 40, 196) 25%, rgb(242, 87, 103) 75%, rgb(255, 162, 0))'
                     }
                 }
             >

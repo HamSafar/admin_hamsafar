@@ -5,7 +5,7 @@ import strings from '../../../../../../static/strings.json'
 
 const keys = strings.dashboard.home.graphs.radar.keys
 
-const Radar = ({ data, theme, lang }) => (
+const Radar = ({ data, theme, /*lang*/ }) => (
     <ResponsiveRadar
         theme={{
             textColor: (theme? '#222':'#DDD'),
@@ -18,28 +18,20 @@ const Radar = ({ data, theme, lang }) => (
             grid: {
                 line: {
                     stroke: (theme? '#2225':'#9995'),
-                },
-                effects: [
-                    {
-                        on: 'hover',
-                        style: {
-                            stroke: '#fff'
-                        }
-                    }
-                ]
+                }
             }
         }}
         data={data}
         keys={[ 
-            keys.rec_sys[lang], 
-            keys.ads[lang], 
-            keys.soc_net[lang] 
+            keys.rec_sys[/*lang*/1], 
+            keys.ads[/*lang*/1], 
+            keys.soc_net[/*lang*/1] 
         ]}
         indexBy="taste"
         maxValue="auto"
         margin={{ top: 70, right: 80, bottom: 40, left: 80 }}
         curve="cardinalClosed"
-        borderWidth={0}
+        borderWidth={2}
         borderColor={{ from: 'color' }}
         gridLevels={2}
         gridShape="circular"
@@ -67,7 +59,7 @@ const Radar = ({ data, theme, lang }) => (
                 translateY: -40,
                 itemWidth: 80,
                 itemHeight: 20,
-                itemTextColor: '#999',
+                itemTextColor: '#777',
                 symbolSize: 12,
                 symbolShape: 'circle',
                 effects: [

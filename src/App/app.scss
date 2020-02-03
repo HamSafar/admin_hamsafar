@@ -13,8 +13,9 @@
     position: relative;
     width: 100vw;
     height: 100vh;
-    min-width: 600px;
-    min-height: 320px;
+    min-width: 1020px;
+    min-height: 680px;
+    max-height: 100vw; //square
     margin: 0;
     padding: 0;
     overflow: hidden;
@@ -29,11 +30,11 @@
 }
 
 .darkTheme {
-    color: $dark-color;
+    color: $dark-text;
 }
 
 .lightTheme {
-    color: $light-color;
+    color: $light-text;
 }
 
 @keyframes rot { to { --ang: 1turn } }

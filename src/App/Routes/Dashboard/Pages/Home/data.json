@@ -1,34 +1,309 @@
 {
-    "radar" : [
-        {
-          "taste": "هتل ها",
-          "سیستم پیشنهاد": 111,
-          "تبلیغات مرکز": 101,
-          "شبکه مجازی": 88
-        },
-        {
-          "taste": "رستوران ها",
-          "سیستم پیشنهاد": 118,
-          "تبلیغات مرکز": 43,
-          "شبکه مجازی": 21
-        },
-        {
-          "taste": "مراکز تفریحی",
-          "سیستم پیشنهاد": 52,
-          "تبلیغات مرکز": 111,
-          "شبکه مجازی": 21
-        },
-        {
-          "taste": "اجاره اتوموبیل",
-          "سیستم پیشنهاد": 24,
-          "تبلیغات مرکز": 35,
-          "شبکه مجازی": 41
-        },
-        {
-          "taste": "همسفر",
-          "سیستم پیشنهاد": 96,
-          "تبلیغات مرکز": 71,
-          "شبکه مجازی": 107
-        }
-      ]
+	"radar": [
+		{
+			"taste": "هتل ها",
+			"سیستم پیشنهاد": 111,
+			"تبلیغات مرکز": 101,
+			"شبکه مجازی": 88
+		},
+		{
+			"taste": "رستوران ها",
+			"سیستم پیشنهاد": 118,
+			"تبلیغات مرکز": 43,
+			"شبکه مجازی": 21
+		},
+		{
+			"taste": "مراکز تفریحی",
+			"سیستم پیشنهاد": 52,
+			"تبلیغات مرکز": 111,
+			"شبکه مجازی": 21
+		},
+		{
+			"taste": "اجاره اتوموبیل",
+			"سیستم پیشنهاد": 24,
+			"تبلیغات مرکز": 35,
+			"شبکه مجازی": 41
+		},
+		{
+			"taste": "همسفر",
+			"سیستم پیشنهاد": 96,
+			"تبلیغات مرکز": 71,
+			"شبکه مجازی": 107
+		}
+	],
+	"line0": [
+		{
+			"id": "japan",
+			"color": "hsl(185, 70%, 50%)",
+			"data": [
+				{
+					"x": "plane",
+					"y": 236
+				},
+				{
+					"x": "helicopter",
+					"y": 90
+				},
+				{
+					"x": "boat",
+					"y": 138
+				},
+				{
+					"x": "train",
+					"y": 135
+				},
+				{
+					"x": "subway",
+					"y": 203
+				},
+				{
+					"x": "bus",
+					"y": 140
+				},
+				{
+					"x": "car",
+					"y": 193
+				},
+				{
+					"x": "moto",
+					"y": 105
+				},
+				{
+					"x": "bicycle",
+					"y": 178
+				},
+				{
+					"x": "horse",
+					"y": 195
+				},
+				{
+					"x": "skateboard",
+					"y": 200
+				},
+				{
+					"x": "others",
+					"y": 232
+				}
+			]
+		}
+	],
+	"line1": [
+		{
+			"id": "iran",
+			"color": "hsl(285, 70%, 50%)",
+			"data": [
+				{
+					"x": "plane",
+					"y": 246
+				},
+				{
+					"x": "helicopter",
+					"y": 33
+				},
+				{
+					"x": "boat",
+					"y": 93
+				},
+				{
+					"x": "train",
+					"y": 76
+				},
+				{
+					"x": "subway",
+					"y": 127
+				},
+				{
+					"x": "bus",
+					"y": 99
+				},
+				{
+					"x": "car",
+					"y": 162
+				},
+				{
+					"x": "moto",
+					"y": 116
+				},
+				{
+					"x": "bicycle",
+					"y": 74
+				},
+				{
+					"x": "horse",
+					"y": 151
+				},
+				{
+					"x": "skateboard",
+					"y": 291
+				},
+				{
+					"x": "others",
+					"y": 220
+				}
+			]
+		}
+	],
+	"line2": [
+		{
+			"id": "china",
+			"color": "hsl(85, 70%, 50%)",
+			"data": [
+				{
+					"x": "plane",
+					"y": 219
+				},
+				{
+					"x": "helicopter",
+					"y": 131
+				},
+				{
+					"x": "boat",
+					"y": 240
+				},
+				{
+					"x": "train",
+					"y": 216
+				},
+				{
+					"x": "subway",
+					"y": 221
+				},
+				{
+					"x": "bus",
+					"y": 111
+				},
+				{
+					"x": "car",
+					"y": 190
+				},
+				{
+					"x": "moto",
+					"y": 71
+				},
+				{
+					"x": "bicycle",
+					"y": 289
+				},
+				{
+					"x": "horse",
+					"y": 271
+				},
+				{
+					"x": "skateboard",
+					"y": 181
+				},
+				{
+					"x": "others",
+					"y": 96
+				}
+			]
+		}
+	],
+	"bar": [
+		{
+			"country": "AD",
+			"hot dog": 178,
+			"hot dogColor": "hsl(230, 70%, 50%)",
+			"burger": 25,
+			"burgerColor": "hsl(281, 70%, 50%)",
+			"sandwich": 83,
+			"sandwichColor": "hsl(103, 70%, 50%)",
+			"kebab": 91,
+			"kebabColor": "hsl(185, 70%, 50%)",
+			"fries": 52,
+			"friesColor": "hsl(164, 70%, 50%)",
+			"donut": 91,
+			"donutColor": "hsl(160, 70%, 50%)"
+		},
+		{
+			"country": "AE",
+			"hot dog": 189,
+			"hot dogColor": "hsl(16, 70%, 50%)",
+			"burger": 168,
+			"burgerColor": "hsl(4, 70%, 50%)",
+			"sandwich": 79,
+			"sandwichColor": "hsl(140, 70%, 50%)",
+			"kebab": 38,
+			"kebabColor": "hsl(271, 70%, 50%)",
+			"fries": 140,
+			"friesColor": "hsl(247, 70%, 50%)",
+			"donut": 49,
+			"donutColor": "hsl(297, 70%, 50%)"
+		},
+		{
+			"country": "AF",
+			"hot dog": 161,
+			"hot dogColor": "hsl(161, 70%, 50%)",
+			"burger": 166,
+			"burgerColor": "hsl(336, 70%, 50%)",
+			"sandwich": 32,
+			"sandwichColor": "hsl(323, 70%, 50%)",
+			"kebab": 137,
+			"kebabColor": "hsl(273, 70%, 50%)",
+			"fries": 135,
+			"friesColor": "hsl(97, 70%, 50%)",
+			"donut": 104,
+			"donutColor": "hsl(103, 70%, 50%)"
+		},
+		{
+			"country": "AG",
+			"hot dog": 57,
+			"hot dogColor": "hsl(86, 70%, 50%)",
+			"burger": 125,
+			"burgerColor": "hsl(127, 70%, 50%)",
+			"sandwich": 35,
+			"sandwichColor": "hsl(254, 70%, 50%)",
+			"kebab": 166,
+			"kebabColor": "hsl(271, 70%, 50%)",
+			"fries": 73,
+			"friesColor": "hsl(281, 70%, 50%)",
+			"donut": 106,
+			"donutColor": "hsl(251, 70%, 50%)"
+		},
+		{
+			"country": "AI",
+			"hot dog": 162,
+			"hot dogColor": "hsl(331, 70%, 50%)",
+			"burger": 6,
+			"burgerColor": "hsl(350, 70%, 50%)",
+			"sandwich": 56,
+			"sandwichColor": "hsl(192, 70%, 50%)",
+			"kebab": 46,
+			"kebabColor": "hsl(313, 70%, 50%)",
+			"fries": 24,
+			"friesColor": "hsl(24, 70%, 50%)",
+			"donut": 101,
+			"donutColor": "hsl(10, 70%, 50%)"
+		},
+		{
+			"country": "AL",
+			"hot dog": 181,
+			"hot dogColor": "hsl(291, 70%, 50%)",
+			"burger": 29,
+			"burgerColor": "hsl(256, 70%, 50%)",
+			"sandwich": 54,
+			"sandwichColor": "hsl(18, 70%, 50%)",
+			"kebab": 196,
+			"kebabColor": "hsl(239, 70%, 50%)",
+			"fries": 189,
+			"friesColor": "hsl(161, 70%, 50%)",
+			"donut": 144,
+			"donutColor": "hsl(303, 70%, 50%)"
+		},
+		{
+			"country": "AM",
+			"hot dog": 18,
+			"hot dogColor": "hsl(86, 70%, 50%)",
+			"burger": 34,
+			"burgerColor": "hsl(129, 70%, 50%)",
+			"sandwich": 65,
+			"sandwichColor": "hsl(292, 70%, 50%)",
+			"kebab": 63,
+			"kebabColor": "hsl(43, 70%, 50%)",
+			"fries": 167,
+			"friesColor": "hsl(257, 70%, 50%)",
+			"donut": 138,
+			"donutColor": "hsl(8, 70%, 50%)"
+		}
+	]
 }

@@ -36,12 +36,12 @@ class Pages extends Component {
         const { prefs: { lang } } = this.props
         const pathname = this.props.history.location.pathname.replace('/dashboard/','')
         const header = this.props.dashboard[pathname] && this.props.dashboard[pathname].title[lang]
-        document.title = pathname.toUpperCase()
+        document.title = header && header.toUpperCase()
 
         return (
             <div className="Pages" >
                 <div className="header">
-                    <div className="backNav" onClick={()=>this.goBack()}>
+                    <div className="backNav" onClick={()=>this.goBack()} style={{ visibility: ((pathname === 'home')? 'hidden':'visible') }}>
                         <FontAwesomeIcon icon={lang? faChevronRight:faChevronLeft} size="lg" />
                         <span> {header} </span>
                     </div>

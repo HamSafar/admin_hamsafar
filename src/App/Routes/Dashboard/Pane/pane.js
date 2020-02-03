@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { 
-    faBell, faLifeRing
-} from '@fortawesome/free-regular-svg-icons'
-import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
+import { faBell } from '@fortawesome/free-regular-svg-icons'
+import { faMapMarkerAlt, faSync } from '@fortawesome/free-solid-svg-icons'
 
 import './pane.scss'
 
@@ -27,10 +25,10 @@ class Pane extends Component {
                     <FontAwesomeIcon icon={faBell} size="lg" />
                 </div>
                 <div className="icon">
-                    <FontAwesomeIcon icon={faLifeRing} size="lg" />
+                    <FontAwesomeIcon icon={faSync} size="lg" />
                 </div>
                 <div className="icon">
-                    <span> Kish &nbsp;</span>
+                    <span> کیش &nbsp;</span>
                     <FontAwesomeIcon icon={faMapMarkerAlt} size="lg" />
                 </div>
             </div>
