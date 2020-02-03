@@ -11,7 +11,7 @@ import Routes from './Routes/Routes'
 import Axios from 'axios';
 
 const cookies = new Cookies();
-//var myStorage = window.localStorage;
+//var storage = window.localStorage; //migrate to localhost
 
 class App extends Component {
 
