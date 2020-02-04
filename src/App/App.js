@@ -123,10 +123,9 @@ class App extends Component {
 		client.link = authLink.concat(httpLink);
 
 		const cityIndex = newState.city.index
-		console.log(newState)
 		const adminId = newState.user.id
 		// Check Token and any Change in Profile //add adminId to allcitiesbysizeandoffset
-		client.query({
+		return client.query({
 			variables: { adminId, cityIndex },
 			query: gql`
 				query Profile($adminId: String!, $cityIndex: Int!) {
@@ -154,7 +153,7 @@ class App extends Component {
 				|| JSON.stringify(res.data.citiesData[0].updated)
 				!== JSON.stringify(newState.city.updated)
 			) {
-				console.log('updating state')
+				console.log('updating profile & city')
 				return this.setState({
 					profile: res.data.profile,
 					city: { 
@@ -189,17 +188,16 @@ class App extends Component {
 	}
 
 	componentDidUpdate() {
-		console.log('updated', this.state)
+		//console.log('updated', this.state)
 	}
 
-	UNSAFE_componentWillUpdate(newProps, newState) {
+	async UNSAFE_componentWillUpdate(newProps, newState) {
 
-		console.log('updating')
+		console.log('updating', newState)
 		
 		// check if user is still authed
 		if(newState.user.isAuth) {
-			console.log('validating auth user')
-			this.checkAuth(newState) // if was ok continue?
+			await this.checkAuth(newState) // if was ok continue?
 		}
 		// else
 
