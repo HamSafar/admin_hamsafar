@@ -109,6 +109,7 @@ class Login extends Component {
         const { lang, username, password, isInvalid } = this.state
         const { strings: { login } } = this.props
 
+        console.log('login rendered')
         return (
             <div className="Login">
                 <form className="form" 

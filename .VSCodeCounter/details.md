@@ -1,19 +1,19 @@
 # Details
 
-Date : 2020-02-03 21:49:11
+Date : 2020-02-05 01:20:07
 
 Directory f:\Documents\GitHub\admin_hamsafar\src
 
-Total : 38 files,  1815 codes, 37 comments, 237 blanks, all 2089 lines
+Total : 39 files,  1915 codes, 43 comments, 237 blanks, all 2195 lines
 
 [summary](results.md)
 
 ## Files
 | filename | language | code | comment | blank | total |
 | :--- | :--- | ---: | ---: | ---: | ---: |
-| [App\App.js](file:///f%3A/Documents/GitHub/admin_hamsafar/src/App/App.js) | JavaScript | 108 | 13 | 30 | 151 |
+| [App\App.js](file:///f%3A/Documents/GitHub/admin_hamsafar/src/App/App.js) | JavaScript | 203 | 16 | 30 | 249 |
 | [App\Routes\About\index.js](file:///f%3A/Documents/GitHub/admin_hamsafar/src/App/Routes/About/index.js) | JavaScript | 10 | 0 | 3 | 13 |
-| [App\Routes\Dashboard\Nav\nav.js](file:///f%3A/Documents/GitHub/admin_hamsafar/src/App/Routes/Dashboard/Nav/nav.js) | JavaScript | 64 | 2 | 9 | 75 |
+| [App\Routes\Dashboard\Nav\nav.js](file:///f%3A/Documents/GitHub/admin_hamsafar/src/App/Routes/Dashboard/Nav/nav.js) | JavaScript | 59 | 1 | 6 | 66 |
 | [App\Routes\Dashboard\Nav\nav.scss](file:///f%3A/Documents/GitHub/admin_hamsafar/src/App/Routes/Dashboard/Nav/nav.scss) | SCSS | 70 | 2 | 6 | 78 |
 | [App\Routes\Dashboard\Pages\Account\account.js](file:///f%3A/Documents/GitHub/admin_hamsafar/src/App/Routes/Dashboard/Pages/Account/account.js) | JavaScript | 11 | 0 | 2 | 13 |
 | [App\Routes\Dashboard\Pages\Analytics\analytics.js](file:///f%3A/Documents/GitHub/admin_hamsafar/src/App/Routes/Dashboard/Pages/Analytics/analytics.js) | JavaScript | 11 | 0 | 2 | 13 |
@@ -30,19 +30,20 @@ Total : 38 files,  1815 codes, 37 comments, 237 blanks, all 2089 lines
 | [App\Routes\Dashboard\Pages\Settings\settings.scss](file:///f%3A/Documents/GitHub/admin_hamsafar/src/App/Routes/Dashboard/Pages/Settings/settings.scss) | SCSS | 2 | 0 | 1 | 3 |
 | [App\Routes\Dashboard\Pages\pages.js](file:///f%3A/Documents/GitHub/admin_hamsafar/src/App/Routes/Dashboard/Pages/pages.js) | JavaScript | 46 | 1 | 10 | 57 |
 | [App\Routes\Dashboard\Pages\pages.scss](file:///f%3A/Documents/GitHub/admin_hamsafar/src/App/Routes/Dashboard/Pages/pages.scss) | SCSS | 33 | 0 | 3 | 36 |
-| [App\Routes\Dashboard\Pane\pane.js](file:///f%3A/Documents/GitHub/admin_hamsafar/src/App/Routes/Dashboard/Pane/pane.js) | JavaScript | 34 | 0 | 5 | 39 |
+| [App\Routes\Dashboard\Pane\pane.js](file:///f%3A/Documents/GitHub/admin_hamsafar/src/App/Routes/Dashboard/Pane/pane.js) | JavaScript | 32 | 0 | 5 | 37 |
 | [App\Routes\Dashboard\Pane\pane.scss](file:///f%3A/Documents/GitHub/admin_hamsafar/src/App/Routes/Dashboard/Pane/pane.scss) | SCSS | 26 | 1 | 6 | 33 |
-| [App\Routes\Dashboard\dashboard.js](file:///f%3A/Documents/GitHub/admin_hamsafar/src/App/Routes/Dashboard/dashboard.js) | JavaScript | 35 | 0 | 7 | 42 |
+| [App\Routes\Dashboard\dashboard.js](file:///f%3A/Documents/GitHub/admin_hamsafar/src/App/Routes/Dashboard/dashboard.js) | JavaScript | 27 | 0 | 5 | 32 |
 | [App\Routes\Dashboard\dashboard.scss](file:///f%3A/Documents/GitHub/admin_hamsafar/src/App/Routes/Dashboard/dashboard.scss) | SCSS | 16 | 2 | 2 | 20 |
 | [App\Routes\Loading\loading.js](file:///f%3A/Documents/GitHub/admin_hamsafar/src/App/Routes/Loading/loading.js) | JavaScript | 14 | 0 | 5 | 19 |
 | [App\Routes\Loading\loading.scss](file:///f%3A/Documents/GitHub/admin_hamsafar/src/App/Routes/Loading/loading.scss) | SCSS | 4 | 0 | 0 | 4 |
-| [App\Routes\Login\login.js](file:///f%3A/Documents/GitHub/admin_hamsafar/src/App/Routes/Login/login.js) | JavaScript | 154 | 1 | 21 | 176 |
+| [App\Routes\Login\login.js](file:///f%3A/Documents/GitHub/admin_hamsafar/src/App/Routes/Login/login.js) | JavaScript | 162 | 1 | 21 | 184 |
 | [App\Routes\Login\login.scss](file:///f%3A/Documents/GitHub/admin_hamsafar/src/App/Routes/Login/login.scss) | SCSS | 119 | 0 | 20 | 139 |
 | [App\Routes\NotFound\index.js](file:///f%3A/Documents/GitHub/admin_hamsafar/src/App/Routes/NotFound/index.js) | JavaScript | 25 | 0 | 6 | 31 |
 | [App\Routes\NotFound\styles.scss](file:///f%3A/Documents/GitHub/admin_hamsafar/src/App/Routes/NotFound/styles.scss) | SCSS | 19 | 0 | 2 | 21 |
-| [App\Routes\Routes.js](file:///f%3A/Documents/GitHub/admin_hamsafar/src/App/Routes/Routes.js) | JavaScript | 34 | 2 | 7 | 43 |
+| [App\Routes\Routes.js](file:///f%3A/Documents/GitHub/admin_hamsafar/src/App/Routes/Routes.js) | JavaScript | 38 | 1 | 9 | 48 |
 | [App\app.scss](file:///f%3A/Documents/GitHub/admin_hamsafar/src/App/app.scss) | SCSS | 33 | 0 | 10 | 43 |
-| [index.js](file:///f%3A/Documents/GitHub/admin_hamsafar/src/index.js) | JavaScript | 20 | 0 | 5 | 25 |
+| [gqlCli.js](file:///f%3A/Documents/GitHub/admin_hamsafar/src/gqlCli.js) | JavaScript | 12 | 0 | 3 | 15 |
+| [index.js](file:///f%3A/Documents/GitHub/admin_hamsafar/src/index.js) | JavaScript | 16 | 5 | 5 | 26 |
 | [index.scss](file:///f%3A/Documents/GitHub/admin_hamsafar/src/index.scss) | SCSS | 40 | 0 | 10 | 50 |
 | [reducers\index.js](file:///f%3A/Documents/GitHub/admin_hamsafar/src/reducers/index.js) | JavaScript | 6 | 1 | 3 | 10 |
 | [reducers\settings_reducer.js](file:///f%3A/Documents/GitHub/admin_hamsafar/src/reducers/settings_reducer.js) | JavaScript | 8 | 0 | 1 | 9 |

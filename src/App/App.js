@@ -45,7 +45,8 @@ class App extends Component {
 			id: '',
 			names: [],
 			data: '',
-		}
+		},
+		appMounted: false
 	}
 
 	changePrefs = (prefs) => this.setState({ prefs })
@@ -70,11 +71,11 @@ class App extends Component {
 		})
 	}
 
-	commitLogin = (username, password) => {
+	commitLogin = async (username, password, isFirst) => {
 
-		console.log('commit login')
+		console.log('commit login, isFirst: ', isFirst)
 		
-		client.mutate({
+		return client.mutate({
 			variables: { username, password },
 			mutation: gql`
 				mutation Login($username: String!, $password: String!) {
@@ -103,7 +104,7 @@ class App extends Component {
 		})
 	}
 
-	checkAuth = (newState) => {
+	checkAuth = async (newState) => {
 
 		console.log('check auth')
 
@@ -179,7 +180,7 @@ class App extends Component {
 				})
 			} else if(newState.prefs.autoLogin) {
 				console.log('try loggin')
-				this.commitLogin(newState.user.username, newState.user.password)
+				this.commitLogin(newState.user.username, newState.user.password, false)
 			} else { 
 				console.log('try logout')
 				this.logout() 
@@ -207,7 +208,7 @@ class App extends Component {
 		cookies.set('user', newState.user, { withCredentials: true , path: '/' })
 	}
 
-  	componentDidMount() {
+  	async componentDidMount() {
 
 		console.log('mounted')
 
@@ -221,8 +222,12 @@ class App extends Component {
 		console.log('got cookies', nextState)
 
 		if(nextState.prefs && nextState.prefs.autoLogin) {
-			if (userCookie) this.commitLogin(userCookie.username, userCookie.password) 
+			if (userCookie) await this.commitLogin(userCookie.username, userCookie.password, true) 
 		}
+
+		return this.setState({
+			appMounted: true
+		})
 	}
 
 	render() {

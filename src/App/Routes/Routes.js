@@ -17,7 +17,6 @@ class Routes extends Component {
             changeProfile={this.props.changeProfile}
             logout={this.props.logout}
             strings={this.props.strings}
-            //cookies={this.props.cookies}
         />
 
     render() {
@@ -28,9 +27,11 @@ class Routes extends Component {
             <Switch>
 
                 {
-                    (this.props.appState.user.isAuth)?
-                    <Redirect from="/login" to="/dashboard" /> :
-                    <Redirect from="/dashboard" to="/login" /> 
+                    (this.props.appState.appMounted)? (
+                        (this.props.appState.user.isAuth)?
+                        <Redirect from="/login" to="/dashboard" /> :
+                        <Redirect from="/dashboard" to="/login" /> 
+                    ) : null //can be used for loading
                 }
 
                 <Route path="/about" exact component={withProps(About)} />
