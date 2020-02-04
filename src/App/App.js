@@ -1,14 +1,17 @@
 import React, { Component } from 'react'
 import { BrowserRouter } from 'react-router-dom'
-//import _ from 'lodash'
 import Cookies from 'universal-cookie';
+import { gql } from 'apollo-boost'
+import { setContext } from 'apollo-link-context';
 
 import strings from '../static/strings.json'
 
 import './app.scss' 
 
 import Routes from './Routes/Routes'
-import Axios from 'axios';
+//import Axios from 'axios';
+import client, { httpLink } from '../gqlCli'
+
 
 const cookies = new Cookies();
 //var storage = window.localStorage; //migrate to localhost
@@ -19,113 +22,209 @@ class App extends Component {
 		prefs: {
 			lang: 1,
 			theme: 1,
-			accentColor: 'rgb(51, 42, 124)',
 			autoLogin: true
 		},
 		user: {
+			id: '',
 			username: '',
 			password: '',
+			isAuth: false,
 			token: '',
-			time: '',
-			isAuth: false
+			cities: []
 		},
-		profile: ''
+		profile: {
+			cities: {
+				id: '',
+				names: []
+			},
+			credit: '',
+			companyName: ''
+		},
+		city: {
+			index: 0,
+			id: '',
+			names: [],
+			data: '',
+		}
 	}
 
-	changePrefs = (prefs) => this.setState({ prefs: {...this.state.prefs, ...prefs} })
-	changeUser = (user) => this.setState({ user: {...this.state.user, ...user} })
+	changePrefs = (prefs) => this.setState({ prefs })
+	changeUser = (user) => this.setState({ user })
 	changeProfile = (profile) => {
 		// post profile to server
 		// then on status 200 return setState new profile
 		// checkAuth on any other status 
 	}
 
-	checkAuth = (newState) => {
-
-		Axios.defaults.headers['Authorization'] = "Bearer " + newState.user.token
-
-		//check token by post req to server
-		Axios.get('profile').then(res => {
-			if(res.status === 200) {
-				if(JSON.stringify(res.data) !== JSON.stringify(newState.profile))
-					return this.setState({
-						profile: res.data
-					})
-				else return null
+	logout = () => {
+		console.log('logged out')
+		this.setState({
+			user: {
+				...this.state.user,
+				isAuth: false
+			},
+			prefs: {
+				...this.state.prefs,
+				autoLogin: false
 			}
-
-			if(!this.state.prefs.autoLogin && this.state.user.isAuth)
-				this.changeUser({ ...newState.user, isAuth: false, token: '' })
-			else if(this.state.prefs.autoLogin) this.commitLogin()
-
-		}).catch(e => {
-			if(!this.state.prefs.autoLogin && this.state.user.isAuth) {
-				console.log(e)
-				this.changeUser({ ...newState.user, isAuth: false, token: '' })
-			} else if(this.state.prefs.autoLogin) this.commitLogin() 
-
 		})
 	}
 
-	commitLogin = () => {
+	commitLogin = (username, password) => {
+
+		console.log('commit login')
 		
-		// auto-login if in prefsCookie
-		// using saved user and pass
-		var userCookie = cookies.get('user')
-		
-		if( userCookie && userCookie.username && userCookie.password ) {
-			const { username, password } = userCookie
-            Axios.post('auth/login', {
-                username, password
-            }).then(res => {
-                const user = {
-                    username: username,
-                    password: password,
-                    isAuth: true,
-                    token: res.data.access_token,
-                    //time: res.data.time
+		client.mutate({
+			variables: { username, password },
+			mutation: gql`
+				mutation Login($username: String!, $password: String!) {
+					login: loginAdmin(username: $username, password: $password) {
+						id
+						username
+						token
+					}
 				}
-				console.log('logged in')
-                this.changeUser(user) //updates App
-            }).catch(e => {
-                console.log(e)
-            })
-        }
+			`
+		}).then(res => {
+			console.log('logged in')
+			this.setState({
+				user: {
+					...this.state.user,
+					username: username,
+					password: password,
+					isAuth: true,
+					token: res.data.login.token,
+					id: res.data.login.id,
+				}
+			})
+		}).catch(e => {
+			console.log('cant login', e)
+			this.logout()
+		})
 	}
 
-	UNSAFE_componentWillMount() {
-		//this.commitLogin()
+	checkAuth = (newState) => {
+
+		console.log('check auth')
+
+		//Add Token to Request
+		const token = newState.user.token
+		const authLink = setContext((_, { headers }) => {
+			// get the authentication token from local storage if it exists
+			//const token = localStorage.getItem('token');
+			// return the headers to the context so httpLink can read them
+			return {
+				headers: {
+					...headers,
+					authorization: token ? `Bearer ${token}` : "",
+				}
+			}
+		});
+		client.link = authLink.concat(httpLink);
+
+		const cityIndex = newState.city.index
+		console.log(newState)
+		const adminId = newState.user.id
+		// Check Token and any Change in Profile //add adminId to allcitiesbysizeandoffset
+		client.query({
+			variables: { adminId, cityIndex },
+			query: gql`
+				query Profile($adminId: String!, $cityIndex: Int!) {
+					profile: adminProfileByAdminId(adminId: $adminId) {
+						cities {
+							id
+							names
+						}
+						credit
+						companyName
+					}
+					citiesData: allCitiesBySizeAndOffset(size: 1, offset: $cityIndex) {
+						id
+						names
+						data
+						updated
+					}
+				}
+			`
+		}).then(res => {
+			//console.log(res)
+			if( 
+				JSON.stringify(res.data.profile) 
+				!== JSON.stringify(newState.profile)
+				|| JSON.stringify(res.data.citiesData[0].updated)
+				!== JSON.stringify(newState.city.updated)
+			) {
+				console.log('updating state')
+				return this.setState({
+					profile: res.data.profile,
+					city: { 
+						...newState.city,
+						...res.data.citiesData[0] //data, names, id
+					},
+					user: {
+						...newState.user,
+						isAuth: true
+					}
+				})
+			} else { console.log("you are updated") }
+		}).catch(e => {
+			console.log(e)
+			if(!newState.prefs.autoLogin && newState.user.isAuth) {
+				console.log("token is false -> auth=false")
+				this.setState({ 
+					user: {
+						...newState.user, 
+						isAuth: false, 
+						token: '' 
+					}
+				})
+			} else if(newState.prefs.autoLogin) {
+				console.log('try loggin')
+				this.commitLogin(newState.user.username, newState.user.password)
+			} else { 
+				console.log('try logout')
+				this.logout() 
+			}
+		})
+	}
+
+	componentDidUpdate() {
+		console.log('updated', this.state)
+	}
+
+	UNSAFE_componentWillUpdate(newProps, newState) {
+
+		console.log('updating')
+		
+		// check if user is still authed
+		if(newState.user.isAuth) {
+			console.log('validating auth user')
+			this.checkAuth(newState) // if was ok continue?
+		}
+		// else
+
+		console.log('setting cookies')
+		// update cookies either
+		cookies.set('prefs', newState.prefs, { withCredentials: true , path: '/' })
+		cookies.set('user', newState.user, { withCredentials: true , path: '/' })
 	}
 
   	componentDidMount() {
 
+		console.log('mounted')
+
 		// restore saved settings from cookies
 		var prefsCookie = cookies.get('prefs')
 		var userCookie = cookies.get('user')
-		var profileCookie = cookies.get('profile')
 
 		const nextState = {}
 		if(prefsCookie) nextState.prefs = prefsCookie
 		if(userCookie) nextState.user = userCookie
-		if(profileCookie) nextState.profile = profileCookie
+		console.log('got cookies', nextState)
 
-		if(prefsCookie || userCookie || profileCookie)
-			return this.setState(nextState) // update (chkAuth)
-
-		console.log('no cookies')
-	}
-
-	UNSAFE_componentWillUpdate(newProps, newState) {
-		
-		// check if user is still authed
-		this.checkAuth(newState)
-
-		// update cookies either
-		cookies.set('prefs', newState.prefs, { withCredentials: true , path: '/' })
-		cookies.set('user', newState.user, { withCredentials: true , path: '/' })
-		cookies.set('profile', newState.profile, { withCredentials: true , path: '/' });
-
-		return null;
+		if(nextState.prefs && nextState.prefs.autoLogin) {
+			if (userCookie) this.commitLogin(userCookie.username, userCookie.password) 
+		}
 	}
 
 	render() {
@@ -134,10 +233,11 @@ class App extends Component {
 		return (
 			<div className={"App " + (theme? "lightTheme":"darkTheme")}>
 				<BrowserRouter>
-					<Routes {...this.state}
+					<Routes appState={{...this.state}}
 						changeUser={this.changeUser}
 						changePrefs={this.changePrefs}
 						changeProfile={this.changeProfile} 
+						logout={this.logout}
 						strings={strings}
 						cookies={cookies}
 					/>

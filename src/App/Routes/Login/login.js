@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-import Axios from 'axios'
+//import Axios from 'axios'
+import { gql } from 'apollo-boost' 
+import client from '../../../gqlCli'
 
 import manifset from '../../../static/manifset.json'
 
@@ -64,19 +66,30 @@ class Login extends Component {
 
         if(!valid.username && !valid.password) {
         
-            Axios.post('auth/login', {
-                username, password
+            console.log('commit login')
+
+            client.mutate({
+                variables: { username, password },
+                mutation: gql`
+                    mutation Login($username: String!, $password: String!) {
+                        login: loginAdmin(username: $username, password: $password) {
+                            id
+                            username
+                            token
+                        }
+                    }
+                `
             }).then(res => {
-                const user = {
+                console.log('logged in')
+                this.props.changeUser({
                     username: username,
                     password: password,
                     isAuth: true,
-                    token: res.data.access_token,
-                    //time: res.data.time
-                }
-                this.props.changeUser(user) //updates App
+                    token: res.data.login.token,
+                    id: res.data.login.id,
+                }) //updates App
             }).catch(e => {
-                console.log(e)
+                console.log('cant login', e)
                 this.setState({
                     isInvalid: { //show err in passErr-area
                         password: e.toString()
@@ -84,11 +97,6 @@ class Login extends Component {
                 })
             })
         }
-    }
-
-    UNSAFE_componentWillMount() {
-        if(this.props.user.isAuth)
-            this.props.history.push('/loading')
     }
 
     componentDidMount() {

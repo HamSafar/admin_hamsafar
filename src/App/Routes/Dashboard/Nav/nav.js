@@ -12,15 +12,6 @@ import './nav.scss'
 
 class Nav extends Component {
 
-    handleLogOut = () => {
-        const { changeUser } = this.props
-        changeUser({ isAuth: false })
-
-        // disable auto-login from settingsCookie
-
-        this.props.history.push('/login')
-    }
-
     render() {
         const { prefs: { lang, theme }, dashboard } = this.props
 
@@ -64,7 +55,7 @@ class Nav extends Component {
                         <div className="line" style={lang? { left: 0 }:{ right: 0 }} />
                     </NavLink>
                 </div>
-                <div className="signout" onClick={()=>this.handleLogOut()}>
+                <div className="signout" onClick={()=>this.props.logout()}>
                     <FontAwesomeIcon icon={faSignOutAlt} size="lg" />
                 </div>
             </div>

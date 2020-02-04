@@ -10,13 +10,12 @@ import Loading from './Loading/loading'
 class Routes extends Component { 
 
     withProps = (Comp) => (props) => 
-        <Comp {...props} 
-            prefs={this.props.prefs} 
-            user={this.props.user}
-            profile={this.props.profile}
+        <Comp {...props}
+            {...this.props.appState} 
             changePrefs={this.props.changePrefs} 
             changeUser={this.props.changeUser}
             changeProfile={this.props.changeProfile}
+            logout={this.props.logout}
             strings={this.props.strings}
             //cookies={this.props.cookies}
         />
@@ -27,6 +26,13 @@ class Routes extends Component {
         // limit dashboard routes in future
         return (
             <Switch>
+
+                {
+                    (this.props.appState.user.isAuth)?
+                    <Redirect from="/login" to="/dashboard" /> :
+                    <Redirect from="/dashboard" to="/login" /> 
+                }
+
                 <Route path="/about" exact component={withProps(About)} />
                 <Route path="/dashboard/:name" exact component={withProps(Dashboard)} /> 
                 <Redirect from="/dashboard" exact to="/dashboard/home" />
