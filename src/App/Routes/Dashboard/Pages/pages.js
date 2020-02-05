@@ -19,7 +19,12 @@ class Pages extends Component {
     goBack = () => this.props.history.goBack()
 
     renderPage = (pathname) => {
-        const { prefs } = this.props
+        const { 
+            prefs, changePrefs, 
+            dashboard: {
+                home, charts, analytics, mailbox, account, settings
+            }
+        } = this.props
 
         switch(pathname) {
             case 'home': return <Home prefs={prefs} />
@@ -27,15 +32,15 @@ class Pages extends Component {
             case 'analytics': return <Analytics prefs={prefs} />
             case 'mailbox': return <Mailbox prefs={prefs} />
             case 'account': return <Account prefs={prefs} />
-            case 'settings': return <Settings prefs={prefs} />
+            case 'settings': return <Settings prefs={prefs} changePrefs={changePrefs} />
             default: this.props.history.push('/login')
         }
     }
 
     render() {
-        const { prefs: { lang } } = this.props
-        const pathname = this.props.history.location.pathname.replace('/dashboard/','')
-        const header = this.props.dashboard[pathname] && this.props.dashboard[pathname].title[lang]
+        const { prefs: { lang }, dashboard, history } = this.props
+        const pathname = history.location.pathname.replace('/dashboard/','')
+        const header = dashboard[pathname] && dashboard[pathname].title[lang]
         document.title = header && header.toUpperCase()
 
         return (

@@ -49,8 +49,8 @@ class App extends Component {
 		appMounted: false
 	}
 
-	changePrefs = (prefs) => this.setState({ prefs })
-	changeUser = (user) => this.setState({ user })
+	changePrefs = (prefs) => this.setState({ prefs: { ...this.state.prefs, ...prefs } })
+	changeUser = (user) => this.setState({ user: {...this.state.prefs, ...user } })
 	changeProfile = (profile) => {
 		// post profile to server
 		// then on status 200 return setState new profile
@@ -111,9 +111,7 @@ class App extends Component {
 		//Add Token to Request
 		const token = newState.user.token
 		const authLink = setContext((_, { headers }) => {
-			// get the authentication token from local storage if it exists
 			//const token = localStorage.getItem('token');
-			// return the headers to the context so httpLink can read them
 			return {
 				headers: {
 					...headers,
@@ -195,17 +193,18 @@ class App extends Component {
 	async UNSAFE_componentWillUpdate(newProps, newState) {
 
 		console.log('updating', newState)
+
+		if(this.state.prefs !== newState.prefs) {
+			console.log('setting cookies')
+
+			cookies.set('prefs', newState.prefs, { withCredentials: true , path: '/' })
+			cookies.set('user', newState.user, { withCredentials: true , path: '/' })
+		}
 		
 		// check if user is still authed
 		if(newState.user.isAuth) {
 			await this.checkAuth(newState) // if was ok continue?
 		}
-		// else
-
-		console.log('setting cookies')
-		// update cookies either
-		cookies.set('prefs', newState.prefs, { withCredentials: true , path: '/' })
-		cookies.set('user', newState.user, { withCredentials: true , path: '/' })
 	}
 
   	async componentDidMount() {
@@ -220,14 +219,29 @@ class App extends Component {
 		if(prefsCookie) nextState.prefs = prefsCookie
 		if(userCookie) nextState.user = userCookie
 		console.log('got cookies', nextState)
-
-		if(nextState.prefs && nextState.prefs.autoLogin) {
-			if (userCookie) await this.commitLogin(userCookie.username, userCookie.password, true) 
+		
+		if(!this.state.appMounted) {
+			return this.setState({
+				appMounted: true,
+				prefs: {
+					...this.state.prefs,
+					...prefsCookie
+				},
+				user: {
+					...this.state.user,
+					...userCookie
+				}
+			})
 		}
 
-		return this.setState({
-			appMounted: true
-		})
+		if(nextState.prefs && nextState.prefs.autoLogin) {
+			if (userCookie) 
+				await this.commitLogin(
+					userCookie.username, 
+					userCookie.password, 
+					true
+				) 
+		}
 	}
 
 	render() {

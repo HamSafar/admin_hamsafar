@@ -1,17 +1,30 @@
 .Settings {
-    .langWrapper {
 
-    }
-    .colorSetWrapper {
+    .content {
 
-    }
-    .themeWrapper {
-
-    }
-    .notifWrapper {
-
-    }
-    .linksWrapper {
+        font-size: 1rem;
+        display: block;
+        position: absolute;
+        background-color: rgba(99, 99, 99, 0.25);
+        border-radius: 1rem;
+        padding: 2rem;
+        width: max-content;
+        height: max-content;
+        left: 50%; top: 50%;
+        transform: translate(-50%, -50%);
         
+        .element {
+            margin: 1rem;
+            direction: ltr;
+            width: max-content;
+            
+            .button {
+                display: block;
+            }
+        }
+
+        .autoLogin {
+            margin-top: 1.5rem;
+        }
     }
 }
