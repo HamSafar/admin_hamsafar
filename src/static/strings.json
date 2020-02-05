@@ -65,6 +65,29 @@
         "settings": {
             "title": [
                 "Preferences", "مطبوعات"
+            ],
+            "language": [
+                "Language", "زبان"
+            ],
+            "color_set": [
+                "Color Set", "ترکیب رنگ"
+            ],
+            "theme": {
+                "dark_mode": [
+                    "Dark Mode", "تاریک"
+                ]
+            },
+            "notifications": [
+                "Desktop notifications", "اعلانات"
+            ],
+            "about": [
+                "About HamSafar", "درباره همسفر"
+            ],
+            "help": [
+                "Help", "راهنما"
+            ],
+            "privacy_policy": [
+                "Privacy & Policy", "حریم و خط مشی"
             ]
         }
     }

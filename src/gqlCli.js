@@ -3,7 +3,8 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 import { ApolloClient } from 'apollo-boost' 
 
 const httpLink = createHttpLink({
-    uri: 'http://2.184.239.248:3000/graphql/'
+    //uri: 'http://2.184.239.248:3000/graphql/'
+    uri: 'http://limoonline.org/graphql/'
 })
 
 var client = new ApolloClient({

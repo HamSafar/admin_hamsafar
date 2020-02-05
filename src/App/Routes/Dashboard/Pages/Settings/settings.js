@@ -5,9 +5,15 @@ import './settings.scss'
 
 class Settings extends Component {
     render() {
+        /* const { changePrefs } = this.props */
         return (
             <div className="Settings">
-                  
+                <div className="langWrapper">
+
+                </div>
+                <div className="themeWrapper">
+
+                </div>
             </div>
         );
     }
