@@ -73,10 +73,19 @@
                 "Color Set", "ترکیب رنگ"
             ],
             "theme": {
-                "dark_mode": [
-                    "Dark Mode", "تاریک"
+                "title": [
+                    "Theme", "زمینه"
+                ],
+                "dark": [
+                    "Dark", "تاریک"
+                ],
+                "light": [
+                    "Light", "روشن"
                 ]
             },
+            "auto_login": [
+                "Auto Login", "ورود خودکار"
+            ],
             "notifications": [
                 "Desktop notifications", "اعلانات"
             ],

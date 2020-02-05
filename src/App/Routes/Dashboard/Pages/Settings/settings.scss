@@ -18,9 +18,8 @@
             direction: ltr;
             width: max-content;
             
-            .button {
-                display: block;
-            }
+            button { font-family: 'Vazir'; }
+            .button { display: block; }
         }
 
         .autoLogin {

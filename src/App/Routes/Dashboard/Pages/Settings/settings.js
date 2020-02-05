@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import { Button } from 'semantic-ui-react'
 
 import './settings.scss'
-import strings from '../../../../../static/string.scss'
-
-const settings
 
 class Settings extends Component {
 
@@ -13,19 +10,18 @@ class Settings extends Component {
     changeLang = (lang) => this.props.changePrefs({ lang })
 
     render() { 
-        const { prefs: { autoLogin, lang } } = this.props
+        const { prefs: { autoLogin, lang }, settings } = this.props
         const active = autoLogin;
         return (
             <div className="Settings">
                 <div className="content" style={{ textAlign: lang? 'right':'left' }}>
                     <div className="element">
-                        <span> Language </span>
+                        <span> {settings.language[lang]} </span>
                         <div className="button">
                             <Button.Group size='small'>
                                 <Button onClick={()=>this.changeLang(1)}
                                     style={{ 
                                         backgroundColor: 'rgba(138, 86, 172,0.85)', 
-                                        fontFamily: 'Vazir'
                                     }}
                                 >
                                     فا
@@ -40,19 +36,19 @@ class Settings extends Component {
                         </div>
                     </div>
                     <div className="element">
-                        <span>Theme</span> 
+                        <span> {settings.theme.title[lang]} </span> 
                         <div className="button">
                             <Button.Group size='small'>
                                 <Button onClick={()=>this.changeTheme(1)}
                                     style={{ backgroundColor: 'rgba(138, 86, 172,0.85)' }}
                                 >
-                                    Light
+                                    {settings.theme.light[lang]}
                                 </Button>
                                 <Button.Or />
                                 <Button onClick={()=>this.changeTheme(0)}
                                     style={{backgroundColor: 'rgba(99,99,99,0.85)'}}
                                 >
-                                    Dark
+                                    {settings.theme.dark[lang]}
                                 </Button>
                             </Button.Group>
                         </div>
@@ -60,7 +56,7 @@ class Settings extends Component {
                     <div className="element autoLogin">
                         <div className="button">
                             <Button toggle active={active} onClick={()=>this.toggleAutoLogin(active)}>
-                                Auto Login
+                                {settings.auto_login[lang]}
                             </Button>
                         </div>
                     </div>

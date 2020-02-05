@@ -32,7 +32,7 @@ class Pages extends Component {
             case 'analytics': return <Analytics prefs={prefs} />
             case 'mailbox': return <Mailbox prefs={prefs} />
             case 'account': return <Account prefs={prefs} />
-            case 'settings': return <Settings prefs={prefs} changePrefs={changePrefs} />
+            case 'settings': return <Settings prefs={prefs} changePrefs={changePrefs} settings={settings} />
             default: this.props.history.push('/login')
         }
     }
