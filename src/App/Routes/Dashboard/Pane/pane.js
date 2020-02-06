@@ -8,7 +8,7 @@ import './pane.scss'
 class Pane extends Component {
 
     render() {
-        const { prefs: { lang }, profile, city } = this.props
+        const { prefs: { lang }, profile, place } = this.props
 
         return (
             <div className="Pane" 
@@ -25,8 +25,11 @@ class Pane extends Component {
                 <div className="icon">
                     <FontAwesomeIcon icon={faSync} size="lg" />
                 </div>
+                <div className="places">
+                    
+                </div>
                 <div className="icon">
-                    <span> {city.names? city.names[lang] : ''} </span>
+                    
                     <FontAwesomeIcon icon={faMapMarkerAlt} size="lg" />
                 </div>
             </div>

@@ -27,6 +27,16 @@
             margin: 0.5rem;
             text-shadow: 0 0 0.5rem rgba($shadow-middle, 0.5);
         }
+
+        .places {
+            height: 1rem;
+            display: block;
+            margin: 0.5rem;
+            max-width: 3rem;
+            overflow: hidden;
+            text-overflow: clip;
+            white-space: nowrap;
+        }
     }
 }
 

@@ -4,6 +4,8 @@ import Radar from './graphs/radar'
 import Line from './graphs/line'
 import Bar from './graphs/bar'
 
+import { Meter } from 'grommet';
+
 import './home.scss'
 import data from './data.json'
 import colors from '../../../../../static/colors.scss'
@@ -12,12 +14,14 @@ import colors from '../../../../../static/colors.scss'
 class Home extends Component {
     render() {
         const { prefs: { lang, theme } } = this.props
-        
+
+        const { checkInPer, viewPer } = { checkInPer: 60, viewPer: 80 } //color by percentage please
+ 
         return (
             <div className="Home">
                 <div className="content">
                     <div className="HeadPanel">
-                        <div className="panelBox" style={{ backgroundColor: `${colors.accentTeal}99` }}>
+                        <div className="panelBox" style={{ backgroundColor: theme? 'rgb(51, 42, 124)':`${colors.accentTeal}99` }}>
                             <div className="panelStats">
                                 2100
                                 <span>
@@ -31,7 +35,7 @@ class Home extends Component {
                                 <Line data={data.line0} theme={theme} lang={lang} color={colors.accentTeal} />
                             </div>
                         </div>
-                        <div className="panelBox" style={{ backgroundColor: `${colors.accentPurple}99` }}>
+                        <div className="panelBox" style={{ backgroundColor: theme? 'rgb(71, 62, 144)':`${colors.accentPurple}99` }}>
                             <div className="panelStats">
                                 1228
                                 <span>
@@ -45,7 +49,7 @@ class Home extends Component {
                                 <Line data={data.line1} theme={theme} lang={lang} color={colors.accentPurple} />
                             </div>
                         </div>
-                        <div className="panelBox" style={{ backgroundColor: `${colors.accentGreen}99` }}>
+                        <div className="panelBox" style={{ backgroundColor: theme? 'rgb(91, 82, 164)':`${colors.accentGreen}99` }}>
                             <div className="panelStats">
                                 6.92
                                 <span>
@@ -76,7 +80,72 @@ class Home extends Component {
                         <Radar data={data.radar} theme={theme} lang={lang} />
                     </div>
                     <div className="statistics">
-
+                        <div className="statBox checkInStats" style={{ background: theme? 'rgb(51, 42, 124)':'rgb(246, 81, 100)' }}>
+                            <div className="statTitle">
+                                Checkins
+                            </div>
+                            <div className="statMeter">
+                                <Meter type="circle" round="true" size="xxsmall" thickness="xsmall"
+                                    values={[{
+                                        color: '#fff',
+                                        value: checkInPer,
+                                        label: 'sixty',
+                                        onClick: () => {}
+                                    }]}
+                                    aria-label={checkInPer}
+                                />
+                            </div>
+                            <div className="statContent">
+                                <span>max 132</span>
+                                <div className="statNow">
+                                    69
+                                </div>
+                            </div>
+                        </div>
+                        <div className="statBox viewStats" style={{ background: theme? 'rgb(51, 42, 124)':'rgb(112, 51, 255)' }}>
+                            <div className="statTitle">
+                                Views
+                            </div>
+                            <div className="statMeter">
+                                <Meter type="circle" round="true" size="xxsmall" thickness="xsmall"
+                                    values={[{
+                                        color: '#fff',
+                                        value: viewPer,
+                                        label: 'sixty',
+                                        onClick: () => {}
+                                    }]}
+                                    aria-label={viewPer}
+                                />
+                            </div>
+                            <div className="statContent">
+                                <span>max 99</span>
+                                <div className="statNow">
+                                    89
+                                </div>
+                            </div>
+                        </div>
+                        <div className="statBox viewStats" style={{ background: theme? 'rgb(51, 42, 124)':'rgb(78, 124, 255)' }}>
+                            <div className="statTitle">
+                                Comment
+                            </div>
+                            <div className="statMeter">
+                                <Meter type="circle" round="true" size="xxsmall" thickness="xsmall"
+                                    values={[{
+                                        color: '#fff',
+                                        value: viewPer,
+                                        label: 'sixty',
+                                        onClick: () => {}
+                                    }]}
+                                    aria-label={viewPer}
+                                />
+                            </div>
+                            <div className="statContent">
+                                <span>max 99</span>
+                                <div className="statNow">
+                                    89
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -30,20 +30,20 @@ class App extends Component {
 			password: '',
 			isAuth: false,
 			token: '',
-			cities: []
+			places: []
 		},
 		profile: {
-			cities: {
+			places: {
 				id: '',
-				names: []
+				title: '',
 			},
 			credit: '',
 			companyName: ''
 		},
-		city: {
+		place: {
 			index: 0,
 			id: '',
-			names: [],
+			title: '',
 			data: '',
 		},
 		appMounted: false
@@ -75,7 +75,7 @@ class App extends Component {
 
 		console.log('commit login, isFirst: ', isFirst)
 		
-		return client.mutate({
+		return await client.mutate({
 			variables: { username, password },
 			mutation: gql`
 				mutation Login($username: String!, $password: String!) {
@@ -121,25 +121,24 @@ class App extends Component {
 		});
 		client.link = authLink.concat(httpLink);
 
-		const cityIndex = newState.city.index
+		const placeIndex = newState.place.index
 		const adminId = newState.user.id
-		// Check Token and any Change in Profile //add adminId to allcitiesbysizeandoffset
+		// Check Token and any Change in Profile //add adminId to allplacesbysizeandoffset
 		return client.query({
-			variables: { adminId, cityIndex },
+			variables: { adminId, placeIndex },
 			query: gql`
-				query Profile($adminId: String!, $cityIndex: Int!) {
-					profile: adminProfileByAdminId(adminId: $adminId) {
-						cities {
+				query Profile($adminId: String!, $placeIndex: Int!) {
+					profile: adminById(adminId: $adminId) {
+						places {
 							id
-							names
+							title
 						}
 						credit
 						companyName
 					}
-					citiesData: allCitiesBySizeAndOffset(size: 1, offset: $cityIndex) {
+					placesData: allAdminsPlacesBySizeAndOffset(adminId: $adminId, size: 1, offset: $placeIndex) {
 						id
-						names
-						data
+						title
 						updated
 					}
 				}
@@ -149,15 +148,15 @@ class App extends Component {
 			if( 
 				JSON.stringify(res.data.profile) 
 				!== JSON.stringify(newState.profile)
-				|| JSON.stringify(res.data.citiesData[0].updated)
-				!== JSON.stringify(newState.city.updated)
+				|| JSON.stringify(res.data.placesData[0].updated)
+				!== JSON.stringify(newState.place.updated)
 			) {
-				console.log('updating profile & city')
+				console.log('updating profile & place')
 				return this.setState({
 					profile: res.data.profile,
-					city: { 
-						...newState.city,
-						...res.data.citiesData[0] //data, names, id
+					place: { 
+						...newState.place,
+						...res.data.placesData[0] //data, title, id
 					},
 					user: {
 						...newState.user,
@@ -250,7 +249,7 @@ class App extends Component {
 		return (
 			<div className={"App " + (theme? "lightTheme":"darkTheme")}>
 				<BrowserRouter>
-					<Routes appState={{...this.state}}
+					<Routes appState={this.state} //
 						changeUser={this.changeUser}
 						changePrefs={this.changePrefs}
 						changeProfile={this.changeProfile} 

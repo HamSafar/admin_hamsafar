@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
 
 import Home from './Home/home'
+import Manage from './Manage/manage'
 import Charts from './Charts/charts'
 import Analytics from './Analytics/analytics'
 import Mailbox from './Mailbox/mailbox'
@@ -22,17 +23,18 @@ class Pages extends Component {
         const { 
             prefs, changePrefs, 
             dashboard: {
-                home, charts, analytics, mailbox, account, settings
+                home, manage, charts, analytics, mailbox, account, settings
             }
         } = this.props
 
         switch(pathname) {
-            case 'home': return <Home prefs={prefs} />
-            case 'charts': return <Charts prefs={prefs} />
-            case 'analytics': return <Analytics prefs={prefs} />
-            case 'mailbox': return <Mailbox prefs={prefs} />
-            case 'account': return <Account prefs={prefs} />
-            case 'settings': return <Settings prefs={prefs} changePrefs={changePrefs} settings={settings} />
+            case 'home': return <Home prefs={prefs} strings={home} />
+            case 'manage': return <Manage prefs={prefs} strings={manage} />
+            case 'charts': return <Charts prefs={prefs} strings={charts} />
+            case 'analytics': return <Analytics prefs={prefs} strings={analytics} />
+            case 'mailbox': return <Mailbox prefs={prefs} strings={mailbox} />
+            case 'account': return <Account prefs={prefs} strings={account} />
+            case 'settings': return <Settings prefs={prefs} changePrefs={changePrefs} strings={settings} />
             default: this.props.history.push('/login')
         }
     }

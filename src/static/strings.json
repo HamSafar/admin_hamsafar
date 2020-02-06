@@ -42,6 +42,11 @@
                 }
             }
         },
+        "manage": {
+            "title": [
+                "Manage", "مدیریت"
+            ]
+        },
         "charts": {
             "title": [
                 "Charts", "نمودار ها"

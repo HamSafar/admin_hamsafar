@@ -44,7 +44,7 @@ const Radar = ({ data, theme, /*lang*/ }) => (
         enableDotLabel={false}
         dotLabel="value"
         dotLabelYOffset={-12}
-        colors={{ scheme: 'dark2' }}
+        colors={{ scheme: theme? 'set2':'dark2' }}
         fillOpacity={0.3}
         blendMode="normal"
         animate={true}

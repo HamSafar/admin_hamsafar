@@ -1,14 +1,14 @@
 import React from 'react'
 import { ResponsiveBar } from '@nivo/bar'
 
-const Bar = ({ data /* see data tab */ }) => (
+const Bar = ({ data, theme }) => (
     <ResponsiveBar
         data={data}
         keys={[ 'hot dog', 'burger', 'sandwich', 'kebab', 'fries', 'donut' ]}
         indexBy="country"
         margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
         padding={0.3}
-        colors={{ scheme: 'dark2' }}
+        colors={{ scheme: theme? 'purples':'dark2' }}
         defs={[
             {
                 id: 'dots',
@@ -43,8 +43,8 @@ const Bar = ({ data /* see data tab */ }) => (
                 id: 'lines'
             }
         ]}
-        borderRadius={5}
-        borderWidth={2}
+        borderRadius={0}
+        borderWidth={0}
         borderColor={{ from: 'color', modifiers: [ [ 'darker', '1' ] ] }}
         axisTop={null}
         axisRight={null}

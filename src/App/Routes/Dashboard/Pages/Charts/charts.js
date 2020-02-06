@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 
+import Table from './graphs/table'
 // var today = new Date();
+
+import './charts.scss'
 
 class Charts extends Component {
     state = {
@@ -23,11 +26,8 @@ class Charts extends Component {
     render() {
         return (
             <div className="Charts">
-                <form className="filters">
-                    
-                </form>
                 <div className="chartWrapper">
-
+                    <Table />
                 </div>
             </div>
         );

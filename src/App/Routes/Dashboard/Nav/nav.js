@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { NavLink, withRouter } from 'react-router-dom' 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { 
-    faSignOutAlt, faHome, faChartBar, faChartPie, faEnvelope, faUser, faCog
+    faHome, faTasks, faChartBar, faChartPie, faEnvelope, faUser, faCog, faSignOutAlt
 } from '@fortawesome/free-solid-svg-icons'
 
 import manifset from '../../../../static/manifset.json'
@@ -32,6 +32,10 @@ class Nav extends Component {
                 <div className="icons">
                     <NavLink to="/dashboard/home" className="icon" activeClassName="icon-active" >
                         <FontAwesomeIcon icon={faHome} size="lg" title={dashboard.home && dashboard.home.title[lang]} />
+                        <div className="line" style={lang? { left: 0 }:{ right: 0 }} />
+                    </NavLink>
+                    <NavLink to="/dashboard/manage" className="icon" activeClassName="icon-active" >
+                        <FontAwesomeIcon icon={faTasks} size="lg" title={dashboard.manage && dashboard.manage.title[lang]} />
                         <div className="line" style={lang? { left: 0 }:{ right: 0 }} />
                     </NavLink>
                     <NavLink to="/dashboard/charts" className="icon" activeClassName="icon-active">

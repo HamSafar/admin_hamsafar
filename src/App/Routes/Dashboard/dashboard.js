@@ -10,20 +10,20 @@ class Dashboard extends Component {
 
     render() {
         const dashboard = this.props.strings.dashboard
-        const { city, prefs, changePrefs, user, /* changeUser,  */profile, changeProfile, logout } = this.props
+        const { place, prefs, changePrefs, user, /* changeUser,  */profile, changeProfile, logout } = this.props
 
         return (
             <div className="Dashboard" 
                 dir={prefs.lang ? 'rtl':'ltr'}
                 style={{ 
                     background: prefs.theme? 
-                    'rgba(255, 255, 255, 0.95)':
+                    'rgba(255, 255, 255, 0.85)':
                     'rgba(14, 19, 23, 0.95)' 
                 }}
             >
                 <Nav dashboard={dashboard} prefs={prefs} logout={logout} />
                 <Pages dashboard={dashboard} prefs={prefs} changePrefs={changePrefs} profile={profile} changeProfile={changeProfile} />
-                <Pane dashboard={dashboard} prefs={prefs} user={user} profile={profile} city={city} />
+                <Pane dashboard={dashboard} prefs={prefs} user={user} profile={profile} place={place} />
             </div>
         );
     }
