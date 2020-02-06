@@ -24,7 +24,7 @@ class Charts extends Component {
     }
 
     render() {
-        const { pref: { theme } } = this.props
+        const { prefs: { theme } } = this.props
         return (
             <div className="Charts">
                 <div className="chartWrapper">
