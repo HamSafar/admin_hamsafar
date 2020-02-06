@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 // var today = new ../Manage/table
 
 import './charts.scss'
+import Line from './graphs/line'
+import data from './data.json'
 
 class Charts extends Component {
     state = {
@@ -18,16 +20,17 @@ class Charts extends Component {
                 month: null,
                 day: null,
                 hour: null,
-            },
-        },
+            }
+        }
     }
 
     render() {
         const { prefs: { theme } } = this.props
+
         return (
             <div className="Charts">
                 <div className="chartWrapper">
-                    
+                    <Line data={data} />
                 </div>
             </div>
         );

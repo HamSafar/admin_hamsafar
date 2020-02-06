@@ -10,8 +10,22 @@ import './home.scss'
 import data from './data.json'
 import colors from '../../../../../static/colors.scss'
 
-// Container
+import getAllData from './getAllData'
+
+// Container get Some checkins comments books views
 class Home extends Component {
+
+    state = {
+        data: ''
+    }
+
+    changeData = (data) => this.setState({ data })
+
+    UNSAFE_componentWillMount() {
+        const { user } = this.props
+        getAllData(this.changeData, user.id)
+    }
+
     render() {
         const { prefs: { lang, theme }, strings } = this.props
 
@@ -30,12 +44,12 @@ class Home extends Component {
                     <div className="HeadPanel">
                         <div className="panelBox" style={{ backgroundColor: theme? 'rgb(51, 42, 124)':`${colors.accentTeal}99` }}>
                             <div className="panelStats">
-                                2100
+                                10.07%
                                 <span>
-                                    total sessions
+                                    {strings.processes.checkins[lang]}
                                 </span>
                                 <div className="panelDetails">
-                                    
+                                    +21 % 
                                 </div>
                             </div>
                             <div className="lineContainer" >
@@ -44,12 +58,12 @@ class Home extends Component {
                         </div>
                         <div className="panelBox" style={{ backgroundColor: theme? 'rgb(71, 62, 144)':`${colors.accentPurple}99` }}>
                             <div className="panelStats">
-                                1228
+                                2.79%
                                 <span>
-                                    total visitors
+                                    {strings.processes.books[lang]}
                                 </span>
                                 <div className="panelDetails">
-                                    
+                                    -12 %
                                 </div>
                             </div>
                             <div className="lineContainer">
@@ -60,10 +74,10 @@ class Home extends Component {
                             <div className="panelStats">
                                 6.92
                                 <span>
-                                    time spent, hr
+                                    {strings.processes.views[lang]}
                                 </span>
                                 <div className="panelDetails">
-                                    
+                                    +3 %
                                 </div>
                             </div>
                             <div className="lineContainer">
@@ -74,6 +88,24 @@ class Home extends Component {
                     <div className="BodyPanel">
                         <div className="barContainer">
                             <Bar data={data.bar} theme={theme} lang={lang} />
+                        </div>
+                        <div className="totalCounts">
+                            <div className="totalBox" style={{ background: theme? 'rgb(81, 72, 154)':'rgb(222, 67, 83)' }}>
+                                {strings.totals.total_comments[lang]}
+                                <span> 25 </span>
+                            </div>
+                            <div className="totalBox" style={{ background: theme? 'rgb(81, 72, 154)':'rgb(115, 202, 240)' }}>
+                                {strings.totals.total_books[lang]}
+                                <span> 81 </span>
+                            </div>
+                            <div className="totalBox" style={{ background: theme? 'rgb(81, 72, 154)':'rgb(122, 197, 38)' }}>
+                                {strings.totals.total_views[lang]}
+                                <span> 122 </span>
+                            </div>
+                            <div className="totalBox" style={{ background: theme? 'rgb(81, 72, 154)':'rgb(235, 142, 0)' }}>
+                                {strings.totals.total_checkins[lang]}
+                                <span> 68 </span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -87,6 +119,9 @@ class Home extends Component {
                         <Radar data={data.radar} theme={theme} lang={lang} />
                     </div>
                     <div className="statistics">
+                        <div className="statTitle">
+                            {strings.stats.title[lang]}
+                        </div>
                         <div className="statBox" style={{ background: theme? 'rgb(51, 42, 124)':'rgb(246, 81, 100)' }}>
                             <div className="statTitle">
                                 {strings.stats.checkins[lang]}

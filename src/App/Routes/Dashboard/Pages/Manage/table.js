@@ -16,25 +16,15 @@ class Table extends Component {
     })
 
     render() {
+        const { columns, data, title } = this.props
         return (
             <div style={{ maxWidth: '100%' }}>
                 <ThemeProvider theme={this.theme}
                 >
                     <MaterialTable
-                        columns={[
-                            { title: "Adı", field: "name" },
-                            { title: "Soyadı", field: "surname" },
-                            { title: "Doğum Yılı", field: "birthYear", type: "numeric" },
-                            {
-                                title: "Doğum Yeri",
-                                field: "birthCity",
-                                lookup: { 34: "İstanbul", 63: "Şanlıurfa" }
-                            }
-                        ]}
-                        data={[
-                            { name: "Mehmet", surname: "Baran", birthYear: 1987, birthCity: 63 }
-                        ]}
-                        title="Demo Title"
+                        columns={columns}
+                        data={data}
+                        title={title}
                     />
                 </ThemeProvider>
             </div>

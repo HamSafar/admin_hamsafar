@@ -51,7 +51,7 @@
                             top: 1.5rem;
 
                             .panelDetails {
-                                display: block;
+                                display: none;
                             }
                         }
                     }
@@ -72,7 +72,7 @@
                         }
 
                         .panelDetails {
-                            display: none;
+                            //display: none;
                             font-size: 0.65rem;
                             font-weight: lighter;
                             opacity: 0.85;
@@ -109,6 +109,29 @@
                     width: 100%;
                     height: 100%;
                 }
+
+                .totalCounts {
+                    position: relative;
+                    display: flex;
+                    justify-content: center;
+
+                    .totalBox {
+                        color: rgb(255, 255, 255);
+                        display: inline-block;
+                        padding: 1rem;
+                        width: 100%;
+                        text-align: center;
+                        border-radius: 1rem;
+                        margin: 1rem;
+
+                        span {
+                            margin-top: 1rem;
+                            display: block;
+                            font-size: x-large;
+                            font-weight: medium;
+                        }
+                    }
+                }
             }
         }
 
@@ -135,6 +158,10 @@
                 position: relative;
                 display: inline-block;
                 width: 100%;
+
+                .statTitle {
+                    text-align: center;
+                }
 
                 .statBox {
                     color: white;

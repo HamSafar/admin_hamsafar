@@ -4,7 +4,11 @@ class Analytics extends Component {
     render() {
         return (
             <div>
-                analytics
+                در مورد روند بازدید
+                در مورد روند حضور
+                در مورد روند برنامه ریزی
+                در مورد روند نظرات با ان ال پی
+                در مورد روند شرکت در ایونت ها
             </div>
         );
     }

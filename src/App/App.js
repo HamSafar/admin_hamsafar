@@ -45,6 +45,7 @@ class App extends Component {
 			id: '',
 			title: '',
 			data: '',
+			updated: null
 		},
 		appMounted: false
 	}
@@ -144,12 +145,17 @@ class App extends Component {
 				}
 			`
 		}).then(res => {
-			//console.log(res)
+			console.log("res", res)
+			const resDataProfile = res.data.profile
+			const newStateProfile = newState.profile
+			const resDataPlaceDataUpdated = (res.data.placesData.length > 0) ? res.data.placesData[0].updated : null
+			const newStatePlaceUpdated = newState.place.updated
+
 			if( 
-				JSON.stringify(res.data.profile) 
-				!== JSON.stringify(newState.profile)
-				|| JSON.stringify(res.data.placesData[0].updated)
-				!== JSON.stringify(newState.place.updated)
+				JSON.stringify(resDataProfile) 
+				!== JSON.stringify(newStateProfile)
+				|| JSON.stringify(resDataPlaceDataUpdated)
+				!== JSON.stringify(newStatePlaceUpdated)
 			) {
 				console.log('updating profile & place')
 				return this.setState({

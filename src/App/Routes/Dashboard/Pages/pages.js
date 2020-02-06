@@ -21,14 +21,14 @@ class Pages extends Component {
 
     renderPage = (pathname) => {
         const { 
-            prefs, changePrefs, 
+            prefs, changePrefs, user,
             dashboard: {
                 home, manage, charts, analytics, mailbox, account, settings
             }
         } = this.props
 
         switch(pathname) {
-            case 'home': return <Home prefs={prefs} strings={home} />
+            case 'home': return <Home prefs={prefs} strings={home} user={user}/>
             case 'manage': return <Manage prefs={prefs} strings={manage} />
             case 'charts': return <Charts prefs={prefs} strings={charts} />
             case 'analytics': return <Analytics prefs={prefs} strings={analytics} />

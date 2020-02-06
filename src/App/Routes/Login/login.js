@@ -42,7 +42,7 @@ class Login extends Component {
             return undefined
         }
         if(s === 'password') {
-            if(e.length < 6)
+            if(e.length < 4)
                 return 'Password must be more than 6 characters'
             return undefined
         }

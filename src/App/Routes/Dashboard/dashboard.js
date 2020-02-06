@@ -22,7 +22,12 @@ class Dashboard extends Component {
                 }}
             >
                 <Nav dashboard={dashboard} prefs={prefs} logout={logout} />
-                <Pages dashboard={dashboard} prefs={prefs} changePrefs={changePrefs} profile={profile} changeProfile={changeProfile} />
+                <Pages 
+                    dashboard={dashboard} 
+                    prefs={prefs} changePrefs={changePrefs} 
+                    profile={profile} changeProfile={changeProfile}
+                    user={user}
+                />
                 <Pane dashboard={dashboard} prefs={prefs} user={user} profile={profile} place={place} />
             </div>
         );

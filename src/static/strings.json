@@ -26,6 +26,34 @@
             "title": [
                 "Home", "خانه"
             ],
+            "totals": {
+                "total_comments": [
+                    "Total Comments", "کل نظرات"
+                ],
+                "total_views": [
+                    "Total Views", "کل مشاهدات"
+                ],
+                "total_events": [
+                    "Total Events", "کل رویدادها"
+                ],
+                "total_checkins": [
+                    "Total Check-ins", "کل حضورها"
+                ],
+                "total_books": [
+                    "Total Books", "کل بوک ها"
+                ]
+            },
+            "processes": {
+                "views": [
+                    "Views Process", "روند مشاهدات"
+                ],
+                "checkins": [
+                    "Check-ins Process", "روند حضورها"
+                ],
+                "books": [
+                    "Book Process", "روند بوک کردن"
+                ]
+            },
             "graphs": {
                 "radar": {
                     "keys": {
@@ -42,14 +70,17 @@
                 }
             },
             "stats": {
+                "title": [
+                    "Today Status", "وضعیت امروز"
+                ],
                 "checkins": [
-                    "Checkins", "رفته"
+                    "Checkins", "حضور ها"
                 ],
                 "views": [
                     "Views", "مشاهده"
                 ],
                 "booked": [
-                    "Booked", "علاقمند"
+                    "Booked", "مشتاق"
                 ]
             } 
         },
