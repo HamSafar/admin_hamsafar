@@ -71,7 +71,7 @@
             },
             "stats": {
                 "title": [
-                    "Today Status", "وضعیت امروز"
+                    "Today Status", "وضعیت امروز به هفته"
                 ],
                 "checkins": [
                     "Checkins", "حضور ها"

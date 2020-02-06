@@ -1,4 +1,3 @@
-
 import React, { Component } from "react";
 import MaterialTable from "material-table";
 
@@ -12,15 +11,18 @@ class Table extends Component {
         },
         shape: {
             borderRadius: '1rem'
-        }
+        },
+        typography: {
+            fontFamily: 'Vazir',
+        },
+        direction: (this.props.lang? 'rtl':'ltr')
     })
 
     render() {
         const { columns, data, title } = this.props
         return (
             <div style={{ maxWidth: '100%' }}>
-                <ThemeProvider theme={this.theme}
-                >
+                <ThemeProvider theme={this.theme} >
                     <MaterialTable
                         columns={columns}
                         data={data}

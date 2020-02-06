@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 
-import Table from './table'
+import Table from './Table'
 import './manage.scss'
+import MenuButton from './MenuButton'
 
 import columns from './columns.json'
 
 //db
-import comments from './comments.json'
-import places from './places.json'
-import events from './events.json'
-import ads from './ads.json'
+import comments from './db/comments.json'
+import places from './db/places.json'
+import events from './db/events.json'
+import ads from './db/ads.json'
 
 const titles = [
     { title: [ "Comments", "نظرات" ] },
@@ -22,31 +23,26 @@ const titles = [
 class Manage extends Component {
 
     state = {
-        index: 0 //change it with flyout-select-menu
+        index: 0, //change it with flyout-select-menu
+        data: ''
     }
 
+    changeData = (data) => this.setState({ data })
+
     render() {
+        
         const { prefs: { theme, lang } } = this.props
         const { index } = this.state
         return (
             <div className="Manage">
-                <div className="options"></div>
-                <div className="tableWrapper">
-                    <Table theme={theme} 
+                <div className="options" style={{ direction: lang? 'rtl':'ltr' }}>
+                    <MenuButton titles={titles} lang={lang} theme={theme}  />
+                </div>
+                <div className="tableWrapper" style={{ direction: lang? 'rtl':'ltr' }}>
+                    <Table theme={theme} lang={lang}
                         title={titles[index].title[lang]}
-                        columns={[
-                            { title: "Adı", field: "name" },
-                            { title: "Soyadı", field: "surname" },
-                            { title: "Doğum Yılı", field: "birthYear", type: "numeric" },
-                            {
-                                title: "Doğum Yeri",
-                                field: "birthCity",
-                                lookup: { 34: "İstanbul", 63: "Şanlıurfa" }
-                            }
-                        ]} 
-                        data={[
-                            { name: "Mehmet", surname: "Baran", birthYear: 1987, birthCity: 63 }
-                        ]} 
+                        columns={columns.comments} 
+                        data={comments} //get this data from getData
                     />
                 </div>
                 <div className="adButton"></div>

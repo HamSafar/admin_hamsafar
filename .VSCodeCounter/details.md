@@ -1,10 +1,10 @@
 # Details
 
-Date : 2020-02-06 23:52:22
+Date : 2020-02-07 03:17:10
 
 Directory f:\Documents\GitHub\admin_hamsafar\src
 
-Total : 55 files,  2857 codes, 43 comments, 292 blanks, all 3192 lines
+Total : 57 files,  2954 codes, 44 comments, 307 blanks, all 3305 lines
 
 [summary](results.md)
 
@@ -34,14 +34,16 @@ Total : 55 files,  2857 codes, 43 comments, 292 blanks, all 3192 lines
 | [App\Routes\Dashboard\Pages\Home\panelBox.js](file:///f%3A/Documents/GitHub/admin_hamsafar/src/App/Routes/Dashboard/Pages/Home/panelBox.js) | JavaScript | 0 | 0 | 1 | 1 |
 | [App\Routes\Dashboard\Pages\Home\statBox.js](file:///f%3A/Documents/GitHub/admin_hamsafar/src/App/Routes/Dashboard/Pages/Home/statBox.js) | JavaScript | 0 | 0 | 1 | 1 |
 | [App\Routes\Dashboard\Pages\Mailbox\mailbox.js](file:///f%3A/Documents/GitHub/admin_hamsafar/src/App/Routes/Dashboard/Pages/Mailbox/mailbox.js) | JavaScript | 11 | 0 | 2 | 13 |
+| [App\Routes\Dashboard\Pages\Manage\MenuButton.js](file:///f%3A/Documents/GitHub/admin_hamsafar/src/App/Routes/Dashboard/Pages/Manage/MenuButton.js) | JavaScript | 46 | 0 | 9 | 55 |
+| [App\Routes\Dashboard\Pages\Manage\Table.js](file:///f%3A/Documents/GitHub/admin_hamsafar/src/App/Routes/Dashboard/Pages/Manage/Table.js) | JavaScript | 32 | 0 | 5 | 37 |
+| [App\Routes\Dashboard\Pages\Manage\columns.json](file:///f%3A/Documents/GitHub/admin_hamsafar/src/App/Routes/Dashboard/Pages/Manage/columns.json) | JSON | 24 | 0 | 0 | 24 |
 | [App\Routes\Dashboard\Pages\Manage\db\ads.json](file:///f%3A/Documents/GitHub/admin_hamsafar/src/App/Routes/Dashboard/Pages/Manage/db/ads.json) | JSON | 2 | 0 | 1 | 3 |
-| [App\Routes\Dashboard\Pages\Manage\db\comments.json](file:///f%3A/Documents/GitHub/admin_hamsafar/src/App/Routes/Dashboard/Pages/Manage/db/comments.json) | JSON | 3 | 0 | 0 | 3 |
-| [App\Routes\Dashboard\Pages\Manage\db\events.json](file:///f%3A/Documents/GitHub/admin_hamsafar/src/App/Routes/Dashboard/Pages/Manage/db/events.json) | JSON | 0 | 0 | 1 | 1 |
-| [App\Routes\Dashboard\Pages\Manage\db\places.json](file:///f%3A/Documents/GitHub/admin_hamsafar/src/App/Routes/Dashboard/Pages/Manage/db/places.json) | JSON | 0 | 0 | 1 | 1 |
+| [App\Routes\Dashboard\Pages\Manage\db\comments.json](file:///f%3A/Documents/GitHub/admin_hamsafar/src/App/Routes/Dashboard/Pages/Manage/db/comments.json) | JSON | 10 | 0 | 0 | 10 |
+| [App\Routes\Dashboard\Pages\Manage\db\events.json](file:///f%3A/Documents/GitHub/admin_hamsafar/src/App/Routes/Dashboard/Pages/Manage/db/events.json) | JSON | 2 | 0 | 1 | 3 |
+| [App\Routes\Dashboard\Pages\Manage\db\places.json](file:///f%3A/Documents/GitHub/admin_hamsafar/src/App/Routes/Dashboard/Pages/Manage/db/places.json) | JSON | 2 | 0 | 1 | 3 |
 | [App\Routes\Dashboard\Pages\Manage\getData.js](file:///f%3A/Documents/GitHub/admin_hamsafar/src/App/Routes/Dashboard/Pages/Manage/getData.js) | JavaScript | 0 | 0 | 1 | 1 |
-| [App\Routes\Dashboard\Pages\Manage\manage.js](file:///f%3A/Documents/GitHub/admin_hamsafar/src/App/Routes/Dashboard/Pages/Manage/manage.js) | JavaScript | 34 | 1 | 4 | 39 |
-| [App\Routes\Dashboard\Pages\Manage\manage.scss](file:///f%3A/Documents/GitHub/admin_hamsafar/src/App/Routes/Dashboard/Pages/Manage/manage.scss) | SCSS | 20 | 0 | 1 | 21 |
-| [App\Routes\Dashboard\Pages\Manage\table.js](file:///f%3A/Documents/GitHub/admin_hamsafar/src/App/Routes/Dashboard/Pages/Manage/table.js) | JavaScript | 29 | 0 | 6 | 35 |
+| [App\Routes\Dashboard\Pages\Manage\manage.js](file:///f%3A/Documents/GitHub/admin_hamsafar/src/App/Routes/Dashboard/Pages/Manage/manage.js) | JavaScript | 42 | 2 | 10 | 54 |
+| [App\Routes\Dashboard\Pages\Manage\manage.scss](file:///f%3A/Documents/GitHub/admin_hamsafar/src/App/Routes/Dashboard/Pages/Manage/manage.scss) | SCSS | 25 | 0 | 2 | 27 |
 | [App\Routes\Dashboard\Pages\Settings\settings.js](file:///f%3A/Documents/GitHub/admin_hamsafar/src/App/Routes/Dashboard/Pages/Settings/settings.js) | JavaScript | 64 | 0 | 5 | 69 |
 | [App\Routes\Dashboard\Pages\Settings\settings.scss](file:///f%3A/Documents/GitHub/admin_hamsafar/src/App/Routes/Dashboard/Pages/Settings/settings.scss) | SCSS | 24 | 0 | 5 | 29 |
 | [App\Routes\Dashboard\Pages\pages.js](file:///f%3A/Documents/GitHub/admin_hamsafar/src/App/Routes/Dashboard/Pages/pages.js) | JavaScript | 53 | 1 | 10 | 64 |

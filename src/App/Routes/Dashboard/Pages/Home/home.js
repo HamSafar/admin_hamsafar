@@ -94,7 +94,7 @@ class Home extends Component {
                                 {strings.totals.total_comments[lang]}
                                 <span> 25 </span>
                             </div>
-                            <div className="totalBox" style={{ background: theme? 'rgb(81, 72, 154)':'rgb(115, 202, 240)' }}>
+                            <div className="totalBox" style={{ background: theme? 'rgb(41, 32, 114)':'rgb(115, 202, 240)' }}>
                                 {strings.totals.total_books[lang]}
                                 <span> 81 </span>
                             </div>

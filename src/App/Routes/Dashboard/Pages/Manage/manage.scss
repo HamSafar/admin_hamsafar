@@ -6,10 +6,16 @@
         padding-bottom: 0;
         direction: ltr;
 
+        .options {
+            position: absolute;
+            top: -2rem; left: 50%;
+            transform: translate( -50%, 0 );
+            z-index: 999;
+        }
+
         .tableWrapper {
             display: flex;
             align-self: center;
-            direction: ltr;
             width: 100%;
             height: 100%;
             display: block;
