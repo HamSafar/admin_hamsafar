@@ -1,0 +1,24 @@
+{
+    "comments": [
+        { "title": "Name", "field": "Name" },
+        { "title": "Date", "field": "Date" },
+        { "title": "Comment", "field": "Comment" }
+    ],
+    "places": [
+        { "title": "Name", "field": "Name" },
+        { "title": "Location", "field": "Location" },
+        { "title": "Events", "field": "Events", "type": "numeric" },
+        { "title": "Check-ins", "field": "Check-ins", "type": "numeric" },
+        { "title": "Comments", "field": "Comments", "type": "numeric" },
+        { "title": "Confirmed", "field": "Confirmed", "type": "boolean" }
+    ],
+    "ads": [
+        { "title": "Views", "field": "Views", "type":"numeric" },
+        { "title": "Max Views", "field": "Max Views", "type": "numeric" }
+    ],
+    "events": [
+        { "title": "Title", "field": "Title" },
+        { "title": "Views", "field": "Views", "type": "numeric" },
+        { "title": "Check-ins", "field": "Check-ins", "type": "numeric" }
+    ]
+}
