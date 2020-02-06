@@ -18,16 +18,17 @@ class Charts extends Component {
                 year: null,
                 month: null,
                 day: null,
-                hour: null
+                hour: null,
             },
         },
     }
 
     render() {
+        const { pref: { theme } } = this.props
         return (
             <div className="Charts">
                 <div className="chartWrapper">
-                    <Table />
+                    <Table theme={theme} />
                 </div>
             </div>
         );

@@ -17,7 +17,7 @@ class Pane extends Component {
             >
                 <div className="avatar">
                     <img alt="Avatar" src="https://lh3.googleusercontent.com/-xuFLlo7klRU/AAAAAAAAAAI/AAAAAAAAAAA/ACHi3rd2G6mw6iRAamWTHjSF4HNcSi1Ohg/photo.jpg?sz=46"/>
-                    <span> &nbsp; {profile && profile.companyName} &nbsp; </span>
+                    <span> &nbsp; {profile && profile.name} &nbsp; </span>
                 </div>
                 <div className="icon">
                     <FontAwesomeIcon icon={faBell} size="lg" />
@@ -26,7 +26,7 @@ class Pane extends Component {
                     <FontAwesomeIcon icon={faSync} size="lg" />
                 </div>
                 <div className="places">
-                    
+
                 </div>
                 <div className="icon">
                     

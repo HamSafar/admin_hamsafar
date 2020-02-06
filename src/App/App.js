@@ -38,7 +38,7 @@ class App extends Component {
 				title: '',
 			},
 			credit: '',
-			companyName: ''
+			name: ''
 		},
 		place: {
 			index: 0,
@@ -134,7 +134,7 @@ class App extends Component {
 							title
 						}
 						credit
-						companyName
+						name
 					}
 					placesData: allAdminsPlacesBySizeAndOffset(adminId: $adminId, size: 1, offset: $placeIndex) {
 						id
