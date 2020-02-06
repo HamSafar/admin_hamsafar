@@ -85,15 +85,15 @@ class Home extends Component {
                                 Checkins
                             </div>
                             <div className="statMeter">
-                                <Meter type="circle" round="true" size="xxsmall" thickness="xsmall"
+                                <Meter type="circle" round={true} size="xxsmall" thickness="xsmall"
                                     values={[{
                                         color: '#fff',
                                         value: checkInPer,
-                                        label: 'sixty',
                                         onClick: () => {}
                                     }]}
                                     aria-label={checkInPer}
                                 />
+                                <span> 82 </span>
                             </div>
                             <div className="statContent">
                                 <span>max 132</span>
@@ -107,15 +107,15 @@ class Home extends Component {
                                 Views
                             </div>
                             <div className="statMeter">
-                                <Meter type="circle" round="true" size="xxsmall" thickness="xsmall"
+                                <Meter type="circle" round={true} size="xxsmall" thickness="xsmall"
                                     values={[{
                                         color: '#fff',
                                         value: viewPer,
-                                        label: 'sixty',
                                         onClick: () => {}
                                     }]}
                                     aria-label={viewPer}
                                 />
+                                <span> 75 </span>
                             </div>
                             <div className="statContent">
                                 <span>max 99</span>
@@ -129,15 +129,15 @@ class Home extends Component {
                                 Comment
                             </div>
                             <div className="statMeter">
-                                <Meter type="circle" round="true" size="xxsmall" thickness="xsmall"
+                                <Meter type="circle" round={true} size="xxsmall" thickness="xsmall"
                                     values={[{
                                         color: '#fff',
                                         value: viewPer,
-                                        label: 'sixty',
                                         onClick: () => {}
                                     }]}
                                     aria-label={viewPer}
                                 />
+                                <span> 60 </span>
                             </div>
                             <div className="statContent">
                                 <span>max 99</span>

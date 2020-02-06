@@ -1,0 +1,21 @@
+.Dashboard {
+    .Manage {
+        height: 100%;
+        position: relative;
+        padding: 1rem;
+        padding-bottom: 0;
+        direction: ltr;
+
+        .tableWrapper {
+            display: flex;
+            align-self: center;
+            direction: ltr;
+            width: 100%;
+            height: 100%;
+            display: block;
+            max-height: 100%;
+            overflow-y: auto;
+            padding: 0 1rem;
+        }
+    }
+}

@@ -113,6 +113,7 @@
         }
 
         .SidePanel {
+            direction: ltr;
             overflow: visible;
             width: 20rem;
             height: 100%;
@@ -137,37 +138,53 @@
 
                 .statBox {
                     color: white;
-                    display: flex;
+                    display: block;
                     position: relative;
                     width: 15rem;
                     border-radius: 1rem;
-                    margin: 0.5rem 0;
-                    padding: 0.5rem;
-                    right: 50%;
-                    transform: translate( 50%, 0 );
+                    padding: 0.5rem 0;
+                    margin: 0.85rem   0;
+                    left: 50%;
+                    transform: translate( -50%, 0 );
 
-
-                    .statMeter {
-                        display: block;
-                        position: relative;
-                        width: 50%;
-                    }
                     .statTitle {
-                        display: block;
                         position: relative;
-                        width: 25%;
-                        top: 1rem;
+                        display: inline-block;
+                        vertical-align: middle;
+                        left: 0;  width: 5rem;
+                        margin: 0 0.5rem;
+                        overflow: hidden;
+                    }
+                    .statMeter {
+                        position: relative;
+                        display: inline-block;
+                        vertical-align: middle;
+                        left: 0; 
+                        margin: 0 0.5rem;
+                        overflow: hidden;
+                        span {
+                            position: absolute;
+                            left: 50%;
+                            top: 50%;
+                            transform: translate( -50%, -50% );
+                            font-size: 0.25rem;
+                        }
                     }
                     .statContent {
                         text-align: center;
-                        display: block;
+                        text-transform: uppercase;
                         position: relative;
-                        width: 25%;
+                        display: inline-block;
+                        vertical-align: middle;
+                        right: 0; 
+                        margin-left: 0.5rem;
+                        overflow: hidden;
+
                         .statMax {
                             display: inline;
                         }
                         span {
-                            font-size: xx-small;
+                            font-size: 0.5rem;
                         }
                     }
                 }

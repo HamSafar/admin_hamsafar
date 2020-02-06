@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
-import Table from './graphs/table'
-// var today = new Date();
+// var today = new ../Manage/table
 
 import './charts.scss'
 
@@ -28,7 +27,7 @@ class Charts extends Component {
         return (
             <div className="Charts">
                 <div className="chartWrapper">
-                    <Table theme={theme} />
+                    
                 </div>
             </div>
         );

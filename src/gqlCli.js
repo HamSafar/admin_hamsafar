@@ -4,6 +4,7 @@ import { ApolloClient } from 'apollo-boost'
 
 const httpLink = createHttpLink({
     //uri: 'http://2.184.239.248:3000/graphql/'
+    //uri: 'http://192.168.1.104:/graphql/'
     uri: 'http://limoonline.org/graphql/'
 })
 

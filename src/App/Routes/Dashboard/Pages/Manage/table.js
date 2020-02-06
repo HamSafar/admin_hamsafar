@@ -10,6 +10,9 @@ class Table extends Component {
         palette: {
             type: (this.props.theme ? 'light' : 'dark'),
         },
+        shape: {
+            borderRadius: '1rem'
+        }
     })
 
     render() {
@@ -23,9 +26,9 @@ class Table extends Component {
                             { title: "Soyadı", field: "surname" },
                             { title: "Doğum Yılı", field: "birthYear", type: "numeric" },
                             {
-                            title: "Doğum Yeri",
-                            field: "birthCity",
-                            lookup: { 34: "İstanbul", 63: "Şanlıurfa" }
+                                title: "Doğum Yeri",
+                                field: "birthCity",
+                                lookup: { 34: "İstanbul", 63: "Şanlıurfa" }
                             }
                         ]}
                         data={[
