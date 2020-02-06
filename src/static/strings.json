@@ -40,7 +40,18 @@
                         ]
                     }
                 }
-            }
+            },
+            "stats": {
+                "checkins": [
+                    "Checkins", "رفته"
+                ],
+                "views": [
+                    "Views", "مشاهده"
+                ],
+                "booked": [
+                    "Booked", "علاقمند"
+                ]
+            } 
         },
         "manage": {
             "title": [

@@ -13,9 +13,16 @@ import colors from '../../../../../static/colors.scss'
 // Container
 class Home extends Component {
     render() {
-        const { prefs: { lang, theme } } = this.props
+        const { prefs: { lang, theme }, strings } = this.props
 
-        const { checkInPer, viewPer } = { checkInPer: 60, viewPer: 80 } //color by percentage please
+        const { checkIns, views, books } = { checkIns: 60, views: 80, books: 40 } // by a week
+        const { maxCheckIns, maxViews, maxBooks } = { maxCheckIns: 70, maxViews: 123, maxBooks: 90 }
+
+        var { checkInPer, viewPer, bookPer } = { 
+            checkInPer: (checkIns/maxCheckIns*100.), 
+            viewPer: (views/maxViews*100.),
+            bookPer: (books/maxBooks*100.) 
+        }
  
         return (
             <div className="Home">
@@ -80,9 +87,9 @@ class Home extends Component {
                         <Radar data={data.radar} theme={theme} lang={lang} />
                     </div>
                     <div className="statistics">
-                        <div className="statBox checkInStats" style={{ background: theme? 'rgb(51, 42, 124)':'rgb(246, 81, 100)' }}>
+                        <div className="statBox" style={{ background: theme? 'rgb(51, 42, 124)':'rgb(246, 81, 100)' }}>
                             <div className="statTitle">
-                                Checkins
+                                {strings.stats.checkins[lang]}
                             </div>
                             <div className="statMeter">
                                 <Meter type="circle" round={true} size="xxsmall" thickness="xsmall"
@@ -91,20 +98,19 @@ class Home extends Component {
                                         value: checkInPer,
                                         onClick: () => {}
                                     }]}
-                                    aria-label={checkInPer}
                                 />
-                                <span> 82 </span>
+                                <span> {parseInt(checkInPer)} </span>
                             </div>
                             <div className="statContent">
-                                <span>max 132</span>
+                                <span>max {maxCheckIns}</span>
                                 <div className="statNow">
-                                    69
+                                    {checkIns}
                                 </div>
                             </div>
                         </div>
-                        <div className="statBox viewStats" style={{ background: theme? 'rgb(51, 42, 124)':'rgb(112, 51, 255)' }}>
+                        <div className="statBox" style={{ background: theme? 'rgb(51, 42, 124)':'rgb(112, 51, 255)' }}>
                             <div className="statTitle">
-                                Views
+                                {strings.stats.views[lang]}
                             </div>
                             <div className="statMeter">
                                 <Meter type="circle" round={true} size="xxsmall" thickness="xsmall"
@@ -113,36 +119,34 @@ class Home extends Component {
                                         value: viewPer,
                                         onClick: () => {}
                                     }]}
-                                    aria-label={viewPer}
                                 />
-                                <span> 75 </span>
+                                <span> {parseInt(viewPer)} </span>
                             </div>
                             <div className="statContent">
-                                <span>max 99</span>
+                                <span>max {maxViews}</span>
                                 <div className="statNow">
-                                    89
+                                    {views}
                                 </div>
                             </div>
                         </div>
-                        <div className="statBox viewStats" style={{ background: theme? 'rgb(51, 42, 124)':'rgb(78, 124, 255)' }}>
+                        <div className="statBox" style={{ background: theme? 'rgb(51, 42, 124)':'rgb(78, 124, 255)' }}>
                             <div className="statTitle">
-                                Comment
+                                {strings.stats.booked[lang]}
                             </div>
                             <div className="statMeter">
                                 <Meter type="circle" round={true} size="xxsmall" thickness="xsmall"
                                     values={[{
                                         color: '#fff',
-                                        value: viewPer,
+                                        value: bookPer,
                                         onClick: () => {}
                                     }]}
-                                    aria-label={viewPer}
                                 />
-                                <span> 60 </span>
+                                <span> {parseInt(viewPer)} </span>
                             </div>
                             <div className="statContent">
-                                <span>max 99</span>
+                                <span>max {maxBooks}</span>
                                 <div className="statNow">
-                                    89
+                                    {books}
                                 </div>
                             </div>
                         </div>
