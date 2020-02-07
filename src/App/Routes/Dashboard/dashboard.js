@@ -10,7 +10,7 @@ class Dashboard extends Component {
 
     render() {
         const dashboard = this.props.strings.dashboard
-        const { place, prefs, changePrefs, user, /* changeUser,  */profile, changeProfile, logout } = this.props
+        const { place, prefs, changePrefs, user, changeUser,  profile, changeProfile, logout } = this.props
 
         return (
             <div className="Dashboard" 
@@ -26,7 +26,7 @@ class Dashboard extends Component {
                     dashboard={dashboard} 
                     prefs={prefs} changePrefs={changePrefs} 
                     profile={profile} changeProfile={changeProfile}
-                    user={user} place={place}
+                    user={user} changeUser={changeUser} place={place}
                 />
                 <Pane dashboard={dashboard} prefs={prefs} user={user} profile={profile} place={place} />
             </div>

@@ -25,12 +25,12 @@ class Account extends Component {
         } : {
             name: res.data.adminData.name || null,
             username: res.data.adminData.username || null,
-            placeId: res.data.placesData.id || null, //for mount only - read only
-            placeTitle: res.data.placesData.title || null,
-            placeHeader: res.data.placesData.header || null,
-            placePicture: res.data.placesData.pictures.length > 0 ? res.data.placesData.pictures[0].path : null,
-            placeDetail: res.data.placesData.detail || null,
-            placeTagTitle: res.data.placesData.tag? res.data.placesData.tag.title : null,
+            placeId: res.data.placesData && res.data.placesData.id || null, //for mount only - read only
+            placeTitle: res.data.placesData && res.data.placesData.title || null,
+            placeHeader: res.data.placesData && res.data.placesData.header || null,
+            placePicture: res.data.placesData && res.data.placesData.pictures.length > 0 ? res.data.placesData.pictures[0].path : null,
+            placeDetail: res.data.placesData && res.data.placesData.detail || null,
+            placeTagTitle: res.data.placesData && res.data.placesData.tag? res.data.placesData.tag.title : null,
         }
 
         this.setState({ ...this.state, ...newState })
@@ -82,6 +82,7 @@ class Account extends Component {
             mutation: q
         }).then(res => {
             this.updateWithRes(res,"UPDATE")
+            this.props.changeUser({}) // make unconflicted username and password
         }).catch(e => 
             console.log("Error editing Profile", e)    
         )
@@ -144,10 +145,10 @@ class Account extends Component {
                         <img src="https://cdnw.elicdn.com/Blog/wp-content/uploads/2019/02/32423.jpg" />
                     </div>
                     <div className="inputs">
-                        <input name="username" value={username} enabled="false" onChange={e => this.handleChange(e)} ></input>
+                        <input name="username" value={username} contentEditable={false} onChange={e => this.handleChange(e)} ></input>
                         <input name="name" value={name} onChange={e => this.handleChange(e)} ></input>
                         <input name="placeHeader" value={placeHeader} onChange={e => this.handleChange(e)} ></input>
-                        <input name="placeTagTitle" value={placeTagTitle} enabled="false" onChange={e => this.handleChange(e)}  ></input>
+                        <input name="placeTagTitle" value={placeTagTitle} contentEditable={false} onChange={e => this.handleChange(e)}  ></input>
                         <input name="placeDetail" value={placeDetail} onChange={e => this.handleChange(e)} ></input>
                         <button type="submit">Submit Changes</button>
                     </div>
