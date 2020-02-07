@@ -4,7 +4,7 @@ import { ResponsiveBar } from '@nivo/bar'
 const Bar = ({ data, theme }) => (
     <ResponsiveBar
         data={data}
-        keys={[ 'hot dog', 'burger', 'sandwich', 'kebab', 'fries', 'donut' ]}
+        keys={[ 'views', 'check ins', 'books', 'comments', 'events', 'ad views' ]}
         indexBy="days before"
         margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
         padding={0.3}
@@ -32,13 +32,13 @@ const Bar = ({ data, theme }) => (
         fill={[
             {
                 match: {
-                    id: 'fries'
+                    id: 'ad views'
                 },
                 id: 'dots'
             },
             {
                 match: {
-                    id: 'sandwich'
+                    id: 'check ins'
                 },
                 id: 'lines'
             }
@@ -52,7 +52,7 @@ const Bar = ({ data, theme }) => (
             tickSize: 5,
             tickPadding: 5,
             tickRotation: 0,
-            legend: 'country',
+            legend: 'Days Before',
             legendPosition: 'middle',
             legendOffset: 32
         }}
@@ -60,7 +60,7 @@ const Bar = ({ data, theme }) => (
             tickSize: 5,
             tickPadding: 5,
             tickRotation: 0,
-            legend: 'food',
+            legend: 'Count Per Day',
             legendPosition: 'middle',
             legendOffset: -40
         }}
