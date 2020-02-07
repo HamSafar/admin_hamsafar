@@ -7,6 +7,7 @@
         form {
             height: 100%; width: 100%;
             display: flex;
+            font-size: medium;
 
             .placePicture {
                 border-radius: 1rem;
@@ -22,11 +23,10 @@
                 width: 100%;
                 padding: 2rem;
                 input {
+                    margin: 0.25rem 1rem;
                     width: 10rem;
                     display: block;
-                    width: 15rem;
                     padding: 0.5rem 2rem;
-                    margin: 0 0rem;
                     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
                     appearance: none;
                     background-color: rgba(255, 255, 255, 0.7);
@@ -38,10 +38,11 @@
                 }
 
                 button {
+                    margin: 1rem;
                     overflow: hidden;
                     border-radius: 0.5rem;
                     box-shadow: 0 0 2rem rgba(0,0,0,0.15);
-                    width: 15rem;
+                    width: 10rem;
                     text-align: center;
                     position: relative;
                     display: block;
