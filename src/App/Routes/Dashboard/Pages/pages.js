@@ -21,7 +21,7 @@ class Pages extends Component {
 
     renderPage = (pathname) => {
         const { 
-            prefs, changePrefs, user,
+            prefs, changePrefs, user, place,
             dashboard: {
                 home, manage, charts, analytics, mailbox, account, settings
             }
@@ -33,7 +33,7 @@ class Pages extends Component {
             case 'charts': return <Charts prefs={prefs} strings={charts} />
             case 'analytics': return <Analytics prefs={prefs} strings={analytics} />
             case 'mailbox': return <Mailbox prefs={prefs} strings={mailbox} />
-            case 'account': return <Account prefs={prefs} strings={account} />
+            case 'account': return <Account prefs={prefs} strings={account} place={place} user={user} /> 
             case 'settings': return <Settings prefs={prefs} changePrefs={changePrefs} strings={settings} />
             default: this.props.history.push('/login')
         }

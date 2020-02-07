@@ -26,7 +26,7 @@ class Dashboard extends Component {
                     dashboard={dashboard} 
                     prefs={prefs} changePrefs={changePrefs} 
                     profile={profile} changeProfile={changeProfile}
-                    user={user}
+                    user={user} place={place}
                 />
                 <Pane dashboard={dashboard} prefs={prefs} user={user} profile={profile} place={place} />
             </div>

@@ -3,18 +3,27 @@
         height: 100%;
         position: relative;
         padding: 2rem;
-        
-        .gallery {
-            height: 100%; width: 50%;
-            background-color: red;
-            border-radius: 1rem;
-            overflow: hidden;
-        }
 
         form {
             height: 100%; width: 100%;
-            form {
+            display: flex;
 
+            .placePicture {
+                border-radius: 1rem;
+                max-width: 50%;
+                overflow: hidden;
+                img {
+                    object-fit: contain;
+                }
+            }
+            .inputs {
+                position: relative;
+                min-width: 12rem;
+                width: 100%;
+                input {
+                    width: 10rem;
+                    display: block;
+                }
             }
         }
     }
