@@ -5,7 +5,7 @@ const Bar = ({ data, theme }) => (
     <ResponsiveBar
         data={data}
         keys={[ 'hot dog', 'burger', 'sandwich', 'kebab', 'fries', 'donut' ]}
-        indexBy="country"
+        indexBy="days before"
         margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
         padding={0.3}
         colors={{ scheme: theme? 'purples':'dark2' }}

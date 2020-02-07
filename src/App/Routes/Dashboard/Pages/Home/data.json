@@ -201,7 +201,7 @@
 	],
 	"bar": [
 		{
-			"country": "AD",
+			"days before": "6",
 			"hot dog": 178,
 			"hot dogColor": "hsl(230, 70%, 50%)",
 			"burger": 25,
@@ -216,7 +216,7 @@
 			"donutColor": "hsl(160, 70%, 50%)"
 		},
 		{
-			"country": "AE",
+			"days before": "5",
 			"hot dog": 189,
 			"hot dogColor": "hsl(16, 70%, 50%)",
 			"burger": 168,
@@ -231,7 +231,7 @@
 			"donutColor": "hsl(297, 70%, 50%)"
 		},
 		{
-			"country": "AF",
+			"days before": "4",
 			"hot dog": 161,
 			"hot dogColor": "hsl(161, 70%, 50%)",
 			"burger": 166,
@@ -246,7 +246,7 @@
 			"donutColor": "hsl(103, 70%, 50%)"
 		},
 		{
-			"country": "AG",
+			"days before": "3",
 			"hot dog": 57,
 			"hot dogColor": "hsl(86, 70%, 50%)",
 			"burger": 125,
@@ -261,7 +261,7 @@
 			"donutColor": "hsl(251, 70%, 50%)"
 		},
 		{
-			"country": "AI",
+			"days before": "2",
 			"hot dog": 162,
 			"hot dogColor": "hsl(331, 70%, 50%)",
 			"burger": 6,
@@ -276,7 +276,7 @@
 			"donutColor": "hsl(10, 70%, 50%)"
 		},
 		{
-			"country": "AL",
+			"days before": "1",
 			"hot dog": 181,
 			"hot dogColor": "hsl(291, 70%, 50%)",
 			"burger": 29,
@@ -291,7 +291,7 @@
 			"donutColor": "hsl(303, 70%, 50%)"
 		},
 		{
-			"country": "AM",
+			"days before": "0",
 			"hot dog": 18,
 			"hot dogColor": "hsl(86, 70%, 50%)",
 			"burger": 34,

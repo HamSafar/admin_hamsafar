@@ -14,26 +14,26 @@ class Account extends Component {
         const i = this.props.place.index
 
         const newState = (state === "LOAD") ? { 
-            name: res.data.adminData.name || null,
-            username: res.data.adminData.username || null,
-            placeId: res.data.placesData && res.data.placesData.length && res.data.placesData[i].id || null, //for mount only - read only
-            placeTitle: res.data.placesData && res.data.placesData.length && res.data.placesData[i].title || null,
-            placeHeader: res.data.placesData && res.data.placesData.length && res.data.placesData[i].header || null,
+            name: res.data.adminData.name,
+            username: res.data.adminData.username,
+            placeId: res.data.placesData && res.data.placesData.length && res.data.placesData[i].id, //for mount only - read only
+            placeTitle: res.data.placesData && res.data.placesData.length && res.data.placesData[i].title,
+            placeHeader: res.data.placesData && res.data.placesData.length && res.data.placesData[i].header,
             placePicture: res.data.placesData && res.data.placesData.length && res.data.placesData[i].pictures.length > 0 ? res.data.placesData[i].pictures[0].path : null,
-            placeDetail: res.data.placesData && res.data.placesData.length && res.data.placesData[i].detail || null,
+            placeDetail: res.data.placesData && res.data.placesData.length && res.data.placesData[i].detail,
             placeTagTitle: res.data.placesData && res.data.placesData.length && res.data.placesData[i].tag? res.data.placesData.length && res.data.placesData[i].tag.title : null,
         } : {
-            name: res.data.adminData.name || null,
-            username: res.data.adminData.username || null,
-            placeId: res.data.placesData && res.data.placesData.id || null, //for mount only - read only
-            placeTitle: res.data.placesData && res.data.placesData.title || null,
-            placeHeader: res.data.placesData && res.data.placesData.header || null,
+            name: res.data.adminData.name,
+            username: res.data.adminData.username,
+            placeId: res.data.placesData && res.data.placesData.id, //for mount only - read only
+            placeTitle: res.data.placesData && res.data.placesData.title,
+            placeHeader: res.data.placesData && res.data.placesData.header,
             placePicture: res.data.placesData && res.data.placesData.pictures.length > 0 ? res.data.placesData.pictures[0].path : null,
-            placeDetail: res.data.placesData && res.data.placesData.detail || null,
+            placeDetail: res.data.placesData && res.data.placesData.detail,
             placeTagTitle: res.data.placesData && res.data.placesData.tag? res.data.placesData.tag.title : null,
         }
 
-        this.setState({ ...this.state, ...newState })
+        this.setState({ ...this.state, ...newState }) 
     }
 
     handleSubmit = (e) => {
@@ -82,7 +82,7 @@ class Account extends Component {
             mutation: q
         }).then(res => {
             this.updateWithRes(res,"UPDATE")
-            this.props.changeUser({}) // make unconflicted username and password
+            // make unconflicted username and password
         }).catch(e => 
             console.log("Error editing Profile", e)    
         )
@@ -145,10 +145,15 @@ class Account extends Component {
                         <img src="https://cdnw.elicdn.com/Blog/wp-content/uploads/2019/02/32423.jpg" />
                     </div>
                     <div className="inputs">
+                        نام کاربری:
                         <input name="username" value={username} contentEditable={false} onChange={e => this.handleChange(e)} ></input>
+                        نام شما:
                         <input name="name" value={name} onChange={e => this.handleChange(e)} ></input>
+                        نام محل
                         <input name="placeHeader" value={placeHeader} onChange={e => this.handleChange(e)} ></input>
+                        تگ محل حاضر
                         <input name="placeTagTitle" value={placeTagTitle} contentEditable={false} onChange={e => this.handleChange(e)}  ></input>
+                        متن برای محل
                         <input name="placeDetail" value={placeDetail} onChange={e => this.handleChange(e)} ></input>
                         <button type="submit">Submit Changes</button>
                     </div>
