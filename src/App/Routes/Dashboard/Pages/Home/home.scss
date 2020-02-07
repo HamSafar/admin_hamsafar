@@ -138,6 +138,7 @@
         .SidePanel {
             direction: ltr;
             overflow: visible;
+            overflow-y: auto;
             width: 20rem;
             height: 100%;
             display: block;

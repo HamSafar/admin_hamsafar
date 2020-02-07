@@ -20,7 +20,7 @@ class Charts extends Component {
                 month: null,
                 day: null,
                 hour: null,
-            }
+            } 
         }
     }
 
@@ -30,7 +30,7 @@ class Charts extends Component {
         return (
             <div className="Charts">
                 <div className="chartWrapper">
-                    <Line data={data} />
+                    <Line data={data} theme={theme} />
                 </div>
             </div>
         );

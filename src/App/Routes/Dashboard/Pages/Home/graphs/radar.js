@@ -59,7 +59,7 @@ const Radar = ({ data, theme, /*lang*/ }) => (
                 translateY: -40,
                 itemWidth: 80,
                 itemHeight: 20,
-                itemTextColor: '#777',
+                itemTextColor: (theme? '#222':'#DDD'),
                 symbolSize: 12,
                 symbolShape: 'circle',
                 effects: [
