@@ -55,7 +55,7 @@ class App extends Component {
 	changeProfile = (profile) => {
 		// post profile to server
 		// then on status 200 return setState new profile
-		// checkAuth on any other status 
+		// checkAuth on any other status ... 
 	}
 
 	logout = () => {
