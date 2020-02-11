@@ -8,7 +8,7 @@ import './pane.scss'
 class Pane extends Component {
 
     render() {
-        const { prefs: { lang }, profile, place } = this.props
+        const { prefs: { lang }, profile, /* place */ } = this.props
 
         return (
             <div className="Pane" 

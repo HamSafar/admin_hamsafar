@@ -8,9 +8,9 @@ import columns from './columns.json'
 
 //db
 import comments from './db/comments.json'
-import places from './db/places.json'
-import events from './db/events.json'
-import ads from './db/ads.json'
+//import places from './db/places.json'
+//import events from './db/events.json'
+//import ads from './db/ads.json'
 
 const titles = [
     { title: [ "Comments", "نظرات" ] },

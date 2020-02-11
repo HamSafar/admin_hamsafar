@@ -1,5 +1,7 @@
+import React from 'react'
 import { Query, Mutation } from 'react-apollo'
 import { gql } from 'apollo-boost'
+import Account from './account'
 
 const GET_PROFILE = gql`
     query getProfile($adminId: String!, $placeIndex: Int!) {
@@ -43,14 +45,14 @@ const UPDATE_PROFILE = gql`
     }
 `
 
-const AccountContainer = ({ user: { id: adminId }, place: { index: placeIndex } }) => (
+const AccountContainer = ({ prefs, strings, user: { id: adminId }, place: { index: placeIndex } }) => (
     <Query query={GET_PROFILE} variables={{ adminId, placeIndex }}>
         {({ loading, error, data }) => {
             if(loading) return <p>Loading...</p>
             if(error) return <p>Error!</p>
             return <Mutation mutation={UPDATE_PROFILE} >
                 { updateProfile => (
-                    <Account data={data} updateProfile={updateProfile} />
+                    <Account prefs={prefs} strings={strings} data={data} updateProfile={updateProfile} />
                 )}
             </Mutation>
         }}

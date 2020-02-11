@@ -26,7 +26,7 @@ class Account extends Component {
         const {
             adminData: { name: adminName, username: adminUsername },
             placeData: { 
-                title: placeTitle, header: placeHeader, 
+                title: placeTitle, header: placeHeader, detail: placeDetail,
                 pictures: { path: placePicturePath },
                 tag: { title: placeTagTitle }
             }
@@ -44,7 +44,7 @@ class Account extends Component {
                     })}
                 >
                     <div className="placePicture">
-                        <img src={placePicturePath} />
+                        <img src={placePicturePath} alt="" />
                     </div>
                     <div className="inputs">
                         admin username
