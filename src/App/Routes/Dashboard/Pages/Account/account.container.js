@@ -45,14 +45,14 @@ const UPDATE_PROFILE = gql`
     }
 `
 
-const AccountContainer = ({ prefs, strings, user: { id: adminId }, place: { index: placeIndex } }) => (
+const AccountContainer = ({ user: { id: adminId }, place: { index: placeIndex }, ...otherProps }) => (
     <Query query={GET_PROFILE} variables={{ adminId, placeIndex }}>
         {({ loading, error, data }) => {
             if(loading) return <p>Loading...</p>
             if(error) return <p>Error!</p>
             return <Mutation mutation={UPDATE_PROFILE} >
                 { updateProfile => (
-                    <Account prefs={prefs} strings={strings} data={data} updateProfile={updateProfile} />
+                    <Account {...otherProps} data={data} updateProfile={updateProfile} />
                 )}
             </Mutation>
         }}
