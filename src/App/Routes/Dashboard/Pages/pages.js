@@ -10,7 +10,7 @@ import Manage from './Manage/manage'
 import Charts from './Charts/charts'
 import Analytics from './Analytics/analytics'
 import Mailbox from './Mailbox/mailbox'
-import Account from './Account/account'
+import Account from './Account/account.container'
 import Settings from './Settings/settings'
 
 import './pages.scss'

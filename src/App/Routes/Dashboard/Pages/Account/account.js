@@ -1,86 +1,69 @@
 import React, { Component } from 'react';
-import { GET_PROFILE, UPDATE_PROFILE } from './actions'
 
 import './account.scss'
 
 class Account extends Component {
 
-    state = {
-        username: null, name: null, placeHeader: null, placePicture: null, placeDetail: null, placeTagTitle: null, placeId: null
-    }    
-
-    handleSubmit = (e, updateProfile, adminId, placeId, toUpdate) => {
+    handleSubmit = (e, toUpdate) => {
         e.preventDefault()
 
         const {
-            adminName, 
-            placeHeader, placeDetail
+            adminData: { id: adminId },
+            placeData: { id: placeId }
+        } = this.props.data
+
+        const {
+            adminName, placeHeader, placeDetail
         } = toUpdate
 
-        updateProfile({ variables: {
-            adminId, adminName,
-            placeId, placeHeader, placeDetail
-        }})
+        this.props.updateProfile({ variables: { adminId, adminName, placeId, placeHeader, placeDetail } })
 
-        // clear state in future
+        // CLEAR
     }
 
     render() {
 
-        const adminId = this.props.user.id
-        const placeIndex = this.props.place.index
+        const {
+            adminData: { name: adminName, username: adminUsername },
+            placeData: { 
+                title: placeTitle, header: placeHeader, 
+                pictures: { path: placePicturePath },
+                tag: { title: placeTagTitle }
+            }
+        } = this.props.data
 
-        return <Query query={GET_PROFILE} variables={{ adminId, placeIndex }} >
-            {({ loading, error, data: { adminData, placeData }}) => {
+        var adminNameInput, placeHeaderInput, placeDetailInput
 
-                if (loading) return <p>Loading...</p>
-                if (error) return <p>Error! {console.log(error)}</p>
-
-                const {
-                    name: adminName, username: adminUsername
-                } = adminData
-
-                const {
-                    id: placeId, title: placeTitle, header: placeHeader, detail: placeDetail, pictures: { path: placePicPath }, tag: { title: placeTagTitle }
-                } = placeData
-
-                var adminNameInput, placeHeaderInput, placeDetailInput
-
-                return <Mutation mutation={UPDATE_PROFILE} variables={{}}>
-                    {updateProfile => (
-
-                        <div className="Account">
-                            <form onSubmit={e => 
-                                this.handleSubmit(e, updateProfile, adminId, placeId, { 
-                                    adminName: adminNameInput.value, 
-                                    placeHeader: placeHeaderInput.value, 
-                                    placeDetail: placeDetailInput.value 
-                                })}
-                            >
-                                <div className="placePicture">
-                                    <img src={placePicPath} />
-                                </div>
-                                <div className="inputs">
-                                    نام کاربری
-                                    <input name="username" value={adminUsername} disabled="disabled" ></input>
-                                    نام شما
-                                    <input name="name" value={adminName} ref={node => { adminNameInput = node }} ></input>
-                                    محل
-                                    <input name="placeTitle" value={placeTitle} disabled="disabled" ></input>
-                                    نام محل
-                                    <input name="placeHeader" value={placeHeader} ref={node => { placeHeaderInput = node }} ></input>
-                                    تگ محل حاضر
-                                    <input name="placeTagTitle" value={placeTagTitle} disabled="disabled" ></input>
-                                    متن برای محل
-                                    <input name="placeDetail" value={placeDetail} ref={node => { placeDetailInput = node }} ></input>
-                                    <button type="submit">Submit Changes</button>
-                                </div>
-                            </form>
-                        </div>
-                    )}
-                </Mutation>
-            }}
-        </Query>
+        return (
+            <div className="Account">
+                <form onSubmit={e => 
+                    this.handleSubmit( e, { 
+                        adminName: adminNameInput.value, 
+                        placeHeader: placeHeaderInput.value,
+                        placeDetail: placeDetailInput.value,
+                    })}
+                >
+                    <div className="placePicture">
+                        <img src={placePicturePath} />
+                    </div>
+                    <div className="inputs">
+                        admin username
+                        <input name="adminUsername" value={adminUsername} disabled="disabled" ></input>
+                        admin name
+                        <input name="adminName" value={adminName} ref={node => {adminNameInput = node}} ></input>
+                        place title
+                        <input name="placeTitle" value={placeTitle} disabled="disabled" ></input>
+                        place header
+                        <input name="placeHeader" value={placeHeader} ref={node => {placeHeaderInput = node}} ></input>
+                        place tag title
+                        <input name="placeTagTitle" value={placeTagTitle} disabled="disabled" ></input>
+                        place detail
+                        <input name="placeDetail" value={placeDetail} ref={node => {placeDetailInput = node}} ></input>
+                        <button type="submit">Submit Changes</button>
+                    </div>
+                </form>
+            </div>
+        );
     }
 }
 
