@@ -9,12 +9,13 @@ import strings from '../static/strings.json'
 import './app.scss' 
 
 import Routes from './Routes/Routes'
-//import Axios from 'axios';
 import client, { httpLink } from '../gqlCli'
 
 
 const cookies = new Cookies();
-//var storage = window.localStorage; //migrate to localhost
+
+// onAuth rejected -> logout + autoLogin off 
+// onComponentDidMount LoginPage -> get username/password from cookies
 
 class App extends Component {
 
@@ -112,7 +113,6 @@ class App extends Component {
 		//Add Token to Request
 		const token = newState.user.token
 		const authLink = setContext((_, { headers }) => {
-			//const token = localStorage.getItem('token');
 			return {
 				headers: {
 					...headers,
