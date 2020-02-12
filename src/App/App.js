@@ -58,6 +58,7 @@ class App extends Component {
 
 	changePrefs = (prefs) => this.setState({ prefs: { ...this.state.prefs, ...prefs } })
 	changeUser = (user) => this.setState({ user: {...this.state.prefs, ...user } })
+	changePlace = (place) => this.setState({ place: {...this.state.place, ...place } })
 	changeProfile = (profile) => {
 		// post profile to server
 		// then on status 200 return setState new profile
@@ -264,6 +265,7 @@ class App extends Component {
 						changeUser={this.changeUser}
 						changePrefs={this.changePrefs}
 						changeProfile={this.changeProfile} 
+						changePlace={this.changePlace}
 						logout={this.logout}
 						strings={strings}
 						cookies={cookies}

@@ -15,6 +15,7 @@ class Routes extends Component {
             changePrefs={this.props.changePrefs} 
             changeUser={this.props.changeUser}
             changeProfile={this.props.changeProfile}
+            changePlace={this.props.changePlace}
             logout={this.props.logout}
             strings={this.props.strings}
         />

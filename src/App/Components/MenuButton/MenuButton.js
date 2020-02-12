@@ -21,22 +21,22 @@ export default function SimpleMenu(props) {
     })
 
     const [anchorEl, setAnchorEl] = React.useState(null);
-    const [item, setItem] = React.useState((props.list[0] || null))
+    const [item, setItem] = React.useState((props.list[props.index] || null))
 
     const handleClick = event => {
         setAnchorEl(event.currentTarget);
     };
 
-    const handleClose = (listItem) => {
-        console.log(listItem)
-        const currentItem = item
-        setItem((listItem.__proto__ === 'Object' ? currentItem : currentItem));
+    const handleClose = (listItem, i) => {
+        setItem((listItem || item))
         setAnchorEl(null);
+        if(listItem && listItem !== item)
+            props.setIndex(i)
     };
 
     const renderMenuItems = (list) => 
         list.length && list.map((item,i) => 
-            <MenuItem onClick={() => handleClose(item)} key={i}>
+            <MenuItem onClick={() => handleClose(item, i)} key={i}>
                 { item.title }
             </MenuItem>
         )
@@ -51,7 +51,7 @@ export default function SimpleMenu(props) {
                 anchorEl={anchorEl}
                 keepMounted
                 open={Boolean(anchorEl)}
-                onClose={handleClose}
+                onClose={() => handleClose(null)}
             >
                 
                 { renderMenuItems(props.list) }

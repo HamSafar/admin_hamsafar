@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
 
 import Nav from './Nav/nav'
 import Pane from './Pane/pane'
@@ -10,7 +9,13 @@ class Dashboard extends Component {
 
     render() {
         const dashboard = this.props.strings.dashboard
-        const { place, prefs, changePrefs, user, changeUser,  profile, changeProfile, logout } = this.props
+        const { 
+            place, changePlace, 
+            prefs, changePrefs, 
+            user, changeUser,  
+            profile, changeProfile, 
+            logout 
+        } = this.props
 
         return (
             <div className="Dashboard" 
@@ -21,17 +26,25 @@ class Dashboard extends Component {
                     'rgba(14, 19, 23, 0.95)' 
                 }}
             >
-                <Nav dashboard={dashboard} prefs={prefs} logout={logout} />
+                <Nav 
+                    dashboard={dashboard} 
+                    prefs={prefs} logout={logout} 
+                />
                 <Pages 
                     dashboard={dashboard} 
                     prefs={prefs} changePrefs={changePrefs} 
                     profile={profile} changeProfile={changeProfile}
                     user={user} changeUser={changeUser} place={place}
                 />
-                <Pane dashboard={dashboard} prefs={prefs} user={user} profile={profile} place={place} />
+                <Pane 
+                    dashboard={dashboard} 
+                    prefs={prefs} user={user} 
+                    profile={profile} place={place} 
+                    changePlace={changePlace} 
+                />
             </div>
         );
     }
 }
 
-export default withRouter(Dashboard);
+export default Dashboard;
