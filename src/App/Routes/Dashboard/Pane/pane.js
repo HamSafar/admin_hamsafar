@@ -4,11 +4,13 @@ import { faBell } from '@fortawesome/free-regular-svg-icons'
 import { faMapMarkerAlt, faSync } from '@fortawesome/free-solid-svg-icons'
 
 import './pane.scss'
+import MenuButton from '../../../Components/MenuButton/MenuButton'
 
 class Pane extends Component {
 
+    
     render() {
-        const { prefs: { lang }, profile, /* place */ } = this.props
+        const { prefs: { lang, theme }, profile } = this.props
 
         return (
             <div className="Pane" 
@@ -26,10 +28,9 @@ class Pane extends Component {
                     <FontAwesomeIcon icon={faSync} size="lg" />
                 </div>
                 <div className="places">
-
+                    <MenuButton list={profile && profile.places} lang={lang} theme={theme} title={[ 'محل ها', 'Places' ]} />
                 </div>
                 <div className="icon">
-                    
                     <FontAwesomeIcon icon={faMapMarkerAlt} size="lg" />
                 </div>
             </div>

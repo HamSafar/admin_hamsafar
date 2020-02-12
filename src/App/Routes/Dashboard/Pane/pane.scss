@@ -9,7 +9,6 @@
 
         .avatar {
             height: min-content;
-            border-radius: 0.5rem;
 
             img {
                 border-radius: 0.5rem;
@@ -29,13 +28,10 @@
         }
 
         .places {
-            height: 1rem;
             display: block;
-            margin: 0.5rem;
-            max-width: 3rem;
+            margin: 0 0.5rem;
+            width: min-content;
             overflow: hidden;
-            text-overflow: clip;
-            white-space: nowrap;
         }
     }
 }

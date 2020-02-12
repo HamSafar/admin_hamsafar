@@ -33,12 +33,12 @@ class App extends Component {
 		profile: {
 			places: [
                 {
-                    id: '',
-                    title: '',
+                    id: '2222',
+                    title: 'kish',
                 }
             ],
 			credit: '',
-			name: ''
+			name: 'hayyaun'
 		},
 		place: {
 			index: 0,
