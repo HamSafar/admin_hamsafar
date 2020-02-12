@@ -1,6 +1,8 @@
 import React from 'react'
 import { Query, Mutation } from 'react-apollo'
 import { gql } from 'apollo-boost'
+import Loading from '../../../../Components/Loading/Loading'
+import Error from '../../../../Components/Error/Error'
 import Account from './account'
 
 const GET_PROFILE = gql`
@@ -48,8 +50,8 @@ const UPDATE_PROFILE = gql`
 const AccountContainer = ({ user: { id: adminId }, place: { index: placeIndex }, ...otherProps }) => (
     <Query query={GET_PROFILE} variables={{ adminId, placeIndex }}>
         {({ loading, error, data }) => {
-            if(loading) return <p>Loading...</p>
-            if(error) return <p>Error!</p>
+            if(loading) return <Loading size="2x" color="white" />
+            if(error) return <Error error={error} size="2x" color="auto" />
             return <Mutation mutation={UPDATE_PROFILE} >
                 { updateProfile => (
                     <Account {...otherProps} data={data} updateProfile={updateProfile} />

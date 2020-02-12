@@ -34,10 +34,12 @@ class App extends Component {
 			places: []
 		},
 		profile: {
-			places: {
-				id: '',
-				title: '',
-			},
+			places: [
+				{
+					id: '',
+					title: '',
+				}
+			],
 			credit: '',
 			name: ''
 		},
@@ -45,7 +47,10 @@ class App extends Component {
 			index: 0,
 			id: '',
 			title: '',
-			data: '',
+            header: '',
+            detail: '',
+            pictures: [],
+            tag: { title: '' },
 			updated: null
 		},
 		appMounted: false
