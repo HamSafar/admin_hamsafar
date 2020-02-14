@@ -1,0 +1,7 @@
+const AccountActionTypes = {
+    FETCH_ACCOUNT_START: 'FETCH_ACCOUNT_START',
+    FETCH_ACCOUNT_SUCCESS: 'FETCH_ACCOUNT_SUCCESS',
+    FETCH_ACCOUNT_FAILURE: 'FETCH_ACCOUNT_FAILURE',
+}
+
+export default AccountActionTypes

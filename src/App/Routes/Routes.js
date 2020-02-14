@@ -45,7 +45,8 @@ class Routes extends Component {
                 <Route component={withProps(NotFound)} />
             </Switch>
         )
+        
     }
 }
 
-export default Routes;
+export default Routes

@@ -58,7 +58,7 @@ class App extends Component {
             tag: { title: 'Ent' },
 			updated: null
 		},
-		appMounted: false
+		appMounted: true
 	}
 
 	changePrefs = (prefs) => this.setState({ prefs: { ...this.state.prefs, ...prefs } })
@@ -167,12 +167,19 @@ class App extends Component {
 		}
 	}
 
+	userConfirmation = (message, callback) => {
+		// this is the default behavior
+		console.log(message)
+		const allowTransition = window.confirm(message);
+		callback(allowTransition);
+	}
+
 	render() {
 		const { prefs: { theme } } = this.state
 
 		return (
 			<div className={"App " + (theme? "lightTheme":"darkTheme")}>
-				<BrowserRouter>
+				<BrowserRouter getUserConfirmation={this.userConfirmation}>
 					<Routes appState={this.state} //
 						changeUser={this.changeUser}
 						changePrefs={this.changePrefs}

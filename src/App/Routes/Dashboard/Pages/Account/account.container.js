@@ -49,7 +49,7 @@ const UPDATE_PROFILE = gql`
 
 const AccountContainer = ({ user: { id: adminId }, place: { index: placeIndex }, ...otherProps }) => (
     <Query query={GET_PROFILE} variables={{ adminId, placeIndex }}>
-        {({ loading, error, data }) => {
+        {({ loading, error, data }) => { 
             if(loading) return <Loading size="2x" color="white" />
             if(error) return <Error error={error} size="2x" color="auto" />
             return <Mutation mutation={UPDATE_PROFILE} >

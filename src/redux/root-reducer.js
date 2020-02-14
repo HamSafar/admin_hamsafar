@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
 
 //// reducers
-import settings from './settings_reducer'
+import account from './account/account.reducer'
 
 const rootReducer = combineReducers({
-    settings
+    account
 })
 
 export default rootReducer 

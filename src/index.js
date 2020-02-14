@@ -6,7 +6,7 @@ import promiseMiddleware from 'redux-promise'
 import { ApolloProvider } from 'react-apollo'
 import client from './gqlCli'
 
-import reducers from './reducers'
+import reducers from './redux/root-reducer'
 import App from './App/App.dev' //dev
 
 import './index.scss'
