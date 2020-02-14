@@ -1,5 +1,6 @@
 import { createHttpLink } from 'apollo-link-http'
 import { InMemoryCache } from 'apollo-cache-inmemory'
+import { persistCache } from 'apollo-cache-persist'
 import { ApolloClient } from 'apollo-boost' 
 
 const httpLink = createHttpLink({
@@ -8,9 +9,16 @@ const httpLink = createHttpLink({
     uri: 'http://limoonline.org/graphql/'
 })
 
+const cache = new InMemoryCache()
+
+persistCache({
+    cache,
+    storage: window.localStorage,
+})
+
 var client = new ApolloClient({
     link: httpLink,
-    cache: new InMemoryCache()
+    cache
 })
 
 export { httpLink };
