@@ -5,12 +5,12 @@ import './settings.scss'
 
 class Settings extends Component {
 
-    toggleAutoLogin = (autoLogin) => this.props.changePrefs({ autoLogin: !autoLogin })
-    changeTheme = (theme) => this.props.changePrefs({ theme })
-    changeLang = (lang) => this.props.toggleLang()
+    toggleAutoLogin = (autoLogin) => this.props.updatePrefs({ autoLogin: !autoLogin })
+    changeTheme = (theme) => this.props.updatePrefs({ theme })
+    changeLang = (lang) => this.props.updatePrefs({ lang })
 
     render() { 
-        const { prefs: { autoLogin }, lang, strings } = this.props
+        const { prefs: { autoLogin, lang }, strings } = this.props
         const active = autoLogin;
         return (
             <div className="Settings">

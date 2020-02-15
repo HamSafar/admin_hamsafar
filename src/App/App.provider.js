@@ -8,7 +8,7 @@ import { gql } from 'apollo-boost'
 
 import { typeDefs, resolvers } from '../graphql/resolvers'
 
-import App from './App.dev'
+import AppContainer from './App.container'
 
 class AppProvider extends Component {
 
@@ -42,17 +42,25 @@ class AppProvider extends Component {
         // INITIAL_STATE
 
         try { 
-            const { lang } = await client.readQuery({
-                query: gql`
-                    {
-                        lang @client
+            const GET_PREFS = gql`
+                {
+                    prefs @client {
+                        theme
+                        lang
+                        autoLogin
                     }
-                `
+                }
+            `
+
+            const { prefs } = await client.readQuery({
+                query: GET_PREFS
             })
+
+            console.log(prefs)
 
             client.writeData({
                 data: {
-                    lang
+                    prefs
                 }
             })
         } catch (e) {
@@ -61,8 +69,12 @@ class AppProvider extends Component {
             // Default Values for First Time
             client.writeData({
                 data: {
-                    lang: 1,
-                    prefs: {}
+                    prefs: {
+                        lang: 1,
+                        theme: 1,
+                        autoLogin: false,
+                        __typename: 'Prefs'
+                    }
                 }
             })
         }        
@@ -78,7 +90,7 @@ class AppProvider extends Component {
         if (loading) return <p>Loading...</p>
         return (
             <ApolloProvider client={client} >
-                <App />
+                <AppContainer />
             </ApolloProvider>
         );
     }

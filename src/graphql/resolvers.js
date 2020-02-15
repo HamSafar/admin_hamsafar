@@ -1,27 +1,39 @@
 import { gql } from 'apollo-boost'
 
 export const typeDefs = gql`
+    extend type Prefs {
+        lang: Int
+        theme: Int
+        autoLogin: Boolean
+    }
     extend type Mutation {
-        Lang: Int!
+        updatePrefs(prefs: Prefs!): Prefs
     }
 `
 
-const GET_LANG = gql`
+const GET_PREFS = gql`
     {
-        lang @client
+        prefs @client {
+            theme
+            lang
+            autoLogin
+        }
     }
 `
 
 export const resolvers = {
     Mutation: {
-        toggleLang: (_root, _args, { cache }) => {
-            const { lang } = cache.readQuery({
-                query: GET_LANG,
+        updatePrefs: (_root, { prefs: newPrefs }, { cache }) => {
+
+            const { prefs } = cache.readQuery({
+                query: GET_PREFS
             })
 
+            console.log('resolver', prefs, newPrefs)
+
             cache.writeQuery({
-                query: GET_LANG,
-                data: { lang: (lang ? 0 : 1) }
+                query: GET_PREFS,
+                data: { prefs: newPrefs }
             })
         }
     }

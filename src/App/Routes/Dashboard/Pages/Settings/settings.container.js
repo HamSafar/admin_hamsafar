@@ -1,29 +1,34 @@
 import React from 'react'
-import { Query, Mutation } from 'react-apollo'
+import { Mutation } from 'react-apollo'
 import { gql } from 'apollo-boost'
 
 import Settings from './settings'
 
-const GET_LANG = gql`
-    {
-        lang @client
-    }
-`
 
-const TOGGLE_LANG = gql`
-    mutation ToggleLang {
-        toggleLang @client
+
+const UPDATE_PREFS = gql`
+    mutation UpdatePrefs($prefs: Prefs!) {
+        updatePrefs(prefs: $prefs) @client {
+            theme
+            lang
+            autoLogin
+        }
     }
 `
 
 const SettingsContainer = (props) => (
-    <Query query={GET_LANG} >
-        {({ data: { lang } }) => (
-            <Mutation mutation={TOGGLE_LANG}>
-                { toggleLang => <Settings {...props} lang={lang} toggleLang={toggleLang} /> }
-            </Mutation>
-        )}
-    </Query>
+    <Mutation mutation={UPDATE_PREFS}>
+        {updatePrefs =>
+            <Settings
+                strings={props.strings}
+                prefs={props.prefs}
+                updatePrefs={newPrefs => {
+                    const { prefs } = props
+                    updatePrefs({ variables: { prefs: { ...prefs, ...newPrefs } } })
+                }}
+            />
+        }
+    </Mutation>
 )
 
 export default SettingsContainer

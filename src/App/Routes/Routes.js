@@ -11,7 +11,7 @@ class Routes extends Component {
 
     withProps = (Comp) => (props) =>
         <Comp {...props}
-            {...this.props.appState}
+            {...this.props.appConfig}
             changePrefs={this.props.changePrefs}
             changeUser={this.props.changeUser}
             changeProfile={this.props.changeProfile}
@@ -28,8 +28,8 @@ class Routes extends Component {
             <Switch>
 
                 {
-                    (this.props.appState.appMounted) ? (
-                        (this.props.appState.user.isAuth) ?
+                    (this.props.appConfig.appMounted) ? (
+                        (this.props.appConfig.user.isAuth) ?
                             <Redirect from="/login" to="/dashboard" /> :
                             <Redirect from="/dashboard" to="/login" />
                     ) : null //can be used for loading

@@ -16,11 +16,6 @@ const cookies = new Cookies();
 class App extends Component {
 
 	state = {
-		prefs: {
-			lang: 1,
-			theme: 1,
-			autoLogin: true
-		},
 		user: {
 			id: '',
 			username: 'hayyaun',
@@ -115,12 +110,12 @@ class App extends Component {
 	}
 
 	render() {
-		const { prefs: { theme } } = this.state
+		const { prefs: { theme } } = this.props
 
 		return (
 			<div className={"App " + (theme ? "lightTheme" : "darkTheme")}>
 				<BrowserRouter getUserConfirmation={this.userConfirmation}>
-					<Routes appState={this.state} //
+					<Routes appConfig={this.props} //change it in future
 						changeUser={this.changeUser}
 						changePrefs={this.changePrefs}
 						changeProfile={this.changeProfile}
