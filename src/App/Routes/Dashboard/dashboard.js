@@ -9,38 +9,38 @@ class Dashboard extends Component {
 
     render() {
         const dashboard = this.props.strings.dashboard
-        const { 
-            place, changePlace, 
-            prefs, changePrefs, 
-            user, changeUser,  
-            profile, changeProfile, 
-            logout 
+        const {
+            place, changePlace,
+            prefs, changePrefs,
+            user, changeUser,
+            profile, changeProfile,
+            logout
         } = this.props
 
         return (
-            <div className="Dashboard" 
-                dir={prefs.lang ? 'rtl':'ltr'}
-                style={{ 
-                    background: prefs.theme? 
-                    'rgba(255, 255, 255, 0.85)':
-                    'rgba(14, 19, 23, 0.95)' 
+            <div className="Dashboard"
+                dir={prefs.lang ? 'rtl' : 'ltr'}
+                style={{
+                    background: prefs.theme ?
+                        'rgba(255, 255, 255, 0.85)' :
+                        'rgba(14, 19, 23, 0.95)'
                 }}
             >
-                <Nav 
-                    dashboard={dashboard} 
-                    prefs={prefs} logout={logout} 
+                <Nav
+                    dashboard={dashboard}
+                    prefs={prefs} logout={logout}
                 />
-                <Pages 
-                    dashboard={dashboard} 
-                    prefs={prefs} changePrefs={changePrefs} 
+                <Pages
+                    dashboard={dashboard}
+                    prefs={prefs} changePrefs={changePrefs}
                     profile={profile} changeProfile={changeProfile}
                     user={user} changeUser={changeUser} place={place}
                 />
-                <Pane 
-                    dashboard={dashboard} 
-                    prefs={prefs} user={user} 
-                    profile={profile} place={place} 
-                    changePlace={changePlace} 
+                <Pane
+                    dashboard={dashboard}
+                    prefs={prefs} user={user}
+                    profile={profile} place={place}
+                    changePlace={changePlace}
                 />
             </div>
         );

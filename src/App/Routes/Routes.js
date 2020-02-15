@@ -7,12 +7,12 @@ import About from './About'
 import NotFound from './NotFound'
 import Loading from './Loading/loading'
 
-class Routes extends Component { 
+class Routes extends Component {
 
-    withProps = (Comp) => (props) => 
+    withProps = (Comp) => (props) =>
         <Comp {...props}
-            {...this.props.appState} 
-            changePrefs={this.props.changePrefs} 
+            {...this.props.appState}
+            changePrefs={this.props.changePrefs}
             changeUser={this.props.changeUser}
             changeProfile={this.props.changeProfile}
             changePlace={this.props.changePlace}
@@ -28,24 +28,24 @@ class Routes extends Component {
             <Switch>
 
                 {
-                    (this.props.appState.appMounted)? (
-                        (this.props.appState.user.isAuth)?
-                        <Redirect from="/login" to="/dashboard" /> :
-                        <Redirect from="/dashboard" to="/login" /> 
+                    (this.props.appState.appMounted) ? (
+                        (this.props.appState.user.isAuth) ?
+                            <Redirect from="/login" to="/dashboard" /> :
+                            <Redirect from="/dashboard" to="/login" />
                     ) : null //can be used for loading
                 }
 
                 <Route path="/about" exact component={withProps(About)} />
-                <Route path="/dashboard/:name" exact component={withProps(Dashboard)} /> 
+                <Route path="/dashboard/:name" exact component={withProps(Dashboard)} />
                 <Redirect from="/dashboard" exact to="/dashboard/home" />
                 <Route path="/login" exact component={withProps(Login)} />
-                
+
                 <Redirect from="/" exact to="/loading" />
                 <Route path="/loading" exact component={withProps(Loading)} />
                 <Route component={withProps(NotFound)} />
             </Switch>
         )
-        
+
     }
 }
 

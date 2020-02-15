@@ -4,7 +4,7 @@ import Cookies from 'universal-cookie';
 
 import strings from '../static/strings.json'
 
-import './app.scss' 
+import './app.scss'
 
 import Routes from './Routes/Routes'
 
@@ -26,44 +26,44 @@ class App extends Component {
 			username: 'hayyaun',
 			password: 'hayyaun',
 			isAuth: true,
-            token: '',
-            name: 'hayyan',
+			token: '',
+			name: 'hayyan',
 			places: []
 		},
 		profile: {
 			places: [
-                {
-                    id: 'dfsdff',
-                    title: 'kish',
+				{
+					id: 'dfsdff',
+					title: 'kish',
 				},
 				{
-                    id: 'sdsdwe',
-                    title: 'gheshm',
-                }
-            ],
+					id: 'sdsdwe',
+					title: 'gheshm',
+				}
+			],
 			credit: '',
 			name: 'hayyaun'
 		},
 		place: {
 			index: 0,
 			id: '',
-            title: 'kish',
-            header: 'Kish Island',
-            detail: '',
-            pictures: [
-                {
-                    path: 'https://images.unsplash.com/photo-1581357825340-32259110788a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=751&q=80'
-                }
-            ],
-            tag: { title: 'Ent' },
+			title: 'kish',
+			header: 'Kish Island',
+			detail: '',
+			pictures: [
+				{
+					path: 'https://images.unsplash.com/photo-1581357825340-32259110788a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=751&q=80'
+				}
+			],
+			tag: { title: 'Ent' },
 			updated: null
 		},
 		appMounted: true
 	}
 
 	changePrefs = (prefs) => this.setState({ prefs: { ...this.state.prefs, ...prefs } })
-	changeUser = (user) => this.setState({ user: {...this.state.prefs, ...user } })
-	changePlace = (place) => this.setState({ place: {...this.state.place, ...place } })
+	changeUser = (user) => this.setState({ user: { ...this.state.prefs, ...user } })
+	changePlace = (place) => this.setState({ place: { ...this.state.place, ...place } })
 	changeProfile = (profile) => {
 		// post profile to server
 		// then on status 200 return setState new profile
@@ -87,18 +87,18 @@ class App extends Component {
 	commitLogin = (username, password, isFirst) => {
 
 		console.log('commit login, isFirst: ', isFirst)
-		
-        console.log('logged in')
-        this.setState({
-            user: {
-                ...this.state.user,
-                username: username,
-                password: password,
-                isAuth: true,
-                token: 'some token',
-                id: '12345',
-            }
-        })
+
+		console.log('logged in')
+		this.setState({
+			user: {
+				...this.state.user,
+				username: username,
+				password: password,
+				isAuth: true,
+				token: 'some token',
+				id: '12345',
+			}
+		})
 	}
 
 	checkAuth = (newState) => {
@@ -116,20 +116,20 @@ class App extends Component {
 
 		console.log('updating', newState)
 
-		if(this.state.prefs !== newState.prefs) {
+		if (this.state.prefs !== newState.prefs) {
 			console.log('setting cookies')
 
-			cookies.set('prefs', newState.prefs, { withCredentials: true , path: '/' })
-			cookies.set('user', newState.user, { withCredentials: true , path: '/' })
+			cookies.set('prefs', newState.prefs, { withCredentials: true, path: '/' })
+			cookies.set('user', newState.user, { withCredentials: true, path: '/' })
 		}
-		
+
 		// check if user is still authed
-		if(newState.user.isAuth) {
+		if (newState.user.isAuth) {
 			this.checkAuth(newState) // if was ok continue?
 		}
 	}
 
-  	componentDidMount() {
+	componentDidMount() {
 
 		console.log('mounted')
 
@@ -138,11 +138,11 @@ class App extends Component {
 		var userCookie = cookies.get('user')
 
 		const nextState = {}
-		if(prefsCookie) nextState.prefs = prefsCookie
-		if(userCookie) nextState.user = userCookie
+		if (prefsCookie) nextState.prefs = prefsCookie
+		if (userCookie) nextState.user = userCookie
 		console.log('got cookies', nextState)
-		
-		if(!this.state.appMounted) {
+
+		if (!this.state.appMounted) {
 			return this.setState({
 				appMounted: true,
 				prefs: {
@@ -151,19 +151,19 @@ class App extends Component {
 				},
 				user: {
 					...this.state.user,
-                    ...userCookie,
-                    
+					...userCookie,
+
 				}
 			})
 		}
 
-		if(nextState.prefs && nextState.prefs.autoLogin) {
-			if (userCookie) 
+		if (nextState.prefs && nextState.prefs.autoLogin) {
+			if (userCookie)
 				this.commitLogin(
-					userCookie.username, 
-					userCookie.password, 
+					userCookie.username,
+					userCookie.password,
 					true
-				) 
+				)
 		}
 	}
 
@@ -178,12 +178,12 @@ class App extends Component {
 		const { prefs: { theme } } = this.state
 
 		return (
-			<div className={"App " + (theme? "lightTheme":"darkTheme")}>
+			<div className={"App " + (theme ? "lightTheme" : "darkTheme")}>
 				<BrowserRouter getUserConfirmation={this.userConfirmation}>
 					<Routes appState={this.state} //
 						changeUser={this.changeUser}
 						changePrefs={this.changePrefs}
-						changeProfile={this.changeProfile} 
+						changeProfile={this.changeProfile}
 						changePlace={this.changePlace}
 						logout={this.logout}
 						strings={strings}
