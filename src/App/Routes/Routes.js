@@ -4,7 +4,7 @@ import { Switch, Redirect, Route } from 'react-router-dom'
 import Login from './Login/login'
 import Dashboard from './Dashboard/dashboard'
 import About from './About'
-import NotFound from './NotFound'
+import NotFound from './NotFound/not-found'
 import Loading from './Loading/loading'
 
 class Routes extends Component {
@@ -12,7 +12,6 @@ class Routes extends Component {
     withProps = (Comp) => (props) =>
         <Comp {...props}
             {...this.props.appConfig}
-            changePrefs={this.props.changePrefs}
             changeUser={this.props.changeUser}
             changeProfile={this.props.changeProfile}
             changePlace={this.props.changePlace}

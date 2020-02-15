@@ -10,6 +10,7 @@ export const typeDefs = gql`
         updatePrefs(prefs: Prefs!): Prefs
     }
 `
+// add isOnline, 
 
 const GET_PREFS = gql`
     {

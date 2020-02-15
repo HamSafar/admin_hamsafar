@@ -100,14 +100,13 @@ class Login extends Component {
     }
 
     componentDidMount() {
-        const { lang } = this.state
-        const { strings: { login } } = this.props
+        const { prefs:{ lang }, strings: { login } } = this.props
         document.title = login.title[lang]
     }
 
     render() {
-        const { lang, username, password, isInvalid } = this.state
-        const { strings: { login } } = this.props
+        const { username, password, isInvalid } = this.state
+        const { prefs: { lang }, strings: { login } } = this.props
 
         console.log('login rendered')
         return (

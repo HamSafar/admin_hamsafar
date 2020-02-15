@@ -1,14 +1,11 @@
 import React, { Component } from 'react'
 import { BrowserRouter } from 'react-router-dom'
-import Cookies from 'universal-cookie';
 
 import strings from '../static/strings.json'
 
 import './app.scss'
 
 import Routes from './Routes/Routes'
-
-const cookies = new Cookies();
 
 // onAuth rejected -> logout + autoLogin off 
 // onComponentDidMount LoginPage -> get username/password from cookies
@@ -56,7 +53,6 @@ class App extends Component {
 		appMounted: true
 	}
 
-	changePrefs = (prefs) => this.setState({ prefs: { ...this.state.prefs, ...prefs } })
 	changeUser = (user) => this.setState({ user: { ...this.state.prefs, ...user } })
 	changePlace = (place) => this.setState({ place: { ...this.state.place, ...place } })
 
@@ -97,18 +93,6 @@ class App extends Component {
 		console.log("you are updated")
 	}
 
-	componentDidUpdate() {
-
-	}
-
-	UNSAFE_componentWillUpdate(newProps, newState) {
-
-	}
-
-	componentDidMount() {
-
-	}
-
 	render() {
 		const { prefs: { theme } } = this.props
 
@@ -117,7 +101,6 @@ class App extends Component {
 				<BrowserRouter getUserConfirmation={this.userConfirmation}>
 					<Routes appConfig={{...this.props,...this.state}} //change it in future
 						changeUser={this.changeUser}
-						changePrefs={this.changePrefs}
 						changeProfile={this.changeProfile}
 						changePlace={this.changePlace}
 						logout={this.logout}

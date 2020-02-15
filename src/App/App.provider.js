@@ -90,7 +90,7 @@ class AppProvider extends Component {
         if (loading) return <p>Loading...</p>
         return (
             <ApolloProvider client={client} >
-                <AppContainer />
+                <AppContainer appState={this.state} />
             </ApolloProvider>
         );
     }
