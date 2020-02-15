@@ -5,12 +5,24 @@ import { gql } from 'apollo-boost'
 import AppDev from './App.dev'
 //import App from './App'
 
-const GET_PREFS = gql`
+const GET_CURRENT_STATE = gql`
     {
         prefs @client {
             theme
             lang
             autoLogin
+        }
+        user @client {
+            id
+            token
+            isAuth
+            username
+            password
+            name
+            places {
+                id
+                title
+            }
         }
     }
 `
@@ -18,10 +30,12 @@ const GET_PREFS = gql`
 // AuthCheck (getFirstPlace -> *handleNoPlace) 
 // to following resolver
 
-/* defaults {
+/* 
+defaults {
     autoLogin: false,
     username, password: ''
-}*/
+}
+*/
 
 /* 
 onAppMounted:
@@ -46,12 +60,14 @@ LoginPage:
 // GET_PREFS Query Component MUST be child of GET_PROFILE Query Component
 // in case of any change in prefs -> don't checkAuth(and getProfile) again...
 // notice: checkAuth has online actions while updatePrefs doesn't
+
+
 const AppContainer = (props) => (
-    <Query query={GET_PREFS} >
-        {({ data: { prefs } }) => (
+    <Query query={GET_CURRENT_STATE} >
+        {({ data: { prefs, user } }) => (
             process.env.NODE_ENV === 'development' ?
-                <AppDev {...props} prefs={prefs} /> :
-                <AppDev {...props} prefs={prefs} />
+                <AppDev {...props} prefs={prefs} user={user} /> :
+                <AppDev {...props} prefs={prefs} user={user} />
         )}
     </Query>
 )

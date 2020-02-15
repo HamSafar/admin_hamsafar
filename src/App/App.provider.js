@@ -42,25 +42,38 @@ class AppProvider extends Component {
         // INITIAL_STATE
 
         try { 
-            const GET_PREFS = gql`
+            const GET_INIT_STATE = gql`
                 {
                     prefs @client {
                         theme
                         lang
                         autoLogin
                     }
+                    user @client {
+                        id
+                        token
+                        isAuth
+                        username
+                        password
+                        name
+                        places {
+                            id
+                            title
+                        }
+                    }
                 }
             `
 
-            const { prefs } = await client.readQuery({
-                query: GET_PREFS
+            const { prefs, user } = await client.readQuery({
+                query: GET_INIT_STATE
             })
 
-            console.log(prefs)
+            console.log(prefs, user)
 
             client.writeData({
                 data: {
-                    prefs
+                    prefs,
+                    user
                 }
             })
         } catch (e) {
@@ -74,6 +87,16 @@ class AppProvider extends Component {
                         theme: 1,
                         autoLogin: false,
                         __typename: 'Prefs'
+                    },
+                    user: {
+                        id: '',
+                        token: '',
+                        isAuth: false,
+                        username: '',
+                        password: '',
+                        name: '',
+                        places: [],
+                        __typename: 'User'
                     }
                 }
             })
@@ -90,7 +113,7 @@ class AppProvider extends Component {
         if (loading) return <p>Loading...</p>
         return (
             <ApolloProvider client={client} >
-                <AppContainer appState={this.state} />
+                <AppContainer />
             </ApolloProvider>
         );
     }

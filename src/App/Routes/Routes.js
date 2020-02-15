@@ -23,6 +23,9 @@ class Routes extends Component {
         const { withProps } = this
 
         // limit dashboard routes in future
+        // make app hoc of routes and use <Route /> inside of it
+        // so that in any route u will have your dashboard
+        // then make that a container so it gets aware of the history pathname
         return (
             <Switch>
 
