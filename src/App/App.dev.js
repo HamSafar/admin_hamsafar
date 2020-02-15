@@ -98,7 +98,7 @@ class App extends Component {
 	}
 
 	componentDidUpdate() {
-		
+
 	}
 
 	UNSAFE_componentWillUpdate(newProps, newState) {
@@ -115,14 +115,13 @@ class App extends Component {
 		return (
 			<div className={"App " + (theme ? "lightTheme" : "darkTheme")}>
 				<BrowserRouter getUserConfirmation={this.userConfirmation}>
-					<Routes appConfig={this.props} //change it in future
+					<Routes appConfig={{...this.props,...this.state}} //change it in future
 						changeUser={this.changeUser}
 						changePrefs={this.changePrefs}
 						changeProfile={this.changeProfile}
 						changePlace={this.changePlace}
 						logout={this.logout}
 						strings={strings}
-						cookies={cookies}
 					/>
 				</BrowserRouter>
 			</div>

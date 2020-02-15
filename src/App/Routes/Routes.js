@@ -39,9 +39,9 @@ class Routes extends Component {
                 <Route path="/dashboard/:name" exact component={withProps(Dashboard)} />
                 <Redirect from="/dashboard" exact to="/dashboard/home" />
                 <Route path="/login" exact component={withProps(Login)} />
+                <Route path="/loading" exact component={withProps(Loading)} />
 
                 <Redirect from="/" exact to="/loading" />
-                <Route path="/loading" exact component={withProps(Loading)} />
                 <Route component={withProps(NotFound)} />
             </Switch>
         )

@@ -25,12 +25,10 @@ export const resolvers = {
     Mutation: {
         updatePrefs: (_root, { prefs: newPrefs }, { cache }) => {
 
-            const { prefs } = cache.readQuery({
+            /* const { prefs } = cache.readQuery({
                 query: GET_PREFS
-            })
-
-            console.log('resolver', prefs, newPrefs)
-
+            }) */
+            
             cache.writeQuery({
                 query: GET_PREFS,
                 data: { prefs: newPrefs }
