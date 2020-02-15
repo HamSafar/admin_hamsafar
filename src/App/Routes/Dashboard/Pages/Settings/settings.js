@@ -7,10 +7,10 @@ class Settings extends Component {
 
     toggleAutoLogin = (autoLogin) => this.props.changePrefs({ autoLogin: !autoLogin })
     changeTheme = (theme) => this.props.changePrefs({ theme })
-    changeLang = (lang) => this.props.changePrefs({ lang })
+    changeLang = (lang) => this.props.toggleLang()
 
     render() { 
-        const { prefs: { autoLogin, lang }, strings } = this.props
+        const { prefs: { autoLogin }, lang, strings } = this.props
         const active = autoLogin;
         return (
             <div className="Settings">
