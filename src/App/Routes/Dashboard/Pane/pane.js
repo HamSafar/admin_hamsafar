@@ -10,7 +10,7 @@ class Pane extends Component {
 
     
     render() {
-        const { prefs: { lang, theme }, profile, place, changePlace } = this.props
+        const { prefs: { lang, theme }, user, place, changePlace } = this.props
 
         return (
             <div className="Pane" 
@@ -19,7 +19,7 @@ class Pane extends Component {
             >
                 <div className="avatar">
                     <img alt="Avatar" src="https://lh3.googleusercontent.com/-xuFLlo7klRU/AAAAAAAAAAI/AAAAAAAAAAA/ACHi3rd2G6mw6iRAamWTHjSF4HNcSi1Ohg/photo.jpg?sz=46"/>
-                    <span> &nbsp; {profile && profile.name} &nbsp; </span>
+                    <span> &nbsp; {user && user.name} &nbsp; </span>
                 </div>
                 <div className="icon">
                     <FontAwesomeIcon icon={faBell} size="lg" />
@@ -28,7 +28,7 @@ class Pane extends Component {
                     <FontAwesomeIcon icon={faSync} size="lg" />
                 </div>
                 <div className="places">
-                    <MenuButton list={profile && profile.places} 
+                    <MenuButton list={user && user.places} 
                         index={place && place.index} 
                         setIndex={index => changePlace({ index })}
                         lang={lang} theme={theme} 

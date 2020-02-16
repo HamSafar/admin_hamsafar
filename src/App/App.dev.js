@@ -17,12 +17,9 @@ class App extends Component {
 			id: '',
 			username: 'hayyaun',
 			password: 'hayyaun',
-			isAuth: true,
+			isAuth: false,
 			token: '',
 			name: 'hayyan',
-			places: []
-		},
-		profile: {
 			places: [
 				{
 					id: 'dfsdff',
@@ -32,9 +29,7 @@ class App extends Component {
 					id: 'sdsdwe',
 					title: 'gheshm',
 				}
-			],
-			credit: '',
-			name: 'hayyaun'
+			]
 		},
 		place: {
 			index: 0,
@@ -49,12 +44,8 @@ class App extends Component {
 			],
 			tag: { title: 'Ent' },
 			updated: null
-		},
-		appMounted: true
+		}
 	}
-
-	changeUser = (user) => this.setState({ user: { ...this.state.prefs, ...user } })
-	changePlace = (place) => this.setState({ place: { ...this.state.place, ...place } })
 
 	logout = () => {
 		console.log('logged out')
@@ -62,48 +53,27 @@ class App extends Component {
 			user: {
 				...this.state.user,
 				isAuth: false
-			},
-			prefs: {
-				...this.state.prefs,
-				autoLogin: false
 			}
 		})
 	}
 
 	commitLogin = (username, password, isFirst) => {
 
-		console.log('commit login, isFirst: ', isFirst)
-
-		console.log('logged in')
-		this.setState({
-			user: {
-				...this.state.user,
-				username: username,
-				password: password,
-				isAuth: true,
-				token: 'some token',
-				id: '12345',
-			}
-		})
 	}
 
 	checkAuth = (newState) => {
 
-		console.log('check auth')
-		console.log("you are updated")
 	}
 
 	render() {
 		const { prefs: { theme } } = this.props
 
 		return (
-			<div className={"App " + (theme ? "lightTheme" : "darkTheme")}>
+			<div className={`App ${ theme ? 'lightTheme' : 'darkTheme' }`}>
+				<span>Development mode</span>
 				<BrowserRouter getUserConfirmation={this.userConfirmation}>
-					<Routes appConfig={{...this.props,...this.state}} //change it in future
-						changeUser={this.changeUser}
-						changeProfile={this.changeProfile}
-						changePlace={this.changePlace}
-						logout={this.logout}
+					<Routes appConfig={{ ...this.props, ...this.state }} // dev only
+						logout={this.logout} //dev
 						strings={strings}
 					/>
 				</BrowserRouter>

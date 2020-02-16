@@ -19,7 +19,9 @@ class AppProvider extends Component {
 
     async componentDidMount() {
 
-        const cache = new InMemoryCache();
+        const cache = new InMemoryCache({
+            //dataIdFromObject: object => object.id
+        });
 
         await persistCache({
             cache,
@@ -41,41 +43,37 @@ class AppProvider extends Component {
 
         // INITIAL_STATE
 
-        try { 
-            const GET_INIT_STATE = gql`
-                {
-                    prefs @client {
-                        theme
-                        lang
-                        autoLogin
-                    }
-                    user @client {
+        const GET_INIT_STATE = gql`
+            {
+                prefs @client {
+                    theme
+                    lang
+                    autoLogin
+                }
+                user @client {
+                    id
+                    token
+                    isAuth
+                    username
+                    password
+                    name
+                    places {
                         id
-                        token
-                        isAuth
-                        username
-                        password
-                        name
-                        places {
-                            id
-                            title
-                        }
+                        title
                     }
                 }
-            `
+                status
+            }
+        `
 
-            const { prefs, user } = await client.readQuery({
+        try {
+
+            const data = await client.readQuery({
                 query: GET_INIT_STATE
             })
+            console.log(data)
+            client.writeData({ data })
 
-            console.log(prefs, user)
-
-            client.writeData({
-                data: {
-                    prefs,
-                    user
-                }
-            })
         } catch (e) {
             console.log('Welcome to our app')
 
@@ -97,10 +95,11 @@ class AppProvider extends Component {
                         name: '',
                         places: [],
                         __typename: 'User'
-                    }
+                    },
+                    status: 'ONLINE'
                 }
             })
-        }        
+        }
 
         this.setState({
             client,
@@ -113,7 +112,7 @@ class AppProvider extends Component {
         if (loading) return <p>Loading...</p>
         return (
             <ApolloProvider client={client} >
-                <AppContainer />
+                <AppContainer client={client} />
             </ApolloProvider>
         );
     }

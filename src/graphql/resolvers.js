@@ -1,12 +1,12 @@
 import { gql } from 'apollo-boost'
 
 export const typeDefs = gql`
-    extend type Place {
-        id: String
-        title: String
-
+    type Mutation {
+        updateUser(user: User): User
+        updatePrefs(prefs: Prefs): Prefs
+        updateStatus(status: String!): String!
     }
-    extend type User {
+    type User {
         id: String
         token: String
         isAuth: Boolean
@@ -15,17 +15,17 @@ export const typeDefs = gql`
         name: String
         places: [Place]
     }
-    extend type Prefs {
+    type Prefs {
         lang: Int
         theme: Int
         autoLogin: Boolean
     }
-    extend type Mutation {
-        updatePrefs(prefs: Prefs): Prefs
-        updateUser(user: User): User
+    type Place {
+        id: String
+        title: String
+
     }
 `
-// add isOnline, 
 
 const GET_PREFS = gql`
     {
@@ -54,24 +54,42 @@ const GET_USER = gql`
     }
 `
 
+const GET_STATUS = gql`
+    {
+        status @client
+    }
+`
+
 export const resolvers = {
     Mutation: {
-        updatePrefs: (_root, { prefs: newPrefs }, { cache }) => {
-            const { prefs } = cache.readQuery({
+        updatePrefs: (_root, { prefs: nextPrefs }, { cache }) => {
+            const { prefs: prevPrefs } = cache.readQuery({
                 query: GET_PREFS
             })
+            const prefs = {...prevPrefs, ...nextPrefs}
+            console.log(prefs, _root)
             cache.writeQuery({
                 query: GET_PREFS,
-                data: { prefs: { ...prefs, ...newPrefs } }
+                data: { prefs }
             })
+            return prefs
         },
-        updateUser: (_root, { user: newUser }, { cache }) => {
-            const { user } = cache.readQuery({
+        updateUser: (_root, { user: nextUser }, { cache }) => {
+            const { user: prevUser } = cache.readQuery({
                 query: GET_USER
             })
+            const user = {...prevUser, ...nextUser}
+            console.log(user, _root)
             cache.writeQuery({
                 query: GET_USER,
-                data: { user: { ...user, ...newUser } }
+                data: { user }
+            })
+            return user
+        },
+        updateStatus: (_root, { status }, { cache }) => {
+            cache.writeQuery({
+                query: GET_STATUS,
+                data: { status }
             })
         }
     }

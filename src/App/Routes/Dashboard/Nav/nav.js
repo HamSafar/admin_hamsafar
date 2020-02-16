@@ -5,7 +5,7 @@ import {
     faHome, faTasks, faChartBar, faChartPie, faEnvelope, faUser, faCog, faSignOutAlt
 } from '@fortawesome/free-solid-svg-icons'
 
-import manifset from '../../../../static/manifset.json'
+import manifest from '../../../../static/manifest.json'
 import './nav.scss'
 
 // Home, Charts(by date), Analytics, Mailbox, Account(personal data, wallet, plan), Settings(theme, lang, )
@@ -26,7 +26,7 @@ class Nav extends Component {
                 }
             >
                 <div className="logo">
-                    <img src={window.location.origin + manifset.icons[2].src } alt="logo"/>
+                    <img src={window.location.origin + manifest.icons[2].src } alt="logo"/>
                     <span>Ham Safar</span>
                 </div>
                 <div className="icons">

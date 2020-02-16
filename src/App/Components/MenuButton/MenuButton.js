@@ -5,7 +5,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
-export default function SimpleMenu(props) {
+const MenuButton = (props) => {
 
     const theme =  createMuiTheme({
         palette: {
@@ -59,3 +59,5 @@ export default function SimpleMenu(props) {
         </ThemeProvider>
     );
 }
+
+export default MenuButton

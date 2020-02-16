@@ -24,6 +24,7 @@ const GET_CURRENT_STATE = gql`
                 title
             }
         }
+        status @client
     }
 `
 // add AutoLogin and 
@@ -44,7 +45,7 @@ onAppMounted:
                                                         err-> goto-login-page
                                     -> goto-login-page && TURN-OFF-AUTO-LOGIN
                     -> load-previous-profile && setStatus(offline)
-        -> loading-spinner
+    -> loading-spinner
                             
 AuthCheck(): 
     ok-> setProfile() && setFirstPlace()
@@ -62,15 +63,16 @@ LoginPage:
 // notice: checkAuth has online actions while updatePrefs doesn't
 
 
-const AppContainer = (props) => (
-    <Query query={GET_CURRENT_STATE} >
-        {({ data: { prefs, user } }) => (
-            process.env.NODE_ENV === 'development' ?
-                <AppDev {...props} prefs={prefs} user={user} /> :
-                <AppDev {...props} prefs={prefs} user={user} />
-        )}
+const AppContainer = (props) => {
+    return <Query query={GET_CURRENT_STATE} >
+        {({ data }) => {
+            process.env.NODE_ENV === 'development' && console.log('AppContainer Rendered')
+            return process.env.NODE_ENV === 'development' ?
+                <AppDev {...props} {...data} /> :
+                <AppDev {...props} {...data} />
+        }}
     </Query>
-)
+}
 
 //use SELECTORS in case of no change in data
 //or in App shouldComponentUpdate -> if stringify( prevState === nextState ) return false

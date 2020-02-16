@@ -4,10 +4,8 @@ import { gql } from 'apollo-boost'
 
 import Settings from './settings'
 
-
-
 const UPDATE_PREFS = gql`
-    mutation UpdatePrefs($prefs: Prefs!) {
+    mutation UpdatePrefs($prefs: Prefs) {
         updatePrefs(prefs: $prefs) @client {
             theme
             lang
