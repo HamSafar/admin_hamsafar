@@ -74,12 +74,6 @@ const GET_CURRENT_STATE = gql`
     }
 `
 
-const COMMIT_LOGIN = gql`
-    #online
-    mutation CommitLogin($username: String, $password: String) {
-        #login data
-    }
-`
 
 const UPDATE_USER = gql`
     #client
@@ -98,11 +92,19 @@ const UPDATE_USER = gql`
         }
     }
 `
+const COMMIT_LOGIN = gql`
+    #online
+    mutation CommitLogin($username: String, $password: String) {
+        #login data
+        id
+    }
+`
 
 const GET_PLACE = gql`
     #online
-    query GetPlace() {
+    query GetPlace($adminId: String, $index: Int) {
         #place data
+        offset
     }
 `
 

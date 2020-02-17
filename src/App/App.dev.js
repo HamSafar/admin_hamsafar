@@ -54,7 +54,7 @@ class App extends PureComponent {
 	}
 
 	render() {
-		const { prefs: { theme } } = this.props
+		const { prefs: { theme }, getProfile } = this.props
 		console.log('app rendered')
 
 		return (
