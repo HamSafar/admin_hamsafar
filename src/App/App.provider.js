@@ -8,12 +8,14 @@ import { gql } from 'apollo-boost'
 
 import { typeDefs, resolvers } from '../graphql/resolvers'
 
+import Loading from './Components/Loading/Loading'
 import AppContainer from './App.container'
 
 class AppProvider extends Component {
 
     state = {
         client: null,
+        httpLink: null,
         loading: true
     }
 
@@ -62,6 +64,16 @@ class AppProvider extends Component {
                         title
                     }
                 }
+                currentPlace @client {
+                    index
+                    id
+                    title
+                    header
+                    detail
+                    pictures
+                    tagTitle
+                    updated
+                }
                 status
             }
         `
@@ -93,8 +105,25 @@ class AppProvider extends Component {
                         username: '',
                         password: '',
                         name: '',
-                        places: [],
+                        places: [
+                            {
+                                id: '',
+                                title: '',
+                                __typename: 'Place'
+                            }
+                        ],
                         __typename: 'User'
+                    },
+                    currentPlace: {
+                        index: 0,
+                        id: '',
+                        title: '',
+                        header: '',
+                        detail: '',
+                        pictures: [],
+                        tagTitle: '',
+                        updated: '',
+                        __typename: 'Place'
                     },
                     status: 'ONLINE'
                 }
@@ -103,16 +132,20 @@ class AppProvider extends Component {
 
         this.setState({
             client,
+            httpLink,
             loading: false
         })
     }
 
     render() {
-        const { client, loading } = this.state
-        if (loading) return <p>Loading...</p>
+        const { client, httpLink, loading } = this.state
+        if (loading) return <Loading />
         return (
             <ApolloProvider client={client} >
-                <AppContainer client={client} />
+                <AppContainer 
+                    client={client} 
+                    httpLink={httpLink} 
+                />
             </ApolloProvider>
         );
     }

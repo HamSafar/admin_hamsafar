@@ -20,8 +20,8 @@ const SettingsContainer = (props) => (
             <Settings
                 strings={props.strings}
                 prefs={props.prefs}
-                updatePrefs={prefs => {
-                    updatePrefs({ variables: { prefs } })
+                updatePrefs={pref => {
+                    updatePrefs({ variables: { pref } })
                 }}
             />
         }

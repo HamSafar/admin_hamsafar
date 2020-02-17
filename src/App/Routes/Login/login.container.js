@@ -9,15 +9,6 @@ const UPDATE_USER = gql`
     mutation UpdateUser($user: User) {
         updateUser(user: $user) @client {
             id
-            token
-            isAuth
-            username
-            password
-            name
-            places {
-                id
-                title
-            }
         }
     }
 `

@@ -52,11 +52,13 @@ const AccountContainer = ({ user: { id: adminId }, place: { index: placeIndex },
         {({ loading, error, data }) => {
             if (loading) return <Loading size="2x" color="primary" />
             if (error) return <Error error={error} size="2x" color="auto" />
-            return <Mutation mutation={UPDATE_PROFILE} >
-                {updateProfile => (
-                    <Account {...otherProps} data={data} updateProfile={updateProfile} />
-                )}
-            </Mutation>
+            return (
+                <Mutation mutation={UPDATE_PROFILE} >
+                    {updateProfile => (
+                        <Account {...otherProps} data={data} updateProfile={updateProfile} />
+                    )}
+                </Mutation>
+            )
         }}
     </Query>
 )

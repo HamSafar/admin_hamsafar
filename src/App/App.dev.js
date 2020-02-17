@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 
 import strings from '../static/strings.json'
@@ -10,7 +10,7 @@ import Routes from './Routes/Routes'
 // onAuth rejected -> logout + autoLogin off 
 // onComponentDidMount LoginPage -> get username/password from cookies
 
-class App extends Component {
+class App extends PureComponent {
 
 	state = {
 		user: {
@@ -47,33 +47,21 @@ class App extends Component {
 		}
 	}
 
-	logout = () => {
-		console.log('logged out')
-		this.setState({
-			user: {
-				...this.state.user,
-				isAuth: false
-			}
-		})
-	}
-
-	commitLogin = (username, password, isFirst) => {
-
-	}
-
-	checkAuth = (newState) => {
-
+	componentDidMount() {
+		const { commitLogin, user: { username, password, isAuth }, prefs: { autoLogin } } = this.props
+		if (autoLogin && !isAuth)
+			commitLogin({ variables: { username, password } })
 	}
 
 	render() {
 		const { prefs: { theme } } = this.props
+		console.log('app rendered')
 
 		return (
 			<div className={`App ${ theme ? 'lightTheme' : 'darkTheme' }`}>
 				<span>Development mode</span>
-				<BrowserRouter getUserConfirmation={this.userConfirmation}>
+				<BrowserRouter>
 					<Routes appConfig={{ ...this.props, ...this.state }} // dev only
-						logout={this.logout} //dev
 						strings={strings}
 					/>
 				</BrowserRouter>

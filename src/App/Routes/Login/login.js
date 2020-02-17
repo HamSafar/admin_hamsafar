@@ -73,8 +73,6 @@ class Login extends Component {
         const { username, password, isInvalid } = this.state
         const { prefs: { lang }, strings: { login } } = this.props
 
-        process.env.NODE_ENV === 'development' && console.log('Login Rendered')
-        
         return (
             <div className="Login">
                 <form className="form"
