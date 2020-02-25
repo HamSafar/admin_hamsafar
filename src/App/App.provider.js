@@ -9,7 +9,7 @@ import { gql } from 'apollo-boost'
 import { typeDefs, resolvers } from '../graphql/resolvers'
 
 import Loading from './Components/Loading/Loading'
-import AppContainer from './App.container'
+import AppContainer from './App.container' // or .dev
 
 class AppProvider extends Component {
 

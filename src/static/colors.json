@@ -1,0 +1,43 @@
+{
+	"global": {
+		"scrollbar": {
+			"track": "#403f4d",
+			"thumb": "#000000"
+		},
+		"colors": {
+			"red": "#f65164",
+			"purple": "#7033ff",
+			"blue": "#4e7cff"
+		}
+	},
+	"mode": {
+		"day": {
+			"background": "#fefefe",
+      "text": "#323232",
+      "shadow": "#4d4d4d"
+		},
+		"night": {
+			"background": "#1e1e1e",
+      "text": "#e6e6e6",
+      "shadow": "#adadad"
+		}
+	},
+	"colorSets": [
+		{
+			"name": "accent",
+			"set": [ "#352b7d", "#ffa200", "#f35968", "#89dff0", "#d2d2e0", "#3f3e4c" ]
+		},
+		{
+			"name": "minimal",
+			"set": [ "#a9b2c8", "#929cb7", "#e6a7b3", "#4c56ba", "#29275f", "#f64b53" ]
+		},
+		{
+			"name": "contra",
+			"set": [ "#f8f8fc", "#f7b26c", "#090633", "#bcb1b4", "#f5540b", "#fc9b37", "#6292b6", "#372750" ]
+    },
+    {
+      "name": "monkey",
+      "set": [ "#f7fafd", "#66cab3", "#a7b8cb", "#2c2d3f", "#3239bf", "#ef462f", "#d79e4f" ]
+    }
+	]
+}

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 
-import manifest from '../../../static/manifest.json'
+import { images } from '../../../static'
 
 import { Ripple } from '@progress/kendo-react-ripple'; //change it to material-ui
 
@@ -79,7 +79,7 @@ class Login extends Component {
                     onSubmit={e => this.handleSubmit(e)}
                 >
                     <div className="logo">
-                        <img src={window.location.origin + manifest.icons[2].src} alt="logo" />
+                        <img src={window.location.origin + images.icons[2].src} alt="logo" />
                     </div>
                     <div className="title">
                         {login.title[lang]}

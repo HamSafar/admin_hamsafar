@@ -1,150 +1,78 @@
 {
-    "notFound": {
-        "title": [
-            "404 Not Found", "404 یافت نشد"
-        ],
-        "content": [
-            "Page not found!", "صفحه مورد نظر یافت نشد!"
-        ]
-    },
-    "login": {
-        "title": [
-            "Ham Safar Admin Login", "ورود مدیریت همسفر"
-        ],
-        "username": [
-            "Username", "نام کاربری"
-        ],
-        "password": [
-            "Password", "گذرواژه"
-        ],
-        "login": [
-            "Login", "ورود"
-        ]
-    },
-    "dashboard": {
-        "home": {
-            "title": [
-                "Home", "خانه"
-            ],
-            "totals": {
-                "total_comments": [
-                    "Total Comments", "کل نظرات"
-                ],
-                "total_views": [
-                    "Total Views", "کل مشاهدات"
-                ],
-                "total_events": [
-                    "Total Events", "کل رویدادها"
-                ],
-                "total_checkins": [
-                    "Total Check-ins", "کل حضورها"
-                ],
-                "total_books": [
-                    "Total Books", "کل بوک ها"
-                ]
-            },
-            "processes": {
-                "views": [
-                    "Views Process", "روند مشاهدات"
-                ],
-                "checkins": [
-                    "Check-ins Process", "روند حضورها"
-                ],
-                "books": [
-                    "Book Process", "روند بوک کردن"
-                ]
-            },
-            "graphs": {
-                "radar": {
-                    "keys": {
-                        "rec_sys": [
-                            "Recommendation System", "سیستم پیشنهاد"
-                        ],
-                        "ads": [
-                            "Advertisement", "تبلیغات مرکز"
-                        ],
-                        "soc_net": [
-                            "Social Network", "شبکه مجازی"
-                        ]
-                    }
-                }
-            },
-            "stats": {
-                "title": [
-                    "Today Status", "وضعیت امروز به هفته"
-                ],
-                "checkins": [
-                    "Checkins", "حضور ها"
-                ],
-                "views": [
-                    "Views", "مشاهده"
-                ],
-                "booked": [
-                    "Booked", "مشتاق"
-                ]
-            } 
-        },
-        "manage": {
-            "title": [
-                "Manage", "مدیریت"
-            ]
-        },
-        "charts": {
-            "title": [
-                "Charts", "نمودار ها"
-            ]
-        },
-        "analytics": {
-            "title": [
-                "Analytics", "تجزیه و تحلیل"
-            ]
-        },
-        "mailbox": {
-            "title": [
-                "Mailbox", "پیام ها"
-            ]
-        },
-        "account": {
-            "title": [
-                "Account", "حساب کاربری"
-            ]
-        },
-        "settings": {
-            "title": [
-                "Preferences", "مطبوعات"
-            ],
-            "language": [
-                "Language", "زبان"
-            ],
-            "color_set": [
-                "Color Set", "ترکیب رنگ"
-            ],
-            "theme": {
-                "title": [
-                    "Theme", "زمینه"
-                ],
-                "dark": [
-                    "Dark", "تاریک"
-                ],
-                "light": [
-                    "Light", "روشن"
-                ]
-            },
-            "auto_login": [
-                "Auto Login", "ورود خودکار"
-            ],
-            "notifications": [
-                "Desktop notifications", "اعلانات"
-            ],
-            "about": [
-                "About HamSafar", "درباره همسفر"
-            ],
-            "help": [
-                "Help", "راهنما"
-            ],
-            "privacy_policy": [
-                "Privacy & Policy", "حریم و خط مشی"
-            ]
-        }
-    }
+	"short_name": "Ham Safar",
+    "name": "Admin Panel for HamSafar",
+	"routes": {
+		"notFound": {
+			"title": [ "404 Not Found", "404 یافت نشد" ],
+			"content": [ "Page not found!", "صفحه مورد نظر یافت نشد!" ]
+		},
+		"login": {
+			"title": [ "Ham Safar Admin Login", "ورود مدیریت همسفر" ],
+			"username": [ "Username", "نام کاربری" ],
+			"password": [ "Password", "گذرواژه" ],
+			"login": [ "Login", "ورود" ]
+		},
+		"dashboard": {
+			"home": {
+				"title": [ "Home", "خانه" ],
+				"totals": {
+					"total_comments": [ "Total Comments", "کل نظرات" ],
+					"total_views": [ "Total Views", "کل مشاهدات" ],
+					"total_events": [ "Total Events", "کل رویدادها" ],
+					"total_checkins": [ "Total Check-ins", "کل حضورها" ],
+					"total_books": [ "Total Books", "کل بوک ها" ]
+				},
+				"processes": {
+					"views": [ "Views Process", "روند مشاهدات" ],
+					"checkins": [ "Check-ins Process", "روند حضورها" ],
+					"books": [ "Book Process", "روند بوک کردن" ]
+				},
+				"graphs": {
+					"radar": {
+						"keys": {
+							"rec_sys": [ "Recommendation System", "سیستم پیشنهاد" ],
+							"ads": [ "Advertisement", "تبلیغات مرکز" ],
+							"soc_net": [ "Social Network", "شبکه مجازی" ]
+						}
+					}
+				},
+				"stats": {
+					"title": [ "Today Status", "وضعیت امروز به هفته" ],
+					"checkins": [ "Checkins", "حضور ها" ],
+					"views": [ "Views", "مشاهده" ],
+					"booked": [ "Booked", "مشتاق" ]
+				}
+			},
+			"manage": {
+				"title": [ "Manage", "مدیریت" ]
+			},
+			"charts": {
+				"title": [ "Charts", "نمودار ها" ]
+			},
+			"analytics": {
+				"title": [ "Analytics", "تجزیه و تحلیل" ]
+			},
+			"mailbox": {
+				"title": [ "Mailbox", "پیام ها" ]
+			},
+			"account": {
+				"title": [ "Account", "حساب کاربری" ]
+			},
+			"settings": {
+				"title": [ "Preferences", "مطبوعات" ],
+				"language": [ "Language", "زبان" ],
+				"color_set": [ "Color Set", "ترکیب رنگ" ],
+				"theme": {
+					"title": [ "Theme", "زمینه" ],
+					"dark": [ "Dark", "تاریک" ],
+					"light": [ "Light", "روشن" ]
+				},
+				"auto_login": [ "Auto Login", "ورود خودکار" ],
+				"notifications": [ "Desktop notifications", "اعلانات" ],
+				"about": [ "About HamSafar", "درباره همسفر" ],
+				"help": [ "Help", "راهنما" ],
+				"privacy_policy": [ "Privacy & Policy", "حریم و خط مشی" ]
+			}
+		}
+	}
 }

@@ -3,43 +3,7 @@ import { Query, Mutation } from 'react-apollo'
 import { gql } from 'apollo-boost'
 import { setContext } from 'apollo-link-context';
 
-import AppDev from './App.dev'
-//import App from './App'
-
-// add AutoLogin and 
-// AuthCheck (getFirstPlace -> *handleNoPlace) 
-// to following resolver
-
-/* 
-defaults {
-    autoLogin: false,
-    username, password: ''
-}
-*/
-
-/* 
-onAppMounted:
-    GeneralCheck():
-        -> online?  -> autoLogin?   -> commitLogin()    ok-> setProfile(user,pass,token) -> AuthCheck?...
-                                                        err-> goto-login-page
-                                    -> goto-login-page && TURN-OFF-AUTO-LOGIN
-                    -> load-previous-profile && setStatus(offline)
-    -> loading-spinner
-                            
-AuthCheck(): 
-    ok-> setProfile() && setFirstPlace()
-    err-> GeneralCheck()
-
-LoginPage:
-    login(): updates-app-profile -> app-updates -> genral-checks
-
-// if there was err with AuthCheck() -> infinte-loop-problem!?
-*/
-
-
-// GET_PREFS Query Component MUST be child of GET_PROFILE Query Component
-// in case of any change in prefs -> don't checkAuth(and getProfile) again...
-// notice: checkAuth has online actions while updatePrefs doesn't
+import App from './App'
 
 const GET_CURRENT_STATE = gql`
     {
@@ -108,52 +72,61 @@ const GET_PLACE = gql`
     }
 `
 
-window.addEventListener('offline', function(e) { console.log('offline'); });
-window.addEventListener('online', function(e) { console.log('online'); });
+window.addEventListener('offline', function (e) { console.log('offline'); });
+window.addEventListener('online', function (e) { console.log('online'); });
 
-const App = process.env.NODE_ENV === 'development'
-    ? AppDev
-    : AppDev
+/******************* 
+REMOVE the query GET_CURRENT_STATE from AppContainer
+ADD the mutation UPDATE_CURRENT_STATE to App component
+this will protect AppContainer from rerendering
+and when a new set of props received by App it will rerender
+(don't forget to define App as a PureComponent to prevent infinite rerendering)
+Now App holds it's own state instead of having AppContainer does it
+NOTICE: DO THE SAME FOR APP.CONTAINER.JS
+********************/
 
 const AppContainer = (props) => (
-    <Query query={GET_CURRENT_STATE} >
-        {({ data: stateData }) => {
-            console.log('got current-state')
+    
+    <Mutation mutation={UPDATE_USER} >
+        {(updateUser) => {
+            console.log('got new-user')
             return (
-                <Mutation mutation={UPDATE_USER} >
-                    {(updateUser) => {
-                        console.log('got new-user')
+                <Mutation mutation={COMMIT_LOGIN} >
+                    {(commitLogin, { data: loginData, error: loginError }) => {
+                        if (loginError) {
+                            console.log('login failed')
+                            return updateUser({ variables: { isAuth: false } })
+                            // consequently goes to login-page
+                        }
+                        ///////// updateUser@client with received data
+                        console.log('login succeed, setting token')
+                        //Add Token to Request
+                        const { client, httpLink } = this.props
+                        const token = loginData.token
+                        const authLink = setContext((_, { headers }) => {
+                            return {
+                                headers: {
+                                    ...headers,
+                                    authorization: token ? `Bearer ${token}` : "",
+                                }
+                            }
+                        });
+                        client.link = authLink.concat(httpLink);
                         return (
-                            <Mutation mutation={COMMIT_LOGIN} >
-                                {(commitLogin, { data: loginData, error: loginError }) => {
-                                    if (loginError) {
-                                        console.log('login failed')
-                                        return updateUser({ variables: { isAuth: false } })
-                                        // consequently goes to login-page
+                            <Mutation mutation={GET_PLACE} >
+                                {(getPlace, { data: placeData, error: authError }) => {
+                                    if (authError) {
+                                        console.log('auth failed, commiting login')
+                                        const { username, password } = loginData
+                                        return commitLogin({ variables: { username, password } })
+                                        // consequently if fails -> loginError -> login-page
                                     }
-                                    console.log('login succeed, setting token')
-                                    //Add Token to Request
-                                    const { client, httpLink } = this.props
-                                    const token = loginData.token
-                                    const authLink = setContext((_, { headers }) => {
-                                        return {
-                                            headers: {
-                                                ...headers,
-                                                authorization: token ? `Bearer ${token}` : "",
-                                            }
-                                        }
-                                    });
-                                    client.link = authLink.concat(httpLink);
+                                    ///////// updatePrefs@client with received data
+                                    console.log('auth succeed')
                                     return (
-                                        <Mutation mutation={GET_PLACE} >
-                                            {(getPlace, { data: placeData, error: authError }) => {
-                                                if (authError) {
-                                                    console.log('auth failed, commiting login')
-                                                    const { username, password } = loginData
-                                                    return commitLogin({ variables: { username, password } })
-                                                    // consequently if fails -> loginError -> login-page
-                                                }
-                                                console.log('auth succeed')
+                                        <Query query={GET_CURRENT_STATE} >
+                                            {({ data: stateData }) => {
+                                                console.log('got current-state')
                                                 const data = { ...stateData, ...loginData, ...placeData }
                                                 return (
                                                     <App {...data}
@@ -162,7 +135,7 @@ const AppContainer = (props) => (
                                                     />
                                                 )
                                             }}
-                                        </Mutation>
+                                        </Query>
                                     )
                                 }}
                             </Mutation>
@@ -171,10 +144,7 @@ const AppContainer = (props) => (
                 </Mutation>
             )
         }}
-    </Query>
+    </Mutation>
 )
-
-//use SELECTORS in case of no change in data
-//or in App shouldComponentUpdate -> if stringify( prevState === nextState ) return false
 
 export default AppContainer;

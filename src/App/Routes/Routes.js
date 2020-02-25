@@ -10,14 +10,14 @@ class Routes extends Component {
 
     withProps = (Comp) => (props) =>
         <Comp {...props}
-            {...this.props.appConfig}
-            logout={this.props.logout}
+            {...this.props}
+            logout={this.props.logout} //logout is a form of updateUser()@client
             strings={this.props.strings}
         />
 
     render() {
         const { withProps } = this
-        const { appConfig: { user: { isAuth } } } = this.props
+        const { user: { isAuth } } = this.props
 
         // limit dashboard routes in future
         // make app hoc of routes and use <Route /> inside of it

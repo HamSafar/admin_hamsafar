@@ -100,7 +100,7 @@ export const resolvers = {
                 query: GET_USER
             })
             const user = {...prevUser, ...nextUser}
-            console.log(user, _)
+            console.log(nextUser, _)
             cache.writeQuery({
                 query: GET_USER,
                 data: { user }
